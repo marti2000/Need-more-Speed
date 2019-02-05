@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.106
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Need more Speed", "Need more Speed\Need more Speed.csproj", "{AC4C5DFD-36B8-461D-9A70-355D8AC0A098}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AC4C5DFD-36B8-461D-9A70-355D8AC0A098}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC4C5DFD-36B8-461D-9A70-355D8AC0A098}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC4C5DFD-36B8-461D-9A70-355D8AC0A098}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC4C5DFD-36B8-461D-9A70-355D8AC0A098}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BDF99CF1-7DC5-49F1-8B41-45C4930BFA13}
+	EndGlobalSection
+EndGlobal
