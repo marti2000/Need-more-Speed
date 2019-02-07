@@ -23,8 +23,20 @@ namespace Need_more_Speed
         public double Speed { get => speed; set => speed = value; }
         public char Type { get => type; set => type = value; }
 
+        public Vehicle(char type,byte compare_to_player)
+        {
 
+        }
 
+        public void update_speed()
+        {
+
+        }
+
+        private void refresh_position()
+        {
+
+        }
 
     }
 }
