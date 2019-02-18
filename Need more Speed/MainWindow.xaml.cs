@@ -24,14 +24,18 @@ namespace Need_more_Speed
         {
             InitializeComponent();
 
-            Dictionary<string, int> hash = new Dictionary<string, int>();
+            Dictionary<string, int> road_planner = new Dictionary<string, int>();
 
-            hash.Add("straight.horizontal", 1);
-            hash.Add("straight.vertical", 2);
-            hash.Add("curve.0Degree", 3);
-            hash.Add("curve.90Degree", 4);
-            hash.Add("curve.180Degree", 5);
-            hash.Add("curve.270Degree", 6);
+            road_planner.Add("straight.horizontal", 1);
+            road_planner.Add("straight.vertical", 2);
+            road_planner.Add("curve.0Degree", 3);
+            road_planner.Add("curve.90Degree", 4);
+            road_planner.Add("curve.180Degree", 5);
+            road_planner.Add("curve.270Degree", 6);
+
+            int tester = road_planner["straight.horizontal"];
         }
+
+
     }
 }
