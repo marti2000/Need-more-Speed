@@ -26,7 +26,7 @@ namespace Need_more_Speed
 
             Dictionary<string, int> road_planner = new Dictionary<string, int>();
 
-            road Road = new road();
+            Draw_road Road = new Draw_road();
 
             road_planner.Add("straight.horizontal", 1);
             road_planner.Add("straight.vertical", 2);
