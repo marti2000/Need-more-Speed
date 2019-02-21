@@ -8,7 +8,7 @@ namespace Need_more_Speed
 {
     class Vehicle
     {
-        private byte compare_to_player;
+        /*private byte compare_to_player;
         private double positon_x;
         private double positon_y;
         private double rotation;
@@ -60,12 +60,12 @@ namespace Need_more_Speed
             }
             else if (zaehler >= 2)
             {
-                if (speed > 0) /*&& (speed < 25)*/
+                if (speed > 0) /*&& (speed < 25)*//*
                 {
                     speed--;
                     // Auto_red_geschwindigkeit--;
                 }
-                else if (speed < 0)/* && (speed < -15)*/
+                else if (speed < 0)/* && (speed < -15)*//*
                 {
                     speed++;
                     
@@ -83,7 +83,7 @@ namespace Need_more_Speed
         private void refresh_position()
         {
             /*Canvas.SetLeft(Auto_red, position_x);
-            Canvas.SetTop(Auto_red, position_y);*/
+            Canvas.SetTop(Auto_red, position_y);*//*
         }
 
         private void position_calculation(double position_y, double position_x)
@@ -105,7 +105,7 @@ namespace Need_more_Speed
             double angle = Math.PI * rotation / 180.0;
             position_x += (speed / 10) * Math.Cos(angle);
             position_y -= (speed / 10) * Math.Sin(angle);
-        }
+        }*/
 
 
     }
