@@ -26,6 +26,8 @@ namespace Need_more_Speed
 
             Dictionary<string, int> road_planner = new Dictionary<string, int>();
 
+            road Road = new road();
+
             road_planner.Add("straight.horizontal", 1);
             road_planner.Add("straight.vertical", 2);
             road_planner.Add("curve.0Degree", 3);
