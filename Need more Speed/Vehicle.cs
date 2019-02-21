@@ -82,14 +82,14 @@ namespace Need_more_Speed
 
         private void refresh_position()
         {
-            Canvas.SetLeft(Auto_red, position_x);
-            Canvas.SetTop(Auto_red, position_y);
+            /*Canvas.SetLeft(Auto_red, position_x);
+            Canvas.SetTop(Auto_red, position_y);*/
         }
 
         private void position_calculation(double position_y, double position_x)
         {
-            if (speed != 0)
-            {
+            if (speed != 0) 
+            {   // Steuerung
                 if (left == true)
                 {
                     rotation++;
