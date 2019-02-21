@@ -38,9 +38,21 @@ namespace Need_more_Speed
 
             int tester = road_planner["straight.horizontal"];
 
-            SolidColorBrush street = new SolidColorBrush(Color.FromArgb(255, 0, 0, 0));
+            Line street = new Line();
+            street.Stroke = Brushes.Gray;
+
+            /*SolidColorBrush street = new SolidColorBrush(Color.FromArgb(255, 0, 0, 0));
             Pen pen = new Pen(street, 10);
-            //e.Graphics.DrawLine(pen, 20, 10, 300, 100);
+            Background. .DrawLine(pen, 20, 10, 300, 100);*/
+
+
+            street.X1 = 1;
+            street.X2 = 50;
+            street.Y1 = 1;
+            street.Y2 = 50;
+
+            street.StrokeThickness = 2;
+            background.Children.Add(street);
         }
 
 
