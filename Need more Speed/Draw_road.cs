@@ -10,7 +10,7 @@ namespace Need_more_Speed
     {
         public void straight_horizontal(int x, int y)
         {
-
+            
         }
         public void straight_vertical(int x, int y)
         {
