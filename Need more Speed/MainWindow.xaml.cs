@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Drawing;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -37,7 +38,9 @@ namespace Need_more_Speed
 
             int tester = road_planner["straight.horizontal"];
 
-
+            SolidColorBrush street = new SolidColorBrush(Color.FromArgb(255, 0, 0, 0));
+            Pen pen = new Pen(street, 10);
+            //e.Graphics.DrawLine(pen, 20, 10, 300, 100);
         }
 
 
