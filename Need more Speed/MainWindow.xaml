@@ -7,9 +7,9 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <Canvas Name="background" Background="Green">
+        <Canvas Name="racingtrack" Background="Green">
             <Line Canvas.Left="25" Canvas.Top="25" Height="400" Width="1000" Stroke="Gray" />
-            
+            <Rectangle Name="road" Width="100" Height="100" Fill="Gray" Canvas.Left="10" Canvas.Top="100"/>
         </Canvas>
     </Grid>
 </Window>
