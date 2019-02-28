@@ -27,7 +27,8 @@ namespace Need_more_Speed
 
             Dictionary<string, int> road_planner = new Dictionary<string, int>();
 
-            Draw_road Road = new Draw_road();
+            Draw_road Road = new Draw_road(racingtrack);
+            Road.curve_0Degree(100, 100, 100);
 
             road_planner.Add("straight.horizontal", 1);
             road_planner.Add("straight.vertical", 2);
@@ -67,7 +68,6 @@ namespace Need_more_Speed
             street.StrokeThickness = 2;
             racingtrack.Children.Add(street);*/
         }
-
 
     }
 }
