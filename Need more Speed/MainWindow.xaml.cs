@@ -29,6 +29,9 @@ namespace Need_more_Speed
 
             Draw_road Road = new Draw_road(racingtrack);
             Road.curve_0Degree(100, 100, 100);
+            Road.curve_90Degree(100, 200, 100);
+            Road.curve_180Degree(200, 200, 100);
+            Road.curve_270Degree(200, 100, 100);
 
             road_planner.Add("straight.horizontal", 1);
             road_planner.Add("straight.vertical", 2);
@@ -37,9 +40,9 @@ namespace Need_more_Speed
             road_planner.Add("curve.180Degree", 5);
             road_planner.Add("curve.270Degree", 6);
 
-            int tester = road_planner["straight.horizontal"];
+            //int tester = road_planner["straight.horizontal"];
 
-            for(int i = 0; i>10; i++)
+            /*for(int i = 0; i>10; i++)
             {
                 Line[] street = new Line[10];
                 street[i] = new Line() { Name = "street" + i };
@@ -51,7 +54,7 @@ namespace Need_more_Speed
 
                 street[i].StrokeThickness = 2;
                 racingtrack.Children.Add(street[i]);
-            }
+            }*/
             
 
             /*SolidColorBrush street = new SolidColorBrush(Color.FromArgb(255, 0, 0, 0));
