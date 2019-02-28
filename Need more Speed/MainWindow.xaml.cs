@@ -38,21 +38,34 @@ namespace Need_more_Speed
 
             int tester = road_planner["straight.horizontal"];
 
-            Line street = new Line();
-            street.Stroke = Brushes.Gray;
+            for(int i = 0; i>10; i++)
+            {
+                Line[] street = new Line[10];
+                street[i] = new Line() { Name = "street" + i };
+                street[i].Stroke = Brushes.Gray;
+                street[i].X1 = 1;
+                street[i].X2 = 50;
+                street[i].Y1 = 1;
+                street[i].Y2 = 50;
+
+                street[i].StrokeThickness = 2;
+                racingtrack.Children.Add(street[i]);
+            }
+            
 
             /*SolidColorBrush street = new SolidColorBrush(Color.FromArgb(255, 0, 0, 0));
             Pen pen = new Pen(street, 10);
             Background. .DrawLine(pen, 20, 10, 300, 100);*/
 
+            
 
-            street.X1 = 1;
+            /*street.X1 = 10;
             street.X2 = 50;
-            street.Y1 = 1;
+            street.Y1 = 10;
             street.Y2 = 50;
 
             street.StrokeThickness = 2;
-            background.Children.Add(street);
+            racingtrack.Children.Add(street);*/
         }
 
 
