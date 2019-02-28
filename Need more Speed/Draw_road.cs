@@ -27,6 +27,7 @@ namespace Need_more_Speed
                 y_curve = Math.Sqrt(Math.Pow(grid, 2) - Math.Pow(x_curve, 2));
 
 
+
             }
 
 
