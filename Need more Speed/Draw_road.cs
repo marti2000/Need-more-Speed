@@ -45,7 +45,7 @@ namespace Need_more_Speed
                 Line[] street = new Line[Convert.ToInt16(grid) + 1];
                 street[Convert.ToInt16(x_curve)] = new Line() { Name = "street" + Convert.ToInt16(x_curve) };
                 street[Convert.ToInt16(x_curve)].Stroke = Brushes.Gray;
-                street[Convert.ToInt16(x_curve)].X1 = x_offset;
+                street[Convert.ToInt16(x_curve)].X1 = x_offset + Convert.ToInt16(x_curve); ;
                 street[Convert.ToInt16(x_curve)].X2 = x_offset + Convert.ToInt16(x_curve);
                 street[Convert.ToInt16(x_curve)].Y1 = y_offset;
                 street[Convert.ToInt16(x_curve)].Y2 = y_offset - Convert.ToInt16(y_curve); ;
@@ -67,7 +67,7 @@ namespace Need_more_Speed
                 Line[] street = new Line[Convert.ToInt16(grid) + 1];
                 street[Convert.ToInt16(x_curve)] = new Line() { Name = "street" + Convert.ToInt16(x_curve) };
                 street[Convert.ToInt16(x_curve)].Stroke = Brushes.Gray;
-                street[Convert.ToInt16(x_curve)].X1 = x_offset;
+                street[Convert.ToInt16(x_curve)].X1 = x_offset + Convert.ToInt16(x_curve);
                 street[Convert.ToInt16(x_curve)].X2 = x_offset + Convert.ToInt16(x_curve);
                 street[Convert.ToInt16(x_curve)].Y1 = y_offset;
                 street[Convert.ToInt16(x_curve)].Y2 = y_offset + Convert.ToInt16(y_curve); ;
@@ -89,8 +89,8 @@ namespace Need_more_Speed
                 Line[] street = new Line[Convert.ToInt16(grid) + 1];
                 street[Convert.ToInt16(x_curve)] = new Line() { Name = "street" + Convert.ToInt16(x_curve) };
                 street[Convert.ToInt16(x_curve)].Stroke = Brushes.Gray;
-                street[Convert.ToInt16(x_curve)].X1 = x_offset;
-                street[Convert.ToInt16(x_curve)].X2 = x_offset +grid - Convert.ToInt16(x_curve);
+                street[Convert.ToInt16(x_curve)].X1 = x_offset + grid - Convert.ToInt16(x_curve);
+                street[Convert.ToInt16(x_curve)].X2 = x_offset + grid - Convert.ToInt16(x_curve);
                 street[Convert.ToInt16(x_curve)].Y1 = y_offset;
                 street[Convert.ToInt16(x_curve)].Y2 = y_offset - Convert.ToInt16(y_curve); ;
 
@@ -111,7 +111,7 @@ namespace Need_more_Speed
                 Line[] street = new Line[Convert.ToInt16(grid) + 1];
                 street[Convert.ToInt16(x_curve)] = new Line() { Name = "street" + Convert.ToInt16(x_curve) };
                 street[Convert.ToInt16(x_curve)].Stroke = Brushes.Gray;
-                street[Convert.ToInt16(x_curve)].X1 = x_offset;
+                street[Convert.ToInt16(x_curve)].X1 = x_offset + grid - Convert.ToInt16(x_curve);
                 street[Convert.ToInt16(x_curve)].X2 = x_offset + grid - Convert.ToInt16(x_curve);
                 street[Convert.ToInt16(x_curve)].Y1 = y_offset;
                 street[Convert.ToInt16(x_curve)].Y2 = y_offset + Convert.ToInt16(y_curve); ;

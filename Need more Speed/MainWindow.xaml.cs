@@ -28,10 +28,10 @@ namespace Need_more_Speed
             Dictionary<string, int> road_planner = new Dictionary<string, int>();
 
             Draw_road Road = new Draw_road(racingtrack);
-            Road.curve_0Degree(100, 100, 100);
-            Road.curve_90Degree(100, 200, 100);
-            Road.curve_180Degree(200, 200, 100);
-            Road.curve_270Degree(200, 100, 100);
+            Road.curve_0Degree(200, 100, 100);
+            Road.curve_90Degree(200, 100, 100);
+            Road.curve_180Degree(100, 100, 100);
+            Road.curve_270Degree(100, 100, 100);
 
             road_planner.Add("straight.horizontal", 1);
             road_planner.Add("straight.vertical", 2);
