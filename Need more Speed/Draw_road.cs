@@ -25,9 +25,13 @@ namespace Need_more_Speed
             this.myCanvas = myCanvas;
         }
 
-        public void straight_horizontal(int x, int y)
+        public void straight_horizontal(int x, int y, double grid)
         {
-            
+            Rectangle street = new Rectangle();
+            street.Width = grid;
+            street.Height = grid;
+            street.Stroke = Brushes.Gray;
+            myCanvas.Children.Add(street);
         }
         public void straight_vertical(int x, int y)
         {
