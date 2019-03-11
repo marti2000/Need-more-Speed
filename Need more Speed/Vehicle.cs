@@ -3,12 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
+using System.Windows.Media;
+using System.Windows.Shapes;
 
 namespace Need_more_Speed
 {
     class Vehicle
     {
-        /*private byte compare_to_player;
+        private byte compare_to_player;
         private double positon_x;
         private double positon_y;
         private double rotation;
@@ -19,6 +22,8 @@ namespace Need_more_Speed
         private bool left;
         private bool right;
 
+        private Canvas racingtrack;
+        Rectangle car = new Rectangle();
 
         public byte Compare_to_player { get => compare_to_player; set => compare_to_player = value; }
         public double Position_x { get => positon_x; set => positon_x = value; }
@@ -31,9 +36,14 @@ namespace Need_more_Speed
         public bool Left { get => left; set => left = value; }
         public bool Right { get => right; set => right = value; }
 
-        public Vehicle(char type,byte compare_to_player)
+        public Vehicle(string type,byte compare_to_player, Canvas myCanvas)
         {
-
+            racingtrack = myCanvas;
+            car.Height = 20;
+            car.Width = 10;
+            car.Stroke = Brushes.Red;
+            car.Fill = Brushes.Red;
+            racingtrack.Children.Add(car);
         }
 
 
@@ -60,12 +70,12 @@ namespace Need_more_Speed
             }
             else if (zaehler >= 2)
             {
-                if (speed > 0) /*&& (speed < 25)*//*
+                if (speed > 0) /*&& (speed < 25)*/
                 {
                     speed--;
                     // Auto_red_geschwindigkeit--;
                 }
-                else if (speed < 0)/* && (speed < -15)*//*
+                else if (speed < 0)/* && (speed < -15)*/
                 {
                     speed++;
                     
@@ -80,10 +90,10 @@ namespace Need_more_Speed
         }
 
 
-        private void refresh_position()
+        public void refresh_position()
         {
-            /*Canvas.SetLeft(Auto_red, position_x);
-            Canvas.SetTop(Auto_red, position_y);*//*
+            Canvas.SetLeft(car,10 /*position_x*/);
+            Canvas.SetTop(car, 10/*position_y*/);
         }
 
         private void position_calculation(double position_y, double position_x)
@@ -105,7 +115,7 @@ namespace Need_more_Speed
             double angle = Math.PI * rotation / 180.0;
             position_x += (speed / 10) * Math.Cos(angle);
             position_y -= (speed / 10) * Math.Sin(angle);
-        }*/
+        }
 
 
     }
