@@ -61,7 +61,7 @@ namespace Need_more_Speed
                 street[i].Stroke = Brushes.Gray;
                 street[i].X1 = 1;
                 street[i].X2 = 50;
-                street[i].Y1 = 1;
+                street[i].Y1 = 1; 
                 street[i].Y2 = 50;
 
                 street[i].StrokeThickness = 2;
