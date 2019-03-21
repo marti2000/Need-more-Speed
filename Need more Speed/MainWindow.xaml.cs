@@ -29,9 +29,9 @@ namespace Need_more_Speed
 
             Draw_road Road = new Draw_road(racingtrack);
             Road.curve_0Degree(1, 1, 100);
-            Road.curve_90Degree(1, 2, 100);
-            Road.curve_180Degree(2, 1, 100);
-            Road.curve_270Degree(2, 2, 100);
+            Road.curve_90Degree(2, 1, 100);
+            Road.curve_180Degree(2, 2, 100);
+            Road.curve_270Degree(1, 2, 100);
 
             road_planner.Add("straight.horizontal", 1);
             road_planner.Add("straight.vertical", 2);
@@ -41,7 +41,10 @@ namespace Need_more_Speed
             road_planner.Add("curve.270Degree", 6);
 
             Vehicle red_car = new Vehicle("Car", 1, racingtrack);
-            red_car.Down = true;
+            red_car.Position_x = 200;
+            red_car.Position_y = 200;
+            red_car.Right = true;
+            red_car.Up = true;
 
             //int tester = road_planner["straight.horizontal"];
 

@@ -39,8 +39,8 @@ namespace Need_more_Speed
         public Vehicle(string type,byte compare_to_player, Canvas myCanvas)
         {
             racingtrack = myCanvas;
-            car.Height = 20;
-            car.Width = 10;
+            car.Height = 10;
+            car.Width = 20;
             car.Stroke = Brushes.Red;
             car.Fill = Brushes.Red;
             racingtrack.Children.Add(car);
@@ -118,6 +118,8 @@ namespace Need_more_Speed
 
         private void position_calculation(/*double position_y, double position_x*/)
         {
+            RotateTransform ro_rotation = new RotateTransform(0);
+            
             if (speed != 0) 
             {   // Steuerung
                 if (left == true)
@@ -132,6 +134,8 @@ namespace Need_more_Speed
                     rotation--;
                 }
             }
+            ro_rotation.Angle = rotation;
+            car.RenderTransform = ro_rotation;
             double angle = Math.PI * rotation / 180.0;
             position_x += (speed / 10) * Math.Cos(angle);
             position_y -= (speed / 10) * Math.Sin(angle);
