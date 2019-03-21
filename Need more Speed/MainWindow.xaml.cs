@@ -44,11 +44,11 @@ namespace Need_more_Speed
             road_planner.Add("curve.270Degree", 6);
 
             red_car = new Vehicle("Car", 1, racingtrack);
-            /*red_car.Position_x = 200;
+            red_car.Position_x = 200;
             red_car.Position_y = 200;
             red_car.Left = true;
             red_car.Down = true;
-            */
+            
            
 
             //int tester = road_planner["straight.horizontal"];
