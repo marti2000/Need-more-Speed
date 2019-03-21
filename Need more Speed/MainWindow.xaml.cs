@@ -28,10 +28,10 @@ namespace Need_more_Speed
             Dictionary<string, int> road_planner = new Dictionary<string, int>();
 
             Draw_road Road = new Draw_road(racingtrack);
-            Road.curve_0Degree(100, 100, 100);
-            Road.curve_90Degree(100, 200, 100);
-            Road.curve_180Degree(200, 100, 100);
-            Road.curve_270Degree(200, 200, 100);
+            Road.curve_0Degree(1, 1, 100);
+            Road.curve_90Degree(1, 2, 100);
+            Road.curve_180Degree(2, 1, 100);
+            Road.curve_270Degree(2, 2, 100);
 
             road_planner.Add("straight.horizontal", 1);
             road_planner.Add("straight.vertical", 2);
@@ -41,7 +41,7 @@ namespace Need_more_Speed
             road_planner.Add("curve.270Degree", 6);
 
             Vehicle red_car = new Vehicle("Car", 1, racingtrack);
-            red_car.refresh_position();
+            red_car.Down = true;
 
             //int tester = road_planner["straight.horizontal"];
 

@@ -44,8 +44,28 @@ namespace Need_more_Speed
             car.Stroke = Brushes.Red;
             car.Fill = Brushes.Red;
             racingtrack.Children.Add(car);
+
+            System.Windows.Threading.DispatcherTimer Speed_timer = new System.Windows.Threading.DispatcherTimer();
+            Speed_timer.Tick += Speed_timer_Tick;
+            Speed_timer.Interval = new TimeSpan(10000);
+            Speed_timer.Start();
+
+            System.Windows.Threading.DispatcherTimer Speed_higher_timer = new System.Windows.Threading.DispatcherTimer();
+            Speed_higher_timer.Tick += Speed_higher_timer_Tick;
+            Speed_higher_timer.Interval = new TimeSpan(0, 0, 0, 0, 1);
+            Speed_higher_timer.Start();
         }
 
+        private void Speed_timer_Tick(object sender, EventArgs e)
+        {
+            position_calculation();
+            refresh_position();
+        }
+
+        private void Speed_higher_timer_Tick(object sender, EventArgs e)
+        {
+            update_speed();
+        }
 
         private void update_speed()
         {
@@ -90,7 +110,7 @@ namespace Need_more_Speed
         }
 
 
-        public void refresh_position()
+        private void refresh_position()
         {
             Canvas.SetLeft(car, position_x);
             Canvas.SetTop(car, position_y);
