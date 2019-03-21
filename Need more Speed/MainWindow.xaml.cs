@@ -41,7 +41,7 @@ namespace Need_more_Speed
             road_planner.Add("curve.270Degree", 6);
 
             Vehicle red_car = new Vehicle("Car", 1, racingtrack);
-            //red_car.refresh_position();
+            red_car.refresh_position();
 
             //int tester = road_planner["straight.horizontal"];
 

@@ -90,13 +90,13 @@ namespace Need_more_Speed
         }
 
 
-        private void refresh_position()
+        public void refresh_position()
         {
-            Canvas.SetLeft(car, positon_x);
-            Canvas.SetTop(car, positon_y);
+            Canvas.SetLeft(car,10 /*position_x*/);
+            Canvas.SetTop(car, 10/*position_y*/);
         }
 
-        private void position_calculation(/*double position_y, double position_x*/)
+        private void position_calculation(double position_y, double position_x)
         {
             if (speed != 0) 
             {   // Steuerung
@@ -113,8 +113,8 @@ namespace Need_more_Speed
                 }
             }
             double angle = Math.PI * rotation / 180.0;
-            positon_x += (speed / 10) * Math.Cos(angle);
-            positon_y -= (speed / 10) * Math.Sin(angle);
+            position_x += (speed / 10) * Math.Cos(angle);
+            position_y -= (speed / 10) * Math.Sin(angle);
         }
 
 
