@@ -21,6 +21,7 @@ namespace Need_more_Speed
     /// </summary>
     public partial class MainWindow : Window
     {
+        Vehicle red_car;
         public MainWindow()
         {
             InitializeComponent();
@@ -33,6 +34,8 @@ namespace Need_more_Speed
             Road.curve_180Degree(2, 2, 100);
             Road.curve_270Degree(1, 2, 100);
 
+            Road.straight_horizontal(3, 3, 100);
+
             road_planner.Add("straight.horizontal", 1);
             road_planner.Add("straight.vertical", 2);
             road_planner.Add("curve.0Degree", 3);
@@ -40,11 +43,13 @@ namespace Need_more_Speed
             road_planner.Add("curve.180Degree", 5);
             road_planner.Add("curve.270Degree", 6);
 
-            Vehicle red_car = new Vehicle("Car", 1, racingtrack);
-            red_car.Position_x = 200;
+            red_car = new Vehicle("Car", 1, racingtrack);
+            /*red_car.Position_x = 200;
             red_car.Position_y = 200;
-            red_car.Right = true;
-            red_car.Up = true;
+            red_car.Left = true;
+            red_car.Down = true;
+            */
+           
 
             //int tester = road_planner["straight.horizontal"];
 
@@ -61,13 +66,13 @@ namespace Need_more_Speed
                 street[i].StrokeThickness = 2;
                 racingtrack.Children.Add(street[i]);
             }*/
-            
+
 
             /*SolidColorBrush street = new SolidColorBrush(Color.FromArgb(255, 0, 0, 0));
             Pen pen = new Pen(street, 10);
             Background. .DrawLine(pen, 20, 10, 300, 100);*/
 
-            
+
 
             /*street.X1 = 10;
             street.X2 = 50;
@@ -78,5 +83,44 @@ namespace Need_more_Speed
             racingtrack.Children.Add(street);*/
         }
 
+        private void Window_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.W)
+            {
+                red_car.Up = true;
+            }
+            if (e.Key == Key.S)
+            {
+                red_car.Down = true;
+            }
+            if (e.Key == Key.A)
+            {
+                red_car.Left = true;
+            }
+            if (e.Key == Key.D)
+            {
+                red_car.Right = true;
+            }
+        }
+
+        private void Window_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.W)
+            {
+                red_car.Up = false;
+            }
+            if (e.Key == Key.S)
+            {
+                red_car.Down = false;
+            }
+            if (e.Key == Key.A)
+            {
+                red_car.Left = false;
+            }
+            if (e.Key == Key.D)
+            {
+                red_car.Right = false;
+            }
+        }
     }
 }

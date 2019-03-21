@@ -6,7 +6,9 @@
         xmlns:local="clr-namespace:Need_more_Speed"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800"
-        WindowState="Maximized">
+        WindowState="Maximized"
+        KeyDown="Window_KeyDown"
+        KeyUp="Window_KeyUp">
     <Grid>
         <Canvas Name="racingtrack" Background="Green">
             <!--<Rectangle Name="road_up"  Height="400" Width="50" Fill="Gray" Canvas.Left="25" Canvas.Top="25" />

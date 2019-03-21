@@ -134,7 +134,7 @@ namespace Need_more_Speed
                     rotation--;
                 }
             }
-            ro_rotation.Angle = rotation;
+            ro_rotation.Angle = -rotation;
             car.RenderTransform = ro_rotation;
             double angle = Math.PI * rotation / 180.0;
             position_x += (speed / 10) * Math.Cos(angle);
