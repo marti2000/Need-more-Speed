@@ -29,13 +29,19 @@ namespace Need_more_Speed
             Dictionary<string, int> road_planner = new Dictionary<string, int>();
 
             Draw_road Road = new Draw_road(racingtrack);
+
+            Maps Map = new Maps(racingtrack);
+            Map.chose_Map(0, 100);
+            
+            
+            /*
             Road.curve_0Degree(1, 1, 100);
             Road.curve_90Degree(2, 1, 100);
             Road.curve_180Degree(2, 2, 100);
             Road.curve_270Degree(1, 2, 100);
 
             Road.straight_horizontal(3, 3, 100);
-
+            */
             road_planner.Add("straight.horizontal", 1); 
             road_planner.Add("straight.vertical", 2);
             road_planner.Add("curve.0Degree", 3);
