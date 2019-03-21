@@ -25,17 +25,33 @@ namespace Need_more_Speed
             this.myCanvas = myCanvas;
         }
 
-        public void straight_horizontal(int x, int y, double grid)
+        public void straight_horizontal(double x_offset, double y_offset, double grid)
         {
+            x_offset = x_offset * grid;
+            y_offset = y_offset * grid;
+
             Rectangle street = new Rectangle();
             street.Width = grid;
             street.Height = grid;
             street.Stroke = Brushes.Gray;
+            street.Fill = Brushes.Gray;
+            Canvas.SetTop(street, y_offset);
+            Canvas.SetLeft(street, x_offset);
             myCanvas.Children.Add(street);
         }
-        public void straight_vertical(int x, int y)
+        public void straight_vertical(double x_offset, double y_offset, double grid)
         {
+            x_offset = x_offset * grid;
+            y_offset = y_offset * grid;
 
+            Rectangle street = new Rectangle();
+            street.Width = grid;
+            street.Height = grid;
+            street.Stroke = Brushes.Gray;
+            street.Fill = Brushes.Gray;
+            Canvas.SetTop(street, y_offset);
+            Canvas.SetLeft(street, x_offset);
+            myCanvas.Children.Add(street);
         }
         public void curve_0Degree(double x_offset, double y_offset, double grid)
         {
