@@ -12,8 +12,8 @@ namespace Need_more_Speed
     class Vehicle
     {
         private byte compare_to_player;
-        private double positon_x;
-        private double positon_y;
+        private double position_x;
+        private double position_y;
         private double rotation;
         private double speed;
         private char type;
@@ -26,8 +26,8 @@ namespace Need_more_Speed
         Rectangle car = new Rectangle();
 
         public byte Compare_to_player { get => compare_to_player; set => compare_to_player = value; }
-        public double Position_x { get => positon_x; set => positon_x = value; }
-        public double Position_y { get => positon_y; set => positon_y = value; }
+        public double Position_x { get => position_x; set => position_x = value; }
+        public double Position_y { get => position_y; set => position_y = value; }
         public double Rotation { get => rotation; set => rotation = value; }
         public double Speed { get => speed; set => speed = value; }
         public char Type { get => type; set => type = value; }
@@ -92,11 +92,11 @@ namespace Need_more_Speed
 
         public void refresh_position()
         {
-            Canvas.SetLeft(car,10 /*position_x*/);
-            Canvas.SetTop(car, 10/*position_y*/);
+            Canvas.SetLeft(car, position_x);
+            Canvas.SetTop(car, position_y);
         }
 
-        private void position_calculation(double position_y, double position_x)
+        private void position_calculation(/*double position_y, double position_x*/)
         {
             if (speed != 0) 
             {   // Steuerung
