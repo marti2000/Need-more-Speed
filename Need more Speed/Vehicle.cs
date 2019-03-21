@@ -36,8 +36,11 @@ namespace Need_more_Speed
         public bool Left { get => left; set => left = value; }
         public bool Right { get => right; set => right = value; }
 
-        public Vehicle(string type,byte compare_to_player, Canvas myCanvas)
+        public Vehicle(string type,byte compare_to_player, double start_position_x, double start_position_y ,Canvas myCanvas)
         {
+            position_x = start_position_x;
+            position_y = start_position_y;
+
             racingtrack = myCanvas;
             car.Height = 10;
             car.Width = 20;
@@ -79,8 +82,8 @@ namespace Need_more_Speed
                     speed--;
                 }
             }
-            else if ((down == true) && (speed < 40))
-            {
+            else if ((down == true) && (speed < 80))
+            {   
                 speed++;
                 if (speed < -1)
                 {
@@ -90,12 +93,12 @@ namespace Need_more_Speed
             }
             else if (zaehler >= 2)
             {
-                if (speed > 0) /*&& (speed < 25)*/
+                if ((speed > 0) && (speed < 25))
                 {
                     speed--;
                     // Auto_red_geschwindigkeit--;
                 }
-                else if (speed < 0)/* && (speed < -15)*/
+                else if ((speed < 0) && (speed < -15))
                 {
                     speed++;
                     

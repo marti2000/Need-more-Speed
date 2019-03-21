@@ -43,11 +43,12 @@ namespace Need_more_Speed
             road_planner.Add("curve.180Degree", 5);
             road_planner.Add("curve.270Degree", 6);
 
-            red_car = new Vehicle("Car", 1, racingtrack);
-            red_car.Position_x = 200;
+            red_car = new Vehicle("Car", 1, 100, 100, racingtrack);
+            red_car.Rotation = 180;
+            /*red_car.Position_x = 200;
             red_car.Position_y = 200;
             red_car.Left = true;
-            red_car.Down = true;
+            red_car.Down = true;*/
             
            
 
