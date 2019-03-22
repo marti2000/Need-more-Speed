@@ -56,11 +56,20 @@ namespace Need_more_Speed
             red_car.Left = true;
             red_car.Down = true;*/
             
-           
+                
+                Line line= new Line();
+                line.Stroke = Brushes.Gray;
+                line.StrokeThickness = 10;
+                line.X1 = 0;
+                line.X2 = 100;
+                line.Y1 = 0;
+                line.Y2 = 100;
+                
+
 
             //int tester = road_planner["straight.horizontal"];
 
-            /*for(int i = 0; i>10; i++)
+            for(int i = 0; i>10; i++)
             {
                 Line[] street = new Line[10];
                 street[i] = new Line() { Name = "street" + i };
@@ -72,7 +81,7 @@ namespace Need_more_Speed
 
                 street[i].StrokeThickness = 2;
                 racingtrack.Children.Add(street[i]);
-            }*/
+            }
 
 
             /*SolidColorBrush street = new SolidColorBrush(Color.FromArgb(255, 0, 0, 0));
