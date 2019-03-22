@@ -26,7 +26,7 @@ namespace Need_more_Speed
         {
             InitializeComponent();
 
-            Dictionary<string, int> road_planner = new Dictionary<string, int>();
+            Dictionary<string, Draw_road> road_planner = new Dictionary<string, Draw_road>();
 
             Draw_road Road = new Draw_road(racingtrack);
 
@@ -42,13 +42,13 @@ namespace Need_more_Speed
 
             Road.straight_horizontal(3, 3, 100);
             */
-            road_planner.Add("straight.horizontal", 1); 
-            road_planner.Add("straight.vertical", 2);
-            road_planner.Add("curve.0Degree", 3);
-            road_planner.Add("curve.90Degree", 4);
-            road_planner.Add("curve.180Degree", 5);
-            road_planner.Add("curve.270Degree", 6);
-
+            road_planner.Add("straight.horizontal", Road); 
+            road_planner.Add("straight.vertical", Road);
+            road_planner.Add("curve.0Degree", Road);
+            road_planner.Add("curve.90Degree", Road);
+            road_planner.Add("curve.180Degree", Road);
+            road_planner.Add("curve.270Degree", Road);
+            
             red_car = new Vehicle("Car", 1, 155, 365, racingtrack);
             red_car.Rotation = 270;
             /*red_car.Position_x = 200;

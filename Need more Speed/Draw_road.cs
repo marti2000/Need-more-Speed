@@ -69,8 +69,8 @@ namespace Need_more_Speed
             double zaehler;
             for ( zaehler = 0; zaehler < 10; zaehler ++)
             {
-                Rectangle[] finish_line_black = new Rectangle[Convert.ToInt16(grid / 10)];
-                Rectangle[] finish_line_white = new Rectangle[Convert.ToInt16(grid / 10)];
+                Rectangle[] finish_line_black = new Rectangle[Convert.ToInt16(grid / 10) + 1];
+                Rectangle[] finish_line_white = new Rectangle[Convert.ToInt16(grid / 10) + 1];
 
 
                 finish_line_black[Convert.ToInt16(zaehler)] = new Rectangle() { Name = "finish_line_black" + Convert.ToInt16(zaehler) };

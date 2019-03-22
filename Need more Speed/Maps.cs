@@ -20,6 +20,8 @@ namespace Need_more_Speed
     {
         private Canvas myCanvas;
 
+        //public const 
+
         public Maps(Canvas myCanvas) : base (myCanvas)
         {
             this.myCanvas = myCanvas;
