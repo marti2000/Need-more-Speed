@@ -53,7 +53,8 @@ namespace Need_more_Speed
                         straight_vertical(9, 4, gird);
                         straight_vertical(7, 4, gird);
                         straight_vertical(1, 4, gird);
-                        straight_vertical(1, 3, gird);
+                        //straight_vertical(1, 3, gird);
+                        straight_vertical_finish(1, 3, gird);
                         straight_vertical(1, 2, gird);
 
                         curve_0Degree(1, 1, gird);

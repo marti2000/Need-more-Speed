@@ -53,6 +53,70 @@ namespace Need_more_Speed
             Canvas.SetLeft(street, x_offset);
             myCanvas.Children.Add(street);
         }
+        public void straight_vertical_finish(double x_offset, double y_offset, double grid)
+        {
+            x_offset = x_offset * grid;
+            y_offset = y_offset * grid;
+
+            Rectangle street = new Rectangle();
+            street.Width = grid;
+            street.Height = grid;
+            street.Stroke = Brushes.Gray;
+            street.Fill = Brushes.Gray;
+            Canvas.SetTop(street, y_offset);
+            Canvas.SetLeft(street, x_offset);
+            myCanvas.Children.Add(street);
+            double zaehler;
+            for ( zaehler = 0; zaehler < 10; zaehler ++)
+            {
+                Rectangle[] finish_line_black = new Rectangle[Convert.ToInt16(grid / 10)];
+                Rectangle[] finish_line_white = new Rectangle[Convert.ToInt16(grid / 10)];
+
+
+                finish_line_black[Convert.ToInt16(zaehler)] = new Rectangle() { Name = "finish_line_black" + Convert.ToInt16(zaehler) };
+
+                finish_line_black[Convert.ToInt16(zaehler)].Height = grid / 10;
+                finish_line_black[Convert.ToInt16(zaehler)].Width = grid / 10;
+
+                finish_line_black[Convert.ToInt16(zaehler)].Stroke = Brushes.Black;
+                finish_line_black[Convert.ToInt16(zaehler)].Fill = Brushes.Black;
+
+
+                finish_line_white[Convert.ToInt16(zaehler)] = new Rectangle() { Name = "finish_line_white" + Convert.ToInt16(zaehler) };
+
+                finish_line_white[Convert.ToInt16(zaehler)].Height = grid / 10;
+                finish_line_white[Convert.ToInt16(zaehler)].Width = grid / 10;
+
+                finish_line_white[Convert.ToInt16(zaehler)].Stroke = Brushes.White;
+                finish_line_white[Convert.ToInt16(zaehler)].Fill = Brushes.White;
+
+                if (zaehler % 2 == 0)
+                {
+                    Canvas.SetTop(finish_line_black[Convert.ToInt16(zaehler)], y_offset + grid / 2);
+                    Canvas.SetTop(finish_line_white[Convert.ToInt16(zaehler)], y_offset + grid / 2 - grid / 10);
+                }
+                else
+                {
+                    Canvas.SetTop(finish_line_black[Convert.ToInt16(zaehler)], y_offset + grid / 2 - grid / 10);
+                    Canvas.SetTop(finish_line_white[Convert.ToInt16(zaehler)], y_offset + grid / 2);
+                }
+
+                Canvas.SetLeft(finish_line_black[Convert.ToInt16(zaehler)], x_offset + (zaehler * (grid / 10)));
+                Canvas.SetLeft(finish_line_white[Convert.ToInt16(zaehler)], x_offset + (zaehler * (grid / 10)));
+
+                /*
+                finish_line_black[Convert.ToInt16(zaehler)].X1 = x_offset + grid - Convert.ToInt16(x_curve);
+                finish_line_black[Convert.ToInt16(zaehler)].X2 = x_offset + grid - Convert.ToInt16(x_curve);
+                finish_line_black[Convert.ToInt16(zaehler)].Y1 = y_offset;
+                finish_line_black[Convert.ToInt16(zaehler)].Y2 = y_offset - Convert.ToInt16(y_curve); ;
+                */
+
+                //finish_line_black[Convert.ToInt16(x_curve)].StrokeThickness = 2;
+                myCanvas.Children.Add(finish_line_black[Convert.ToInt16(zaehler)]);
+                myCanvas.Children.Add(finish_line_white[Convert.ToInt16(zaehler)]);
+            }
+            
+        }
         public void curve_0Degree(double x_offset, double y_offset, double grid)
         {
             double x_curve = 0;
