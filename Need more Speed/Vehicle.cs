@@ -62,6 +62,7 @@ namespace Need_more_Speed
 
         private void Speed_timer_Tick(object sender, EventArgs e)
         {
+            rebound();
             position_calculation();
             refresh_position();
         }
@@ -110,21 +111,25 @@ namespace Need_more_Speed
             {
                 zaehler++;
             }
-
         }
 
 
-        private void refresh_position()
+        private void rebound()
         {
-            Canvas.SetLeft(car, position_x);
-            Canvas.SetTop(car, position_y);
+            if(position_x >= 1250)
+            {
+                speed = 0.5*speed;
+                position_x = position_x - 10;
+               // rotation = ;
+            }
+
         }
 
         private void position_calculation(/*double position_y, double position_x*/)
         {
             RotateTransform ro_rotation = new RotateTransform(0);
-            
-            if (speed != 0) 
+
+            if (speed != 0)
             {   // Steuerung
                 if (left == true)
                 {
@@ -145,7 +150,11 @@ namespace Need_more_Speed
             position_y -= (speed / 10) * Math.Sin(angle);
         }
 
-
+        private void refresh_position()
+        {
+            Canvas.SetLeft(car, position_x);
+            Canvas.SetTop(car, position_y);
+        }
     }
 }
 
