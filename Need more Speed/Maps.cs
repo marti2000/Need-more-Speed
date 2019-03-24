@@ -20,7 +20,13 @@ namespace Need_more_Speed
     {
         private Canvas myCanvas;
 
-        //public const 
+        public const int Straight_vertical_finish = 0;
+        public const int Straight_horizontal = 1;
+        public const int Straight_vertical = 2;
+        public const int Curve_0Degree = 3;
+        public const int Curve_90Degree = 4;
+        public const int Curve_180Degree = 5;
+        public const int Curve_270Degree = 6;
 
         public Maps(Canvas myCanvas) : base (myCanvas)
         {

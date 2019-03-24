@@ -22,6 +22,12 @@ namespace Need_more_Speed
     public partial class MainWindow : Window
     {
         Vehicle red_car;
+
+        public double Screen_width = System.Windows.SystemParameters.PrimaryScreenWidth;
+
+
+        public double Screen_height = System.Windows.SystemParameters.PrimaryScreenHeight;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -60,10 +66,11 @@ namespace Need_more_Speed
                 Line line= new Line();
                 line.Stroke = Brushes.Gray;
                 line.StrokeThickness = 10;
-                line.X1 = 0;
-                line.X2 = 100;
+                line.X1 = 1000;
+                line.X2 = 1000;
                 line.Y1 = 0;
-                line.Y2 = 100;
+                line.Y2 = 800;
+            racingtrack.Children.Add(line);
                 
 
 
