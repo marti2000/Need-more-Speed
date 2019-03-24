@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Media;
 
 namespace Need_more_Speed
 {
@@ -32,8 +33,41 @@ namespace Need_more_Speed
 
             Maps Map = new Maps(racingtrack);
             Map.chose_Map(0, 100);
+
+            MediaElement background_sound = new MediaElement();
+
+            Backgroundsound.LoadedBehavior = System.Windows.Controls.MediaState.Manual;
+            Backgroundsound.Play();
             
-            
+            //Backgroundsound.
+
+            //Path source_background_sound = new Path();
+
+
+            /*string startPath = @"C:\Benutzer\";//Der absolute Ausgangspfad
+            string relative = @"..\Windows\explorer.exe";//Der relative Pfad
+            string st4ring = @"..\Windows\explorer.exe";//Der relative Pfad
+            string absolut = Path.GetFullPath(Path.Combine(startPath, relative));//Die ermittlung eines absoluten Pfades*/
+
+            background_sound.Source = new Uri("Need-more-Speed/Julien Bam - Ready to fight(prod. by Vincent Lee).mp3", UriKind.Relative); //@"C:\Users\Marcel Vögeli\source\repos\marti2000\Need-more-Speed";//"..//Need-more-Speed//Julien Bam - Ready to fight(prod. by Vincent Lee).mp3";
+
+            background_sound.LoadedBehavior = System.Windows.Controls.MediaState.Manual;
+
+            background_sound.Volume = 100;
+
+            background_sound.Play();
+
+            Uri source = new Uri(@"Need-more-Speed/Julien Bam - Ready to fight(prod. by Vincent Lee).mp3", UriKind.Relative);
+
+
+
+            MediaElement test = new MediaElement();
+            test.Source = new Uri(@"C:\Users\Marcel Vögeli\source\repos\marti2000\Need-more-Speed\Julien Bam - Ready to fight(prod. by Vincent Lee).mp3");//@"C:\Users\Marcel Vögeli\source\repos\marti2000\Need-more-Speed\Julien Bam - Ready to fight(prod. by Vincent Lee).mp3";
+            //(new Uri("Need-more-Speed/Julien Bam - Ready to fight(prod. by Vincent Lee).mp3", UriKind.RelativeOrAbsolute)/*new Uri(source.AbsoluteUri)*/);
+            //Path.GetFullPath((new Uri(absolute_path)).LocalPath);
+            //test.Load();
+            test.LoadedBehavior = System.Windows.Controls.MediaState.Manual;
+            test.Play();
             /*
             Road.curve_0Degree(1, 1, 100);
             Road.curve_90Degree(2, 1, 100);
@@ -137,6 +171,12 @@ namespace Need_more_Speed
             {
                 red_car.Right = false;
             }
+        }
+
+        private void Backgroundsound_MediaEnded(object sender, RoutedEventArgs e)
+        {
+            Backgroundsound.Position = new TimeSpan(0);
+            Backgroundsound.Play();
         }
     }
 }
