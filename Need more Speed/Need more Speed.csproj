@@ -56,6 +56,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Draw_road.cs" />
+    <Compile Include="instrument_panel.cs" />
     <Compile Include="Maps.cs" />
     <Compile Include="Vehicle.cs" />
     <Page Include="MainWindow.xaml">

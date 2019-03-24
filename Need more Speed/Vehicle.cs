@@ -75,7 +75,7 @@ namespace Need_more_Speed
         private void update_speed()
         {
             
-            if ((up == true) && (speed > -80))
+            if ((up == true) && (speed > -50))
             {
                 speed--;
                 if (speed > 0)
