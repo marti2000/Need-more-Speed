@@ -22,6 +22,9 @@ namespace Need_more_Speed
 
         Dictionary<Point, string> road_planner = new Dictionary<Point, string>();
 
+        public double Screen_Width = System.Windows.SystemParameters.PrimaryScreenWidth;
+        public double Screen_Height = System.Windows.SystemParameters.PrimaryScreenHeight;
+
         public const string Straight_horizontal = "straight_horizontal";
         public const string Straight_vertical = "straight_vertical";
         public const string Straight_vertical_finish = "straight_vertical_finish";
@@ -47,13 +50,35 @@ namespace Need_more_Speed
         private void draw_road(double x_position, double y_position, double grid)
         {
             string type;
-            switch()//road_planner.TryGetValue(new Point(x_position, y_position), out type))
+            road_planner.TryGetValue(new Point(x_position, y_position), out type);
+            
+            if(type == Straight_horizontal)
             {
-                case 1:
-                    {
-
-                        break;
-                    }
+                straight_horizontal(x_position, y_position, grid);
+            }
+            else if (type == Straight_vertical)
+            {
+                straight_vertical(x_position, y_position, grid);
+            }
+            else if (type == Straight_vertical_finish)
+            {
+                straight_vertical_finish(x_position, y_position, grid);
+            }
+            else if (type == Curve_0Degree)
+            {
+                curve_0Degree(x_position, y_position, grid);
+            }
+            else if (type == Curve_90Degree)
+            {
+                curve_90Degree(x_position, y_position, grid);
+            }
+            else if (type == Curve_180Degree)
+            {
+                curve_180Degree(x_position, y_position, grid);
+            }
+            else if (type == Curve_270Degree)
+            {
+                curve_270Degree(x_position, y_position, grid);
             }
         }
 
@@ -67,7 +92,7 @@ namespace Need_more_Speed
 
                         add_road(2, 1, Straight_horizontal);
                         add_road(3, 1, Straight_horizontal);
-                        add_road(5, 1, Straight_horizontal);
+                        add_road(5, 2, Straight_horizontal);
                         add_road(7, 1, Straight_horizontal);
                         add_road(8, 1, Straight_horizontal);
                         add_road(9, 1, Straight_horizontal);
@@ -85,7 +110,6 @@ namespace Need_more_Speed
                         add_road(7, 4, Straight_vertical);
                         add_road(1, 4, Straight_vertical);
                         add_road(1, 2, Straight_vertical);
-                        add_road(1, 1, Straight_vertical);
 
                         add_road(1, 3, Straight_vertical_finish);
 
@@ -108,6 +132,17 @@ namespace Need_more_Speed
                         add_road(9, 5, Curve_270Degree);
                         add_road(5, 5, Curve_270Degree);
                         add_road(1, 5, Curve_270Degree);
+
+                        for(double X = 0; X<Screen_Width/gird;X++)
+                        {
+                            for (double Y = 0; Y < Screen_Height / gird; Y++)
+                            {
+                                draw_road(X, Y, gird);
+                            }
+                        }
+
+                       
+
 
                         /*
                         straight_horizontal(2, 1, gird);

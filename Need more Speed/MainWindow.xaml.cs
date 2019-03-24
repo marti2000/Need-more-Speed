@@ -22,7 +22,10 @@ namespace Need_more_Speed
     /// </summary>
     public partial class MainWindow : Window
     {
+
+
         Vehicle red_car;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -83,7 +86,7 @@ namespace Need_more_Speed
             road_planner.Add("curve.180Degree", Road);
             road_planner.Add("curve.270Degree", Road);
             
-            red_car = new Vehicle("Car", 1, 155, 365, racingtrack);
+            red_car = new Vehicle("Car", 1, 155, 365, racingtrack, Speed);
             red_car.Rotation = 270;
             /*red_car.Position_x = 200;
             red_car.Position_y = 200;

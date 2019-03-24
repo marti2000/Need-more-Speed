@@ -15,5 +15,8 @@
             <Rectangle Name="road"     Width="400" Height="50" Fill="Gray" Canvas.Left="10" Canvas.Top="100"/>-->
         </Canvas>
         <MediaElement  Source="C:\Users\Marcel Vögeli\source\repos\marti2000\Need-more-Speed\Loop_Version.mp3" Name="Backgroundsound" MediaEnded="Backgroundsound_MediaEnded"/>
+
+        <TextBlock Name="Speed"></TextBlock>
+        
     </Grid>
 </Window>
