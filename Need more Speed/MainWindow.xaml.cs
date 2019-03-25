@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Media;
 
 namespace Need_more_Speed
 {
@@ -21,12 +22,9 @@ namespace Need_more_Speed
     /// </summary>
     public partial class MainWindow : Window
     {
+
+
         Vehicle red_car;
-
-        public double Screen_width = System.Windows.SystemParameters.PrimaryScreenWidth;
-
-
-        public double Screen_height = System.Windows.SystemParameters.PrimaryScreenHeight;
 
         public MainWindow()
         {
@@ -38,8 +36,41 @@ namespace Need_more_Speed
 
             Maps Map = new Maps(racingtrack);
             Map.chose_Map(0, 100);
+
+            MediaElement background_sound = new MediaElement();
+
+            Backgroundsound.LoadedBehavior = System.Windows.Controls.MediaState.Manual;
+            Backgroundsound.Play();
             
-            
+            //Backgroundsound.
+
+            //Path source_background_sound = new Path();
+
+
+            /*string startPath = @"C:\Benutzer\";//Der absolute Ausgangspfad
+            string relative = @"..\Windows\explorer.exe";//Der relative Pfad
+            string st4ring = @"..\Windows\explorer.exe";//Der relative Pfad
+            string absolut = Path.GetFullPath(Path.Combine(startPath, relative));//Die ermittlung eines absoluten Pfades*/
+
+            background_sound.Source = new Uri("Need-more-Speed/Julien Bam - Ready to fight(prod. by Vincent Lee).mp3", UriKind.Relative); //@"C:\Users\Marcel Vögeli\source\repos\marti2000\Need-more-Speed";//"..//Need-more-Speed//Julien Bam - Ready to fight(prod. by Vincent Lee).mp3";
+
+            background_sound.LoadedBehavior = System.Windows.Controls.MediaState.Manual;
+
+            background_sound.Volume = 100;
+
+            background_sound.Play();
+
+            Uri source = new Uri(@"Need-more-Speed/Julien Bam - Ready to fight(prod. by Vincent Lee).mp3", UriKind.Relative);
+
+
+
+            MediaElement test = new MediaElement();
+            test.Source = new Uri(@"C:\Users\Marcel Vögeli\source\repos\marti2000\Need-more-Speed\Julien Bam - Ready to fight(prod. by Vincent Lee).mp3");//@"C:\Users\Marcel Vögeli\source\repos\marti2000\Need-more-Speed\Julien Bam - Ready to fight(prod. by Vincent Lee).mp3";
+            //(new Uri("Need-more-Speed/Julien Bam - Ready to fight(prod. by Vincent Lee).mp3", UriKind.RelativeOrAbsolute)/*new Uri(source.AbsoluteUri)*/);
+            //Path.GetFullPath((new Uri(absolute_path)).LocalPath);
+            //test.Load();
+            test.LoadedBehavior = System.Windows.Controls.MediaState.Manual;
+            test.Play();
             /*
             Road.curve_0Degree(1, 1, 100);
             Road.curve_90Degree(2, 1, 100);
@@ -55,7 +86,7 @@ namespace Need_more_Speed
             road_planner.Add("curve.180Degree", Road);
             road_planner.Add("curve.270Degree", Road);
             
-            red_car = new Vehicle("Car", 1, 155, 365, racingtrack);
+            red_car = new Vehicle("Car", 1, 155, 365, racingtrack, Speed);
             red_car.Rotation = 270;
             /*red_car.Position_x = 200;
             red_car.Position_y = 200;
@@ -66,16 +97,15 @@ namespace Need_more_Speed
                 Line line= new Line();
                 line.Stroke = Brushes.Gray;
                 line.StrokeThickness = 10;
-                line.X1 = 1000;
-                line.X2 = 1000;
+                line.X1 = 1250;
+                line.X2 = 1250;
                 line.Y1 = 0;
-                line.Y2 = 800;
-            racingtrack.Children.Add(line);
-                
+                line.Y2 = 760;
+                racingtrack.Children.Add(line);
 
 
             //int tester = road_planner["straight.horizontal"];
-
+            /*
             for(int i = 0; i>10; i++)
             {
                 Line[] street = new Line[10];
@@ -88,7 +118,7 @@ namespace Need_more_Speed
 
                 street[i].StrokeThickness = 2;
                 racingtrack.Children.Add(street[i]);
-            }
+            }*/
 
 
             /*SolidColorBrush street = new SolidColorBrush(Color.FromArgb(255, 0, 0, 0));
@@ -144,6 +174,12 @@ namespace Need_more_Speed
             {
                 red_car.Right = false;
             }
+        }
+
+        private void Backgroundsound_MediaEnded(object sender, RoutedEventArgs e)
+        {
+            Backgroundsound.Position = new TimeSpan(0);
+            Backgroundsound.Play();
         }
     }
 }

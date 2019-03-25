@@ -23,7 +23,13 @@ namespace Need_more_Speed
         private bool right;
 
         private Canvas racingtrack;
+        private TextBlock Speed_tacho;
         Rectangle car = new Rectangle();
+
+        private const double acceleration_value = 2;
+        private const double breaking_value = 9;
+
+        private const int speed_timer_up_value = 100;
 
         public byte Compare_to_player { get => compare_to_player; set => compare_to_player = value; }
         public double Position_x { get => position_x; set => position_x = value; }
@@ -37,10 +43,12 @@ namespace Need_more_Speed
         public bool Right { get => right; set => right = value; }
         int zaehler = 0;
 
-        public Vehicle(string type,byte compare_to_player, double start_position_x, double start_position_y ,Canvas myCanvas)
+        public Vehicle(string type,byte compare_to_player, double start_position_x, double start_position_y ,Canvas myCanvas, TextBlock _Speed)
         {
             position_x = start_position_x;
             position_y = start_position_y;
+
+            Speed_tacho = _Speed;
 
             racingtrack = myCanvas;
             car.Height = 10;
@@ -56,12 +64,13 @@ namespace Need_more_Speed
 
             System.Windows.Threading.DispatcherTimer Speed_higher_timer = new System.Windows.Threading.DispatcherTimer();
             Speed_higher_timer.Tick += Speed_higher_timer_Tick;
-            Speed_higher_timer.Interval = new TimeSpan(0, 0, 0, 0, 1);
+            Speed_higher_timer.Interval = new TimeSpan(0, 0, 0, 0, speed_timer_up_value);
             Speed_higher_timer.Start();
         }
 
         private void Speed_timer_Tick(object sender, EventArgs e)
         {
+            rebound();
             position_calculation();
             refresh_position();
         }
@@ -74,13 +83,13 @@ namespace Need_more_Speed
         private void update_speed()
         {
             
-            if ((up == true) && (speed > -80))
+            if ((up == true) && (speed > -100))
             {
                 speed--;
                 if (speed > 0)
                 {
                     //speed--;
-                    speed--;
+                    speed -= acceleration_value;
                 }
             }
             else if ((down == true) && (speed < 20))
@@ -89,7 +98,7 @@ namespace Need_more_Speed
                 if (speed < 0)
                 {
                     //speed++;
-                    speed++;
+                    speed += acceleration_value *2 ;
                 }
             }
             else if (zaehler >= 2)
@@ -101,8 +110,8 @@ namespace Need_more_Speed
                 }
                 else if ((speed < 0) && (speed > -150))
                 {
-                    speed++;
-                    
+                    speed += breaking_value;
+
                 }
                 zaehler = 0;
             }
@@ -111,20 +120,27 @@ namespace Need_more_Speed
                 zaehler++;
             }
 
+
+            Speed_tacho.Text = ((speed*-1)*2).ToString();
         }
 
 
-        private void refresh_position()
+        private void rebound()
         {
-            Canvas.SetLeft(car, position_x);
-            Canvas.SetTop(car, position_y);
+            if(position_x >= 1250)
+            {
+                speed = 0.5*speed;
+                position_x = position_x - 10;
+               // rotation = ;
+            }
+
         }
 
         private void position_calculation(/*double position_y, double position_x*/)
         {
             RotateTransform ro_rotation = new RotateTransform(0);
-            
-            if (speed != 0) 
+
+            if ((speed < -5) || (speed > 5))
             {   // Steuerung
                 if (left == true)
                 {
@@ -145,7 +161,11 @@ namespace Need_more_Speed
             position_y -= (speed / 10) * Math.Sin(angle);
         }
 
-
+        private void refresh_position()
+        {
+            Canvas.SetLeft(car, position_x);
+            Canvas.SetTop(car, position_y);
+        }
     }
 }
 
