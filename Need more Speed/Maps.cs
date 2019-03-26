@@ -81,8 +81,28 @@ namespace Need_more_Speed
                 curve_270Degree(x_position, y_position, grid);
             }
         }
+        
+        public bool car_on_road(double x_position, double y_position, double grid, double rotation)
+        {
 
-        public void chose_Map(int number, int gird)
+            string road_type;
+            road_planner.TryGetValue(new Point(Math.Truncate(x_position / grid), Math.Truncate(y_position / grid)), out road_type);
+            if((road_type == Straight_horizontal) || (road_type == Straight_vertical) || (road_type == Straight_vertical_finish))
+            {
+                return true;
+            }
+            else if((road_type == Curve_0Degree) && ((x_position % grid) > Math.Sqrt(Math.Pow(grid,grid) - Math.Pow((grid - (y_position % grid)),2)))) // ((road_type == Curve_0Degree) && ((x_position % 100) > Math.Sqrt((grid * grid)-((y_position % 100)*(y_position % 100)))))
+            {
+                double Out_value = Math.Sqrt((grid * grid) - ((grid - (y_position % grid)) * (grid - (y_position % grid))));
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public void chose_Map(int number, double gird)
         {
             switch(number)
             {

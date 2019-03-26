@@ -26,10 +26,12 @@ namespace Need_more_Speed
         private TextBlock Speed_tacho;
         Rectangle car = new Rectangle();
 
-        private const double acceleration_value = 2;
-        private const double breaking_value = 9;
+        private const double acceleration_value = 1;//2;
+        private const double breaking_value = 1;//9;
 
         private const int speed_timer_up_value = 100;
+
+        private const double speed_to_turn = 1;
 
         public byte Compare_to_player { get => compare_to_player; set => compare_to_player = value; }
         public double Position_x { get => position_x; set => position_x = value; }
@@ -43,7 +45,7 @@ namespace Need_more_Speed
         public bool Right { get => right; set => right = value; }
         int zaehler = 0;
 
-        public Vehicle(string type,byte compare_to_player, double start_position_x, double start_position_y ,Canvas myCanvas, TextBlock _Speed)
+        public Vehicle(string type,byte compare_to_player, double start_position_x, double start_position_y ,Canvas myCanvas, TextBlock _Speed ,Brush color)
         {
             position_x = start_position_x;
             position_y = start_position_y;
@@ -53,8 +55,8 @@ namespace Need_more_Speed
             racingtrack = myCanvas;
             car.Height = 10;
             car.Width = 20;
-            car.Stroke = Brushes.Red;
-            car.Fill = Brushes.Red;
+            car.Stroke = color;//Brushes.Red;
+            car.Fill = color;//Brushes.Red;
             racingtrack.Children.Add(car);
 
             System.Windows.Threading.DispatcherTimer Speed_timer = new System.Windows.Threading.DispatcherTimer();
@@ -140,7 +142,7 @@ namespace Need_more_Speed
         {
             RotateTransform ro_rotation = new RotateTransform(0);
 
-            if ((speed < -5) || (speed > 5))
+            if ((speed < -speed_to_turn) || (speed > speed_to_turn))
             {   // Steuerung
                 if (left == true)
                 {

@@ -23,19 +23,29 @@ namespace Need_more_Speed
     public partial class MainWindow : Window
     {
 
+        public const double Grid = 100;
 
         Vehicle red_car;
+        Vehicle blue_car;
+
+        Maps Map;
+
 
         public MainWindow()
         {
             InitializeComponent();
 
+            System.Windows.Threading.DispatcherTimer refresh = new System.Windows.Threading.DispatcherTimer();
+            refresh.Tick += refresh_Tick;
+            refresh.Interval = new TimeSpan(0, 0, 0, 0, 1);
+            refresh.Start();
+
             Dictionary<string, Draw_road> road_planner = new Dictionary<string, Draw_road>();
 
             Draw_road Road = new Draw_road(racingtrack);
 
-            Maps Map = new Maps(racingtrack);
-            Map.chose_Map(0, 100);
+            Map = new Maps(racingtrack);
+            Map.chose_Map(0, Grid);
 
             MediaElement background_sound = new MediaElement();
 
@@ -85,9 +95,12 @@ namespace Need_more_Speed
             road_planner.Add("curve.90Degree", Road);
             road_planner.Add("curve.180Degree", Road);
             road_planner.Add("curve.270Degree", Road);
-            
-            red_car = new Vehicle("Car", 1, 155, 365, racingtrack, Speed);
+
+            red_car = new Vehicle("Car", 1, 145, 365, racingtrack, new TextBlock()/*Speed*/, Brushes.Red);
             red_car.Rotation = 270;
+
+            blue_car = new Vehicle("Car", 2, 165, 365, racingtrack, new TextBlock(), Brushes.Blue);
+            blue_car.Rotation = 270;
             /*red_car.Position_x = 200;
             red_car.Position_y = 200;
             red_car.Left = true;
@@ -154,6 +167,23 @@ namespace Need_more_Speed
             {
                 red_car.Right = true;
             }
+
+            if (e.Key == Key.Up)
+            {
+                blue_car.Up = true;
+            }
+            if (e.Key == Key.Down)
+            {
+                blue_car.Down = true;
+            }
+            if (e.Key == Key.Left)
+            {
+                blue_car.Left = true;
+            }
+            if (e.Key == Key.Right)
+            {
+                blue_car.Right = true;
+            }
         }
 
         private void Window_KeyUp(object sender, KeyEventArgs e)
@@ -174,12 +204,41 @@ namespace Need_more_Speed
             {
                 red_car.Right = false;
             }
+
+            if (e.Key == Key.Up)
+            {
+                blue_car.Up = false;
+            }
+            if (e.Key == Key.Down)
+            {
+                blue_car.Down = false;
+            }
+            if (e.Key == Key.Left)
+            {
+                blue_car.Left = false;
+            }
+            if (e.Key == Key.Right)
+            {
+                blue_car.Right = false;
+            }
         }
 
         private void Backgroundsound_MediaEnded(object sender, RoutedEventArgs e)
         {
             Backgroundsound.Position = new TimeSpan(0);
             Backgroundsound.Play();
+        }
+
+        private void refresh_Tick(object sender, EventArgs e)
+        {           
+            if(Map.car_on_road(red_car.Position_x, red_car.Position_y, Grid, red_car.Rotation) == true)
+            {
+                Speed.Text = "ON Road";
+            }
+            else
+            {
+                Speed.Text = "OFF Road";
+            }
         }
     }
 }
