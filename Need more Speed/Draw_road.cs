@@ -39,6 +39,33 @@ namespace Need_more_Speed
             Canvas.SetLeft(street, x_offset);
             myCanvas.Children.Add(street);
         }
+
+        public void straight_horizontal_checkpoint(double x_offset, double y_offset, double grid)
+        {
+            x_offset = x_offset * grid;
+            y_offset = y_offset * grid;
+
+            Rectangle street = new Rectangle();
+            street.Width = grid;
+            street.Height = grid;
+            street.Stroke = Brushes.Gray;
+            street.Fill = Brushes.Gray;
+            Canvas.SetTop(street, y_offset);
+            Canvas.SetLeft(street, x_offset);
+            myCanvas.Children.Add(street);
+
+            Rectangle line = new Rectangle();
+            line.Width = 3;
+            line.Height = grid;
+            line.Stroke = Brushes.Yellow;
+            line.Fill = Brushes.Yellow;
+            Canvas.SetLeft(line, x_offset + (grid / 2));
+            Canvas.SetTop(line, y_offset);
+            myCanvas.Children.Add(line);
+
+
+        }
+
         public void straight_vertical(double x_offset, double y_offset, double grid)
         {
             x_offset = x_offset * grid;
@@ -53,6 +80,33 @@ namespace Need_more_Speed
             Canvas.SetLeft(street, x_offset);
             myCanvas.Children.Add(street);
         }
+
+        public void straight_vertical_checkpoint(double x_offset, double y_offset, double grid)
+        {
+            x_offset = x_offset * grid;
+            y_offset = y_offset * grid;
+
+            Rectangle street = new Rectangle();
+            street.Width = grid;
+            street.Height = grid;
+            street.Stroke = Brushes.Gray;
+            street.Fill = Brushes.Gray;
+            Canvas.SetTop(street, y_offset);
+            Canvas.SetLeft(street, x_offset);
+            myCanvas.Children.Add(street);
+
+            Rectangle line = new Rectangle();
+            line.Width = grid;
+            line.Height = 3;
+            line.Stroke = Brushes.Yellow;
+            line.Fill = Brushes.Yellow;
+            Canvas.SetTop(line, y_offset + (grid / 2));
+            Canvas.SetLeft(line, x_offset);
+            myCanvas.Children.Add(line);
+            
+
+        }
+
         public void straight_vertical_finish(double x_offset, double y_offset, double grid)
         {
             x_offset = x_offset * grid;

@@ -32,6 +32,8 @@ namespace Need_more_Speed
         public const string Curve_90Degree = "curve_90Degree";
         public const string Curve_180Degree = "curve_180Degree";
         public const string Curve_270Degree = "curve_270Degree";
+        public const string Straight_vertical_checkpoint = "straight_vertical_checkpoint";
+        public const string Straight_horizontal_checkpoint = "straight_horizontal_checkpoint";
 
 
         public Maps(Canvas myCanvas) : base (myCanvas)
@@ -80,6 +82,14 @@ namespace Need_more_Speed
             {
                 curve_270Degree(x_position, y_position, grid);
             }
+            else if (type == Straight_vertical_checkpoint)
+            {
+                straight_vertical_checkpoint(x_position, y_position, grid);
+            }
+            else if(type == Straight_horizontal_checkpoint)
+            {
+                straight_horizontal_checkpoint(x_position, y_position, grid);
+            }
         }
         
         public bool car_on_road(double x_position, double y_position, double grid, double rotation)
@@ -87,11 +97,23 @@ namespace Need_more_Speed
 
             string road_type;
             road_planner.TryGetValue(new Point(Math.Truncate(x_position / grid), Math.Truncate(y_position / grid)), out road_type);
-            if((road_type == Straight_horizontal) || (road_type == Straight_vertical) || (road_type == Straight_vertical_finish))
+            if((road_type == Straight_horizontal) || (road_type == Straight_vertical) || (road_type == Straight_vertical_finish) || (road_type == Straight_horizontal_checkpoint) || (road_type == Straight_vertical_checkpoint))
             {
                 return true;
             }
-            else if((road_type == Curve_0Degree) && ((x_position % grid) > Math.Sqrt(Math.Pow(grid,grid) - Math.Pow((grid - (y_position % grid)),2)))) // ((road_type == Curve_0Degree) && ((x_position % 100) > Math.Sqrt((grid * grid)-((y_position % 100)*(y_position % 100)))))
+            else if ((road_type == Curve_0Degree) && ((grid - (y_position % grid)) < Math.Sqrt(Math.Pow(grid, 2) - Math.Pow((grid - (x_position % 100)), 2))))
+            {
+                return true;
+            }
+            else if((road_type == Curve_90Degree) && ((grid - (y_position % grid)) < Math.Sqrt(Math.Pow(grid,2) - Math.Pow(x_position % 100,2))))
+            {
+                return true;
+            }
+            else if ((road_type == Curve_180Degree) && ((y_position % grid) < Math.Sqrt(Math.Pow(grid, 2) - Math.Pow(x_position % 100, 2))))
+            {
+                return true;
+            }
+            else if((road_type == Curve_270Degree) && ((y_position % grid) < Math.Sqrt(Math.Pow(grid,2) - Math.Pow((grid - (x_position % grid)),2)))) // ((road_type == Curve_0Degree) && ((x_position % 100) > Math.Sqrt((grid * grid)-((y_position % 100)*(y_position % 100)))))
             {
                 double Out_value = Math.Sqrt((grid * grid) - ((grid - (y_position % grid)) * (grid - (y_position % grid))));
                 return true;
@@ -101,7 +123,7 @@ namespace Need_more_Speed
                 return false;
             }
         }
-
+        
         public void chose_Map(int number, double gird)
         {
             switch(number)
@@ -112,19 +134,19 @@ namespace Need_more_Speed
 
                         add_road(2, 1, Straight_horizontal);
                         add_road(3, 1, Straight_horizontal);
-                        add_road(5, 2, Straight_horizontal);
+                        //add_road(5, 2, Straight_horizontal);
                         add_road(7, 1, Straight_horizontal);
                         add_road(8, 1, Straight_horizontal);
                         add_road(9, 1, Straight_horizontal);
                         add_road(10, 1, Straight_horizontal);
                         add_road(10, 5, Straight_horizontal);
-                        add_road(8, 3, Straight_horizontal);
+                        //add_road(8, 3, Straight_horizontal);
                         add_road(6, 5, Straight_horizontal);
-                        add_road(4, 4, Straight_horizontal);
+                        //add_road(4, 4, Straight_horizontal);
                         add_road(2, 5, Straight_horizontal);
 
-                        add_road(11, 2, Straight_vertical);
                         add_road(11, 3, Straight_vertical);
+                        //add_road(11, 3, Straight_vertical);
                         add_road(11, 4, Straight_vertical);
                         add_road(9, 4, Straight_vertical);
                         add_road(7, 4, Straight_vertical);
@@ -132,6 +154,12 @@ namespace Need_more_Speed
                         add_road(1, 2, Straight_vertical);
 
                         add_road(1, 3, Straight_vertical_finish);
+
+                        add_road(11, 2, Straight_vertical_checkpoint);
+
+                        add_road(8, 3, Straight_horizontal_checkpoint);
+                        add_road(5, 2, Straight_horizontal_checkpoint);
+                        add_road(4, 4, Straight_horizontal_checkpoint);
 
                         add_road(1, 1, Curve_0Degree);
                         add_road(6, 1, Curve_0Degree);

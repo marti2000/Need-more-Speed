@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Shapes;
+using System.Drawing;
+using System.Windows;
 
 namespace Need_more_Speed
 {
@@ -24,7 +26,7 @@ namespace Need_more_Speed
 
         private Canvas racingtrack;
         private TextBlock Speed_tacho;
-        Rectangle car = new Rectangle();
+        Canvas car = new Canvas();
 
         private const double acceleration_value = 1;//2;
         private const double breaking_value = 1;//9;
@@ -53,10 +55,80 @@ namespace Need_more_Speed
             Speed_tacho = _Speed;
 
             racingtrack = myCanvas;
-            car.Height = 10;
-            car.Width = 20;
-            car.Stroke = color;//Brushes.Red;
-            car.Fill = color;//Brushes.Red;
+
+            //System.Drawing.Rectangl.Union
+
+            Rectangle Body = new Rectangle();
+            
+
+            Body.Height = 10;
+            Body.Width = 20;
+            Body.Stroke = color;//Brushes.Red;
+            Body.Fill = color;//Brushes.Red;
+            Canvas.SetTop(Body, 3);
+            Canvas.SetLeft(Body, 0);
+
+            Rectangle wheels_front = new Rectangle();
+
+            wheels_front.Height = 16;
+            wheels_front.Width = 4;
+            wheels_front.Stroke = Brushes.Black;//Brushes.Red;
+            wheels_front.Fill = Brushes.Black;//Brushes.Red;
+            Canvas.SetTop(wheels_front, 0);
+            Canvas.SetLeft(wheels_front, 3);
+
+            Rectangle wheels_behinde = new Rectangle();
+
+            wheels_behinde.Height = 16;
+            wheels_behinde.Width = 4;
+            wheels_behinde.Stroke = Brushes.Black;//Brushes.Red;
+            wheels_behinde.Fill = Brushes.Black;//Brushes.Red;
+            Canvas.SetTop(wheels_behinde, 0);
+            Canvas.SetLeft(wheels_behinde, 13);
+
+            Rectangle spoiler = new Rectangle();
+
+            spoiler.Height = 16;
+            spoiler.Width = 3;
+            spoiler.Stroke = color;//Brushes.Red;
+            spoiler.Fill = color;//Brushes.Red;
+            Canvas.SetTop(spoiler, 0);
+            Canvas.SetLeft(spoiler, 22);
+
+            Rectangle spoiler_holder_right = new Rectangle();
+
+            spoiler_holder_right.Height = 3;
+            spoiler_holder_right.Width = 3;
+            spoiler_holder_right.Stroke = color;//Brushes.Red;
+            spoiler_holder_right.Fill = color;//Brushes.Red;
+            Canvas.SetTop(spoiler_holder_right, 4);
+            Canvas.SetLeft(spoiler_holder_right, 20);
+
+            Rectangle spoiler_holder_left = new Rectangle();
+
+            spoiler_holder_left.Height = 3;
+            spoiler_holder_left.Width = 3;
+            spoiler_holder_left.Stroke = color;//Brushes.Red;
+            spoiler_holder_left.Fill = color;//Brushes.Red;
+            Canvas.SetTop(spoiler_holder_left, 9);
+            Canvas.SetLeft(spoiler_holder_left, 20);
+
+            Ellipse Driver = new Ellipse();
+            Driver.Height = 8;
+            Driver.Width = 8;
+            Driver.Stroke = Brushes.DimGray;
+            Driver.Fill = Brushes.DimGray;
+            Canvas.SetTop(Driver, 4);
+            Canvas.SetLeft(Driver, 6);
+
+            car.Children.Add(wheels_front);
+            car.Children.Add(wheels_behinde);
+            car.Children.Add(Body);
+            car.Children.Add(spoiler);
+            car.Children.Add(spoiler_holder_right);
+            car.Children.Add(spoiler_holder_left);
+            car.Children.Add(Driver);
+
             racingtrack.Children.Add(car);
 
             System.Windows.Threading.DispatcherTimer Speed_timer = new System.Windows.Threading.DispatcherTimer();
