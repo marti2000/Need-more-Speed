@@ -1,0 +1,59 @@
+﻿<Window x:Class="Need_more_Speed.Menue"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Need_more_Speed"
+        mc:Ignorable="d"
+        Title="Menue" Height="450" Width="800"
+        WindowStartupLocation="CenterScreen"
+        Name="Menue_screen"
+        Topmost="True">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="2*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="4*"/>
+            <ColumnDefinition Width="16*"/>
+            <ColumnDefinition Width="4*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="18*"/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Text="Need more Speed" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="28"/>
+        <Button Name="Play" Content="Spielen" Click="Play_Click" Grid.Column="1" Grid.Row="3" FontSize="20" Background="Cyan"/>
+        <Button Name="change_track" Click="Change_track_Click" Content="Strecke auswählen" Grid.Column="1" Grid.Row="5" FontSize="20" Background="LightGreen"/>
+        <Button Name="change_car" Click="Change_car_Click" Content="Auto auswählen" Grid.Column="1" Grid.Row="7" FontSize="20" Background="LightGreen"/>
+        <Button Name="settings" Click="Settings_Click" Content="Optionen" Grid.Column="1" Grid.Row="9" FontSize="20" Background="LightSalmon"/>
+
+        <!--Content for the change_track-Button-->
+        <Button Name="next_left" Click="Next_left_Click" Grid.Column="4" Grid.Row="5" FontSize="20" Visibility="Hidden" IsEnabled="False"/>
+        <Button Name="next_right" Click="Next_right_Click"  Grid.Column="6" Grid.Row="5" FontSize="20" Visibility="Hidden" IsEnabled="False"/>
+        <Button Name="map_generator" Click="Map_generator_Click" Content="Streckeneditor" FontSize="20" Grid.Column="5" Grid.Row="10" Background="Bisque" Visibility="Hidden" IsEnabled="False"/>
+        <Canvas Name="racetrack_show" Grid.Column="5" Grid.Row="3" Grid.RowSpan="5" Background="Green" Visibility="Hidden"/>
+
+        <!--Content for the change_car-Button-->
+        <Button Name="next_left_player_1" Click="Next_left_player_1_Click"  Grid.Column="4" Grid.Row="4" FontSize="20" Visibility="Hidden" IsEnabled="False"/>
+        <Button Name="next_right_player_1" Click="Next_right_player_1_Click"  Grid.Column="6" Grid.Row="4" FontSize="20" Visibility="Hidden" IsEnabled="False"/>
+        <Button Name="next_left_player_2" Click="Next_left_player_2_Click"  Grid.Column="4" Grid.Row="8" FontSize="20" Visibility="Hidden"  IsEnabled="False"/>
+        <Button Name="next_right_player_2" Click="Next_right_player_2_Click"  Grid.Column="6" Grid.Row="8" FontSize="20" Visibility="Hidden" IsEnabled="False"/>
+        <Canvas Name="show_car_player_1" Grid.Column="5" Grid.Row="3" Grid.RowSpan="3" Background="Gray" Visibility="Hidden"/>
+        <Canvas Name="show_car_player_2" Grid.Column="5" Grid.Row="7" Grid.RowSpan="3" Background="Gray" Visibility="Hidden"/>
+
+    </Grid>
+</Window>
