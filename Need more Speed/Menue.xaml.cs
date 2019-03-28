@@ -26,7 +26,9 @@ namespace Need_more_Speed
         public Menue()
         {
             InitializeComponent();
+
             Menue_screen.Width = 800;
+
             next_left.Content = "<";
             next_right.Content = ">";
 
@@ -68,6 +70,8 @@ namespace Need_more_Speed
             next_right_player_2.Visibility = Visibility.Visible;
             show_car_player_1.Visibility = Visibility.Visible;
             show_car_player_2.Visibility = Visibility.Visible;
+            label_car_player_1.Visibility = Visibility.Visible;
+            label_car_player_2.Visibility = Visibility.Visible;
 
             next_left_player_1.IsEnabled = true;
             next_right_player_1.IsEnabled = true;
@@ -83,6 +87,8 @@ namespace Need_more_Speed
             next_right_player_2.Visibility = Visibility.Hidden;
             show_car_player_1.Visibility = Visibility.Hidden;
             show_car_player_2.Visibility = Visibility.Hidden;
+            label_car_player_1.Visibility = Visibility.Hidden;
+            label_car_player_2.Visibility = Visibility.Hidden;
 
             next_left_player_1.IsEnabled = false;
             next_right_player_1.IsEnabled = false;
@@ -111,6 +117,12 @@ namespace Need_more_Speed
         private void Play_Click(object sender, RoutedEventArgs e)
         {
             start_the_game = true;
+            Menue_screen.Visibility = Visibility.Hidden;
+        }
+
+        public void Open()
+        {
+            Menue_screen.Visibility = Visibility.Visible;
         }
 
         private void Next_left_Click(object sender, RoutedEventArgs e)

@@ -54,6 +54,8 @@
         <Button Name="next_right_player_2" Click="Next_right_player_2_Click"  Grid.Column="6" Grid.Row="8" FontSize="20" Visibility="Hidden" IsEnabled="False"/>
         <Canvas Name="show_car_player_1" Grid.Column="5" Grid.Row="3" Grid.RowSpan="3" Background="Gray" Visibility="Hidden"/>
         <Canvas Name="show_car_player_2" Grid.Column="5" Grid.Row="7" Grid.RowSpan="3" Background="Gray" Visibility="Hidden"/>
+        <TextBlock Text="Spieler 1" Name="label_car_player_1" Grid.Column="5" Grid.Row="2" FontSize="20" HorizontalAlignment="Center" Visibility="Hidden"/>
+        <TextBlock Text="Spieler 2" Name="label_car_player_2" Grid.Column="5" Grid.Row="6" FontSize="20" HorizontalAlignment="Center" Visibility="Hidden"/>
 
     </Grid>
 </Window>

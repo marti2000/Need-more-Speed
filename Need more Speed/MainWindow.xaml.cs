@@ -28,6 +28,7 @@ namespace Need_more_Speed
         //include the Cars global
         Vehicle red_car;
         Vehicle blue_car;
+        Menue menue;
 
         //include the Map global
         Maps Map;
@@ -38,9 +39,12 @@ namespace Need_more_Speed
             InitializeComponent();
 
             //generate a Menu
-            Menue menue = new Menue();
+            menue = new Menue();
             menue.Show();
             //while(menue.Start_the_game == false);
+
+            Backgroundsound.LoadedBehavior = MediaState.Manual;
+            Backgroundsound.Play();
 
             //Generate the timer for the on the road check
             /*
@@ -121,6 +125,11 @@ namespace Need_more_Speed
             if (e.Key == Key.Right)
             {
                 blue_car.Right = true;
+            }
+
+            if(e.Key == Key.Escape)
+            {
+                menue.Open();
             }
         }
 
