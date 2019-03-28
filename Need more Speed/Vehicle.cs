@@ -166,9 +166,9 @@ namespace Need_more_Speed
             if ((up == true) && (speed > -100))
             {
                 speed--;
-                if (speed > 0)
+                if (speed > 0)§
                 {
-                    //speed--;
+                    //speed§
                     speed -= acceleration_value;
                 }
             }
