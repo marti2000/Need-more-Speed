@@ -123,8 +123,8 @@ namespace Need_more_Speed
             double zaehler;
             for ( zaehler = 0; zaehler < 10; zaehler ++)
             {
-                Rectangle[] finish_line_black = new Rectangle[Convert.ToInt16(grid / 10) + 1];
-                Rectangle[] finish_line_white = new Rectangle[Convert.ToInt16(grid / 10) + 1];
+                Rectangle[] finish_line_black = new Rectangle[Convert.ToInt16(grid / 10) + 10];
+                Rectangle[] finish_line_white = new Rectangle[Convert.ToInt16(grid / 10) + 10];
 
 
                 finish_line_black[Convert.ToInt16(zaehler)] = new Rectangle() { Name = "finish_line_black" + Convert.ToInt16(zaehler) };
@@ -177,7 +177,7 @@ namespace Need_more_Speed
             double y_curve = 0;
 
             x_offset = x_offset * grid;
-            y_offset = y_offset * grid + 100;
+            y_offset = y_offset * grid + grid;
 
             for (x_curve = 0; x_curve <= grid; x_curve++)
             {
@@ -202,7 +202,7 @@ namespace Need_more_Speed
             double y_curve = 0;
 
             x_offset = x_offset * grid;
-            y_offset = y_offset * grid + 100;
+            y_offset = y_offset * grid + grid;
 
             for (x_curve = 0; x_curve <= grid; x_curve++)
             {

@@ -21,7 +21,10 @@ namespace Need_more_Speed
     {
         private bool start_the_game = false;
 
+        private int choseed_map = 0;
+
         public bool Start_the_game { get => start_the_game; set => start_the_game = value; }
+        public int Choseed_map { get => choseed_map; set => choseed_map = value; }
 
         public Menue()
         {
@@ -36,6 +39,13 @@ namespace Need_more_Speed
             next_left_player_1.Content = "<";
             next_right_player_2.Content = ">";
             next_left_player_2.Content = "<";
+        }
+
+        private void draw_tracks()
+        {
+            racetrack_show.Children.Clear();
+            Maps draw_map = new Maps(racetrack_show);
+            draw_map.chose_Map(Choseed_map, 20);
         }
 
         private void change_track_visible()
@@ -100,6 +110,7 @@ namespace Need_more_Speed
         {
             change_track_visible();
             change_car_hidden();
+            draw_tracks();
         }
 
         private void Change_car_Click(object sender, RoutedEventArgs e)
@@ -127,12 +138,14 @@ namespace Need_more_Speed
 
         private void Next_left_Click(object sender, RoutedEventArgs e)
         {
-
+            Choseed_map--;
+            draw_tracks();
         }
 
         private void Next_right_Click(object sender, RoutedEventArgs e)
         {
-
+            Choseed_map++;
+            draw_tracks();
         }
 
         private void Map_generator_Click(object sender, RoutedEventArgs e)

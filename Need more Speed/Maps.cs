@@ -130,6 +130,8 @@ namespace Need_more_Speed
             {
                 case 0:
                     {
+                        road_planner.Clear();
+
                         //Draw_road Road = new Draw_road(racingtrack);
 
                         add_road(2, 1, Straight_horizontal);
@@ -241,6 +243,25 @@ namespace Need_more_Speed
                     }
                 case 1:
                     {
+                        road_planner.Clear();
+
+                        add_road(1, 2, Straight_vertical_finish);
+
+                        add_road(1, 1, Curve_0Degree);
+
+                        add_road(2, 1, Straight_vertical);
+                        add_road(3, 1, Straight_vertical);
+                        add_road(4, 1, Straight_vertical);
+                        add_road(5, 1, Straight_vertical);
+
+                        for (double X = 0; X < Screen_Width / gird; X++)
+                        {
+                            for (double Y = 0; Y < Screen_Height / gird; Y++)
+                            {
+                                draw_road(X, Y, gird);
+                            }
+                        }
+
                         break;
                     }
             }

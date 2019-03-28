@@ -8,7 +8,7 @@
         Title="Menue" Height="450" Width="800"
         WindowStartupLocation="CenterScreen"
         Name="Menue_screen"
-        Topmost="True">
+        Topmost="False">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>

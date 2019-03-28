@@ -59,7 +59,7 @@ namespace Need_more_Speed
 
             //generate the Map
             Map = new Maps(racingtrack);
-            Map.chose_Map(0, Grid);
+            Map.chose_Map(menue.Choseed_map, Grid);
 
 
             //Creating the different Cars for the Race
@@ -200,6 +200,10 @@ namespace Need_more_Speed
             if(menue.Start_the_game)
             {
                 Backgroundsound.Play();
+                racingtrack.Children.Clear();
+                Map.chose_Map(menue.Choseed_map, Grid);
+                red_car.redraw();
+                blue_car.redraw();
             }
             else if(!menue.Start_the_game)
             {

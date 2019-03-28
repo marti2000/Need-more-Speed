@@ -141,6 +141,11 @@ namespace Need_more_Speed
             Speed_higher_timer.Interval = new TimeSpan(0, 0, 0, 0, speed_timer_up_value);
             Speed_higher_timer.Start();
         }
+        
+        public void redraw()
+        {
+            racingtrack.Children.Add(car);
+        }
 
         private void Speed_timer_Tick(object sender, EventArgs e)
         {
