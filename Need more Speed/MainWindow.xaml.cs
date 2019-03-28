@@ -25,6 +25,8 @@ namespace Need_more_Speed
 
         public const double Grid = 100; //To define the size of the Raceingtrack
 
+        private bool first = false;
+
         //include the Cars global
         Vehicle red_car;
         Vehicle blue_car;
@@ -201,11 +203,15 @@ namespace Need_more_Speed
 
             if(menue.Start_the_game)
             {
-                Backgroundsound.Play();
-                racingtrack.Children.Clear();
-                Map.chose_Map(menue.Choseed_map, Grid);
-                red_car.redraw();
-                blue_car.redraw();
+                if(first == false)
+                {
+                    Backgroundsound.Play();
+                    racingtrack.Children.Clear();
+                    Map.chose_Map(menue.Choseed_map, Grid);
+                    red_car.redraw();
+                    blue_car.redraw();
+                    first = true;
+                }
             }
             else if(!menue.Start_the_game)
             {
