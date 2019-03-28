@@ -191,10 +191,12 @@ namespace Need_more_Speed
             if(Map.car_on_road(red_car.Position_x, red_car.Position_y, Grid, red_car.Rotation) == true)
             {
                 Speed.Text = "ON Road";
+                red_car.ON_ROAD = true;
             }
             else
             {
                 Speed.Text = "OFF Road";
+                red_car.ON_ROAD = false;
             }
 
             if(menue.Start_the_game)

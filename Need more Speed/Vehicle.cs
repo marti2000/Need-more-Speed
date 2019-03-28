@@ -23,13 +23,14 @@ namespace Need_more_Speed
         private bool down;
         private bool left;
         private bool right;
+        private bool oN_ROAD;
 
         private Canvas racingtrack;
         private TextBlock Speed_tacho;
         Canvas car = new Canvas();
 
-        private const double acceleration_value = 5;//2;
-        private const double breaking_value = 5;//9;
+        private const double acceleration_value = 20;//2;
+        private const double breaking_value = 10;//9;
 
         private const int speed_timer_up_value = 100;
 
@@ -45,7 +46,11 @@ namespace Need_more_Speed
         public bool Down { get => down; set => down = value; }
         public bool Left { get => left; set => left = value; }
         public bool Right { get => right; set => right = value; }
+        public bool ON_ROAD { get => oN_ROAD; set => oN_ROAD = value; }
+
         int zaehler = 0;
+
+        
 
         public Vehicle(string type,byte compare_to_player, double start_position_x, double start_position_y ,Canvas myCanvas, TextBlock _Speed ,Brush color)
         {
@@ -145,6 +150,7 @@ namespace Need_more_Speed
         private void Speed_timer_Tick(object sender, EventArgs e)
         {
             rebound();
+            OFF_ROAD_SLOW();
             position_calculation();
             refresh_position();
         }
@@ -208,6 +214,18 @@ namespace Need_more_Speed
                // rotation = ;
             }
 
+        }
+
+        void OFF_ROAD_SLOW ()
+        {
+            if(oN_ROAD == false)
+            {
+                Speed = Math.Truncate(Speed * 0.9999);
+            }
+            else
+            {
+                
+            }
         }
 
         private void position_calculation(/*double position_y, double position_x*/)
