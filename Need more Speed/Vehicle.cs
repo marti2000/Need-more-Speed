@@ -28,8 +28,8 @@ namespace Need_more_Speed
         private TextBlock Speed_tacho;
         Canvas car = new Canvas();
 
-        private const double acceleration_value = 1;//2;
-        private const double breaking_value = 1;//9;
+        private const double acceleration_value = 5;//2;
+        private const double breaking_value = 5;//9;
 
         private const int speed_timer_up_value = 100;
 

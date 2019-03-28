@@ -44,7 +44,7 @@ namespace Need_more_Speed
             //while(menue.Start_the_game == false);
 
             Backgroundsound.LoadedBehavior = MediaState.Manual;
-            Backgroundsound.Play();
+           
 
             //Generate the timer for the on the road check
             /*
@@ -129,7 +129,8 @@ namespace Need_more_Speed
 
             if(e.Key == Key.Escape)
             {
-                menue.Open();
+                menue.Visibility = Visibility.Visible;
+                menue.Start_the_game = false;
             }
         }
 
@@ -179,6 +180,11 @@ namespace Need_more_Speed
             Backgroundsound.Play();
         }
 
+        private void save_time(double time)
+        {
+            
+        }
+
         private void refresh_Tick(object sender, EventArgs e)
         {           
             //Check if the car is on the Road
@@ -190,6 +196,16 @@ namespace Need_more_Speed
             {
                 Speed.Text = "OFF Road";
             }
+
+            if(menue.Start_the_game)
+            {
+                Backgroundsound.Play();
+            }
+            else if(!menue.Start_the_game)
+            {
+                Backgroundsound.Pause();
+            }
+            
         }
     }
 }
