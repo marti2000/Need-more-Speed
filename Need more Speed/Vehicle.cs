@@ -225,7 +225,7 @@ namespace Need_more_Speed
         {
             if(oN_ROAD == false)
             {
-                Speed = Math.Truncate(Speed * 0.9999);
+                Speed = Math.Truncate(Speed * 0.9999)+5;
             }
             else
             {

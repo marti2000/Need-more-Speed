@@ -226,6 +226,7 @@ namespace Need_more_Speed
             else if(!menue.Start_the_game)
             {
                 Backgroundsound.Pause();
+                first = false;
             }
             
         }
