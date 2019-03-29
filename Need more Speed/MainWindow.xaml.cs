@@ -188,9 +188,9 @@ namespace Need_more_Speed
         }
 
         private void refresh_Tick(object sender, EventArgs e)
-        {           
+        {
             //Check if the car is on the Road
-            if(Map.car_on_road(red_car.Position_x, red_car.Position_y, Grid, red_car.Rotation) == true)
+            if (Map.car_on_road(red_car.Position_x, red_car.Position_y, Grid, red_car.Rotation) == true)
             {
                 Speed.Text = "ON Road";
                 red_car.ON_ROAD = true;
@@ -200,8 +200,18 @@ namespace Need_more_Speed
                 Speed.Text = "OFF Road";
                 red_car.ON_ROAD = false;
             }
+            if (Map.car_on_road(blue_car.Position_x, blue_car.Position_y, Grid, blue_car.Rotation) == true)
+            {
+                //Speed.Text = "ON Road";
+                blue_car.ON_ROAD = true;
+            }
+            else
+            {
+                //Speed.Text = "OFF Road";
+                blue_car.ON_ROAD = false;
+            }
 
-            if(menue.Start_the_game)
+            if (menue.Start_the_game)
             {
                 if(first == false)
                 {
@@ -218,6 +228,11 @@ namespace Need_more_Speed
                 Backgroundsound.Pause();
             }
             
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            menue.Close();
         }
     }
 }

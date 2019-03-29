@@ -9,7 +9,9 @@
         WindowState="Maximized"
         WindowStartupLocation="CenterScreen"
         KeyDown="Window_KeyDown"
-        KeyUp="Window_KeyUp">
+        KeyUp="Window_KeyUp"
+        Closing="Window_Closing"
+        >
     <Grid>
         <Canvas Name="racingtrack" Background="Green">
             <!--<Rectangle Name="road_up"  Height="400" Width="50" Fill="Gray" Canvas.Left="25" Canvas.Top="25" />

@@ -245,14 +245,44 @@ namespace Need_more_Speed
                     {
                         road_planner.Clear();
 
-                        add_road(1, 2, Straight_vertical_finish);
+                        add_road(1, 2, Straight_vertical);
+
+                        add_road(1, 3, Straight_vertical_finish);
 
                         add_road(1, 1, Curve_0Degree);
 
-                        add_road(2, 1, Straight_vertical);
-                        add_road(3, 1, Straight_vertical);
-                        add_road(4, 1, Straight_vertical);
-                        add_road(5, 1, Straight_vertical);
+                        add_road(2, 1, Straight_horizontal);
+                        add_road(3, 1, Straight_horizontal);
+                        add_road(4, 1, Straight_horizontal);
+                        add_road(5, 1, Straight_horizontal);
+                        add_road(6, 1, Straight_horizontal);
+                        add_road(7, 1, Straight_horizontal);
+                        add_road(8, 1, Straight_horizontal);
+                        add_road(9, 1, Straight_horizontal);
+                        add_road(10, 1, Straight_horizontal);
+                        add_road(11, 1, Straight_horizontal);
+
+                        add_road(12, 1, Curve_90Degree);
+
+                        add_road(12, 2, Straight_vertical);
+                        add_road(12, 3, Straight_vertical_checkpoint);
+                        add_road(12, 4, Straight_vertical);
+
+                        add_road(12, 5, Curve_180Degree);
+
+                        add_road(11, 5, Straight_horizontal);
+                        add_road(10, 5, Straight_horizontal);
+                        add_road(9, 5, Straight_horizontal);
+                        add_road(8, 5, Straight_horizontal);
+                        add_road(7, 5, Straight_horizontal);
+                        add_road(6, 5, Straight_horizontal);
+                        add_road(5, 5, Straight_horizontal);
+                        add_road(4, 5, Straight_horizontal);
+                        add_road(3, 5, Straight_horizontal);
+                        add_road(2, 5, Straight_horizontal);
+
+                        add_road(1, 5, Curve_270Degree);
+                        add_road(1, 4, Straight_vertical);
 
                         for (double X = 0; X < Screen_Width / gird; X++)
                         {

@@ -172,5 +172,10 @@ namespace Need_more_Speed
         {
 
         }
+
+        private void Menue_screen_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            
+        }
     }
 }
