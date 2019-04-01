@@ -26,6 +26,7 @@ namespace Need_more_Speed
         private bool right;
         private bool oN_ROAD;
         private bool on_finish;
+        private bool on_checkpoint;
 
         private Canvas racingtrack;
         private TextBlock Speed_tacho;
@@ -53,6 +54,7 @@ namespace Need_more_Speed
         public bool ON_ROAD { get => oN_ROAD; set => oN_ROAD = value; }
         public bool On_finish { get => on_finish; set => on_finish = value; }
         public double Round { get => round; set => round = value; }
+        public bool On_checkpoint { get => on_checkpoint; set => on_checkpoint = value; }
 
         int zaehler = 0;
 
@@ -278,13 +280,39 @@ namespace Need_more_Speed
             checked_checkpoints.Add(x_y_position, false);
         }
 
+        public void checked_checkpoint(double x_position, double y_position, double grid)
+        {
+            checked_checkpoints[new Point(Math.Truncate(x_position / grid), Math.Truncate(y_position / grid))] = true;    
+        }
+
         public void clear_checkpoint()
         {
-            foreach (KeyValuePair<Point, bool> entry in checked_checkpoints)
+            foreach (var point_in_dictionary in checked_checkpoints.Keys.ToArray())
             {
-                entry.Value = false;
+                checked_checkpoints[point_in_dictionary] = false;
             }
                
+        }
+
+        public bool all_checkpoints()
+        {
+            int unchecked_checkpoints_counter = 0;
+            foreach (var point_in_dictionary in checked_checkpoints)
+            {
+                if(checked_checkpoints[point_in_dictionary.Key] == false)
+                {
+                    unchecked_checkpoints_counter++;
+                }
+                
+            }
+            if (unchecked_checkpoints_counter == 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     } 
 }

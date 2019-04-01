@@ -28,8 +28,8 @@ namespace Need_more_Speed
         private bool first = false;
 
         //include the Cars global
-        Vehicle red_car;
-        Vehicle blue_car;
+        Vehicle car_player_1;
+        Vehicle car_player_2;
         Menue menue;
 
         //include the Map global
@@ -65,11 +65,11 @@ namespace Need_more_Speed
 
 
             //Creating the different Cars for the Race
-            red_car = new Vehicle("Car", 1, 145, 365, racingtrack, new TextBlock()/*Speed*/, Brushes.Red);
-            red_car.Rotation = 270;
+            car_player_1 = new Vehicle("Car", 1, 145, 365, racingtrack, new TextBlock()/*Speed*/, Brushes.Red);
+            car_player_1.Rotation = 270;
 
-            blue_car = new Vehicle("Car", 2, 165, 365, racingtrack, new TextBlock(), Brushes.Blue);
-            blue_car.Rotation = 270;
+            car_player_2 = new Vehicle("Car", 2, 165, 365, racingtrack, new TextBlock(), Brushes.Blue);
+            car_player_2.Rotation = 270;
 
 
             //Testline for develop the rebounce
@@ -96,37 +96,37 @@ namespace Need_more_Speed
             //Keys for Player 1
             if (e.Key == Key.W)
             {
-                red_car.Up = true;
+                car_player_1.Up = true;
             }
             if (e.Key == Key.S)
             {
-                red_car.Down = true;
+                car_player_1.Down = true;
             }
             if (e.Key == Key.A)
             {
-                red_car.Left = true;
+                car_player_1.Left = true;
             }
             if (e.Key == Key.D)
             {
-                red_car.Right = true;
+                car_player_1.Right = true;
             }
 
             //Keys for Player 2
             if (e.Key == Key.Up)
             {
-                blue_car.Up = true;
+                car_player_2.Up = true;
             }
             if (e.Key == Key.Down)
             {
-                blue_car.Down = true;
+                car_player_2.Down = true;
             }
             if (e.Key == Key.Left)
             {
-                blue_car.Left = true;
+                car_player_2.Left = true;
             }
             if (e.Key == Key.Right)
             {
-                blue_car.Right = true;
+                car_player_2.Right = true;
             }
 
             if(e.Key == Key.Escape)
@@ -141,37 +141,37 @@ namespace Need_more_Speed
             //Keys for Player 1
             if (e.Key == Key.W)
             {
-                red_car.Up = false;
+                car_player_1.Up = false;
             }
             if (e.Key == Key.S)
             {
-                red_car.Down = false;
+                car_player_1.Down = false;
             }
             if (e.Key == Key.A)
             {
-                red_car.Left = false;
+                car_player_1.Left = false;
             }
             if (e.Key == Key.D)
             {
-                red_car.Right = false;
+                car_player_1.Right = false;
             }
 
             //Keys for Player 2
             if (e.Key == Key.Up)
             {
-                blue_car.Up = false;
+                car_player_2.Up = false;
             }
             if (e.Key == Key.Down)
             {
-                blue_car.Down = false;
+                car_player_2.Down = false;
             }
             if (e.Key == Key.Left)
             {
-                blue_car.Left = false;
+                car_player_2.Left = false;
             }
             if (e.Key == Key.Right)
             {
-                blue_car.Right = false;
+                car_player_2.Right = false;
             }
         }
 
@@ -190,40 +190,55 @@ namespace Need_more_Speed
         private void refresh_Tick(object sender, EventArgs e)
         {
             //Check if the car is on the Road
-            if (Map.car_on_road(red_car.Position_x, red_car.Position_y, Grid, red_car.Rotation) == true)
+            if (Map.car_on_road(car_player_1.Position_x, car_player_1.Position_y, Grid, car_player_1.Rotation) == true)
             {
                 //Speed.Text = "ON Road";
-                red_car.ON_ROAD = true;
+                car_player_1.ON_ROAD = true;
             }
             else
             {
                 //Speed.Text = "OFF Road";
-                red_car.ON_ROAD = false;
+                car_player_1.ON_ROAD = false;
             }
 
-            if(Map.car_over_finish(red_car.Position_x, red_car.Position_y, Grid, red_car.Rotation))
+            if (Map.car_over_checkpoint(car_player_1.Position_x, car_player_1.Position_y, Grid, car_player_1.Rotation))
             {
-                if(red_car.On_finish == false)
+                if ((car_player_1.On_checkpoint == false))
                 {
-                    red_car.Round++;
-                    red_car.On_finish = true;
-                    Speed.Text = red_car.Round.ToString();
+                    car_player_1.checked_checkpoint(car_player_1.Position_x, car_player_1.Position_y, Grid);
+                    car_player_1.On_checkpoint = true;
                 }
             }
             else
             {
-                red_car.On_finish = false;
+                car_player_1.On_checkpoint = false;
             }
 
-            if (Map.car_on_road(blue_car.Position_x, blue_car.Position_y, Grid, blue_car.Rotation) == true)
+            if((Map.car_over_finish(car_player_1.Position_x, car_player_1.Position_y, Grid, car_player_1.Rotation)) && (car_player_1.all_checkpoints() == true))
+            {
+                if((car_player_1.On_finish == false) )
+                {
+                    car_player_1.Round++;
+                    car_player_1.On_finish = true;
+                    car_player_1.clear_checkpoint();
+                    Speed.Text = car_player_1.Round.ToString();
+                }
+
+            }
+            else
+            {
+                car_player_1.On_finish = false;
+            }
+
+            if (Map.car_on_road(car_player_2.Position_x, car_player_2.Position_y, Grid, car_player_2.Rotation) == true)
             {
                 //Speed.Text = "ON Road";
-                blue_car.ON_ROAD = true;
+                car_player_2.ON_ROAD = true;
             }
             else
             {
                 //Speed.Text = "OFF Road";
-                blue_car.ON_ROAD = false;
+                car_player_2.ON_ROAD = false;
             }
 
             if (menue.Start_the_game)
@@ -233,8 +248,10 @@ namespace Need_more_Speed
                     Backgroundsound.Play();
                     racingtrack.Children.Clear();
                     Map.chose_Map(menue.Choseed_map, Grid);
-                    red_car.redraw();
-                    blue_car.redraw();
+                    car_player_1.redraw();
+                    car_player_2.redraw();
+                    Map.set_checkpoints(car_player_1, Grid);
+                    Map.set_checkpoints(car_player_2, Grid);
                     first = true;
                 }
             }

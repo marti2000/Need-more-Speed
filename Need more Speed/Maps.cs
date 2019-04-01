@@ -132,7 +132,26 @@ namespace Need_more_Speed
 
             string road_type;
             road_planner.TryGetValue(new Point(Math.Truncate(x_position / grid), Math.Truncate(y_position / grid)), out road_type);
-            if ((road_type == Straight_vertical_finish) && ((y_position % grid) < (grid/2)))
+            if ((road_type == Straight_vertical_finish) && ((y_position % grid) < (grid / 2)))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public bool car_over_checkpoint(double x_position, double y_position, double grid, double rotation)
+        {
+
+            string road_type;
+            road_planner.TryGetValue(new Point(Math.Truncate(x_position / grid), Math.Truncate(y_position / grid)), out road_type);
+            if ((road_type == Straight_vertical_checkpoint) && ((y_position % grid) < (grid / 2)))
+            {
+                return true;
+            }
+            else if ((road_type == Straight_horizontal_checkpoint) && ((x_position % grid) < (grid / 2)))
             {
                 return true;
             }
@@ -150,7 +169,7 @@ namespace Need_more_Speed
                 {
                     //draw_road(X, Y, gird);
                     string road_type;
-                    road_planner.TryGetValue(new Point(Math.Truncate(X / grid), Math.Truncate(Y / grid)), out road_type);
+                    road_planner.TryGetValue(new Point(X , Y ), out road_type);
                     if ((road_type == Straight_horizontal_checkpoint) || (road_type == Straight_vertical_checkpoint))
                     {
                         car.add_checkpoint(X, Y);
