@@ -11,9 +11,12 @@ namespace Need_more_Speed
     class Starter
     {
         private bool first_time = false;
-        private bool ready = false;
+        private bool ready = false; 
 
         private double Grid;
+
+        private TextBlock rounds_player_1;
+        private TextBlock rounds_player_2;
 
         Menue Menue;
         Vehicle Car_player_1;
@@ -35,6 +38,9 @@ namespace Need_more_Speed
             //Countdown = countdown;
             Countdown = new TextBlock();
 
+            Rounds_player_1 = new TextBlock();
+            Rounds_player_2 = new TextBlock();
+
             System.Windows.Threading.DispatcherTimer intervall_to_check = new System.Windows.Threading.DispatcherTimer();
             intervall_to_check.Tick += intervall_to_check_Tick;
             intervall_to_check.Interval = new TimeSpan(0, 0, 0, 0, 1);
@@ -42,6 +48,8 @@ namespace Need_more_Speed
         }
 
         public bool Ready { get => ready; set => ready = value; }
+        public TextBlock Rounds_player_1 { get => rounds_player_1; set => rounds_player_1 = value; }
+        public TextBlock Rounds_player_2 { get => rounds_player_2; set => rounds_player_2 = value; }
 
         public async void Start()
         {
@@ -104,6 +112,8 @@ namespace Need_more_Speed
                     Map.set_checkpoints(Car_player_1, Grid);
                     Map.set_checkpoints(Car_player_2, Grid);
                     Racingtrack.Children.Add(Countdown);
+                    Racingtrack.Children.Add(Rounds_player_1);
+                    Racingtrack.Children.Add(Rounds_player_2);
                     first_time = true;
                 }
             }

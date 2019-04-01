@@ -13,7 +13,7 @@ namespace Need_more_Speed
 {
     class Vehicle
     {
-        private byte compare_to_player;
+        private double compare_to_player;
         private double position_x;
         private double position_y;
         private double rotation;
@@ -41,7 +41,7 @@ namespace Need_more_Speed
 
         private const double speed_to_turn = 1;
 
-        public byte Compare_to_player { get => compare_to_player; set => compare_to_player = value; }
+        public double Compare_to_player { get => compare_to_player; set => compare_to_player = value; }
         public double Position_x { get => position_x; set => position_x = value; }
         public double Position_y { get => position_y; set => position_y = value; }
         public double Rotation { get => rotation; set => rotation = value; }
@@ -60,10 +60,12 @@ namespace Need_more_Speed
 
         
 
-        public Vehicle(string type,byte compare_to_player, double start_position_x, double start_position_y ,Canvas myCanvas, TextBlock _Speed ,Brush color)
+        public Vehicle(string type, double compare_to_player, double start_position_x, double start_position_y ,Canvas myCanvas, TextBlock _Speed ,Brush color)
         {
             position_x = start_position_x;
             position_y = start_position_y;
+
+            this.compare_to_player = compare_to_player;
 
             Speed_tacho = _Speed;
 
