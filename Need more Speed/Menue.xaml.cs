@@ -23,8 +23,11 @@ namespace Need_more_Speed
 
         private int choseed_map = 0;
 
+        Starter starter;
+
         public bool Start_the_game { get => start_the_game; set => start_the_game = value; }
         public int Choseed_map { get => choseed_map; set => choseed_map = value; }
+        internal Starter Starter { get => starter; set => starter = value; }
 
         public Menue()
         {
@@ -129,6 +132,7 @@ namespace Need_more_Speed
         {
             start_the_game = true;
             Menue_screen.Visibility = Visibility.Hidden;
+            Starter.Start();
         }
 
         public void Open()

@@ -22,19 +22,24 @@ namespace Need_more_Speed
     /// </summary>
     public partial class MainWindow : Window
     {
-
         public const double Grid = 100; //To define the size of the Raceingtrack
-
-        private bool first = false;
 
         //include the Cars global
         Vehicle car_player_1;
         Vehicle car_player_2;
+
+        //incude the Rounds Manager global
+        manage_Rounds rounds_player_1;
+        manage_Rounds rounds_player_2;
+
+        //include the Menue global
         Menue menue;
 
         //include the Map global
         Maps Map;
 
+        //include the Starter global
+        Starter Start;
 
         public MainWindow()
         {
@@ -43,26 +48,13 @@ namespace Need_more_Speed
             //generate a Menu
             menue = new Menue();
             menue.Show();
-            //while(menue.Start_the_game == false);
 
+            //switch the Controll of the Backgroundsound to Manuel
             Backgroundsound.LoadedBehavior = MediaState.Manual;
-           
-
-            //Generate the timer for the on the road check
-            /*
-             *
-             * TODD move into a other class
-             *
-             */
-            System.Windows.Threading.DispatcherTimer refresh = new System.Windows.Threading.DispatcherTimer();
-            refresh.Tick += refresh_Tick;
-            refresh.Interval = new TimeSpan(0, 0, 0, 0, 1);
-            refresh.Start();
 
             //generate the Map
             Map = new Maps(racingtrack);
             Map.chose_Map(menue.Choseed_map, Grid);
-
 
             //Creating the different Cars for the Race
             car_player_1 = new Vehicle("Car", 1, 145, 365, racingtrack, new TextBlock()/*Speed*/, Brushes.Red);
@@ -70,6 +62,17 @@ namespace Need_more_Speed
 
             car_player_2 = new Vehicle("Car", 2, 165, 365, racingtrack, new TextBlock(), Brushes.Blue);
             car_player_2.Rotation = 270;
+
+            //Creating the Overwatch for the Stuff around the Rounds
+            rounds_player_1 = new manage_Rounds(car_player_1, Map, racingtrack, Grid);
+            rounds_player_2 = new manage_Rounds(car_player_2, Map, racingtrack, Grid);
+
+            //Creating the Starter for the Game
+            Start = new Starter(menue, car_player_1, car_player_2, Map, Backgroundsound, racingtrack,/* Countdown,*/ Grid);
+
+            
+            menue.Starter = Start;
+
 
 
             //Testline for develop the rebounce
@@ -82,7 +85,6 @@ namespace Need_more_Speed
             line.Y2 = 760;
             racingtrack.Children.Add(line);
 
-
         }
 
         /*
@@ -93,42 +95,45 @@ namespace Need_more_Speed
 
         private void Window_KeyDown(object sender, KeyEventArgs e)
         {
-            //Keys for Player 1
-            if (e.Key == Key.W)
+            if(Start.Ready)
             {
-                car_player_1.Up = true;
-            }
-            if (e.Key == Key.S)
-            {
-                car_player_1.Down = true;
-            }
-            if (e.Key == Key.A)
-            {
-                car_player_1.Left = true;
-            }
-            if (e.Key == Key.D)
-            {
-                car_player_1.Right = true;
-            }
+                //Keys for Player 1
+                if (e.Key == Key.W)
+                {
+                    car_player_1.Up = true;
+                }
+                if (e.Key == Key.S)
+                {
+                    car_player_1.Down = true;
+                }
+                if (e.Key == Key.A)
+                {
+                    car_player_1.Left = true;
+                }
+                if (e.Key == Key.D)
+                {
+                    car_player_1.Right = true;
+                }
 
-            //Keys for Player 2
-            if (e.Key == Key.Up)
-            {
-                car_player_2.Up = true;
+                //Keys for Player 2
+                if (e.Key == Key.Up)
+                {
+                    car_player_2.Up = true;
+                }
+                if (e.Key == Key.Down)
+                {
+                    car_player_2.Down = true;
+                }
+                if (e.Key == Key.Left)
+                {
+                    car_player_2.Left = true;
+                }
+                if (e.Key == Key.Right)
+                {
+                    car_player_2.Right = true;
+                }
             }
-            if (e.Key == Key.Down)
-            {
-                car_player_2.Down = true;
-            }
-            if (e.Key == Key.Left)
-            {
-                car_player_2.Left = true;
-            }
-            if (e.Key == Key.Right)
-            {
-                car_player_2.Right = true;
-            }
-
+            //For the Ingame Menue 
             if(e.Key == Key.Escape)
             {
                 menue.Visibility = Visibility.Visible;
@@ -184,82 +189,6 @@ namespace Need_more_Speed
 
         private void save_time(double time)
         {
-            
-        }
-
-        private void refresh_Tick(object sender, EventArgs e)
-        {
-            //Check if the car is on the Road
-            if (Map.car_on_road(car_player_1.Position_x, car_player_1.Position_y, Grid, car_player_1.Rotation) == true)
-            {
-                //Speed.Text = "ON Road";
-                car_player_1.ON_ROAD = true;
-            }
-            else
-            {
-                //Speed.Text = "OFF Road";
-                car_player_1.ON_ROAD = false;
-            }
-
-            if (Map.car_over_checkpoint(car_player_1.Position_x, car_player_1.Position_y, Grid, car_player_1.Rotation))
-            {
-                if ((car_player_1.On_checkpoint == false))
-                {
-                    car_player_1.checked_checkpoint(car_player_1.Position_x, car_player_1.Position_y, Grid);
-                    car_player_1.On_checkpoint = true;
-                }
-            }
-            else
-            {
-                car_player_1.On_checkpoint = false;
-            }
-
-            if((Map.car_over_finish(car_player_1.Position_x, car_player_1.Position_y, Grid, car_player_1.Rotation)) && (car_player_1.all_checkpoints() == true))
-            {
-                if((car_player_1.On_finish == false) )
-                {
-                    car_player_1.Round++;
-                    car_player_1.On_finish = true;
-                    car_player_1.clear_checkpoint();
-                    Speed.Text = car_player_1.Round.ToString();
-                }
-
-            }
-            else
-            {
-                car_player_1.On_finish = false;
-            }
-
-            if (Map.car_on_road(car_player_2.Position_x, car_player_2.Position_y, Grid, car_player_2.Rotation) == true)
-            {
-                //Speed.Text = "ON Road";
-                car_player_2.ON_ROAD = true;
-            }
-            else
-            {
-                //Speed.Text = "OFF Road";
-                car_player_2.ON_ROAD = false;
-            }
-
-            if (menue.Start_the_game)
-            {
-                if(first == false)
-                {
-                    Backgroundsound.Play();
-                    racingtrack.Children.Clear();
-                    Map.chose_Map(menue.Choseed_map, Grid);
-                    car_player_1.redraw();
-                    car_player_2.redraw();
-                    Map.set_checkpoints(car_player_1, Grid);
-                    Map.set_checkpoints(car_player_2, Grid);
-                    first = true;
-                }
-            }
-            else if(!menue.Start_the_game)
-            {
-                Backgroundsound.Pause();
-                first = false;
-            }
             
         }
 
