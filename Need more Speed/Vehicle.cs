@@ -18,16 +18,20 @@ namespace Need_more_Speed
         private double position_y;
         private double rotation;
         private double speed;
+        private double round;
         private char type;
         private bool up;
         private bool down;
         private bool left;
         private bool right;
         private bool oN_ROAD;
+        private bool on_finish;
 
         private Canvas racingtrack;
         private TextBlock Speed_tacho;
         Canvas car = new Canvas();
+
+        Dictionary<Point, bool> checked_checkpoints = new Dictionary<Point, bool>();
 
         private const double acceleration_value = 20;//2;
         private const double breaking_value = 10;//9;
@@ -47,6 +51,8 @@ namespace Need_more_Speed
         public bool Left { get => left; set => left = value; }
         public bool Right { get => right; set => right = value; }
         public bool ON_ROAD { get => oN_ROAD; set => oN_ROAD = value; }
+        public bool On_finish { get => on_finish; set => on_finish = value; }
+        public double Round { get => round; set => round = value; }
 
         int zaehler = 0;
 
@@ -225,7 +231,7 @@ namespace Need_more_Speed
         {
             if(oN_ROAD == false)
             {
-                Speed = Math.Truncate(Speed * 0.9999)+5;
+                Speed = Math.Truncate(Speed * 0.9999);
             }
             else
             {
@@ -263,6 +269,23 @@ namespace Need_more_Speed
             Canvas.SetLeft(car, position_x);
             Canvas.SetTop(car, position_y);
         }
-    }
+
+        public void add_checkpoint(double x_position, double y_position)
+        {
+            Point x_y_position = new Point();
+            x_y_position.X = x_position;
+            x_y_position.Y = y_position;
+            checked_checkpoints.Add(x_y_position, false);
+        }
+
+        public void clear_checkpoint()
+        {
+            foreach (KeyValuePair<Point, bool> entry in checked_checkpoints)
+            {
+                entry.Value = false;
+            }
+               
+        }
+    } 
 }
 

@@ -192,14 +192,29 @@ namespace Need_more_Speed
             //Check if the car is on the Road
             if (Map.car_on_road(red_car.Position_x, red_car.Position_y, Grid, red_car.Rotation) == true)
             {
-                Speed.Text = "ON Road";
+                //Speed.Text = "ON Road";
                 red_car.ON_ROAD = true;
             }
             else
             {
-                Speed.Text = "OFF Road";
+                //Speed.Text = "OFF Road";
                 red_car.ON_ROAD = false;
             }
+
+            if(Map.car_over_finish(red_car.Position_x, red_car.Position_y, Grid, red_car.Rotation))
+            {
+                if(red_car.On_finish == false)
+                {
+                    red_car.Round++;
+                    red_car.On_finish = true;
+                    Speed.Text = red_car.Round.ToString();
+                }
+            }
+            else
+            {
+                red_car.On_finish = false;
+            }
+
             if (Map.car_on_road(blue_car.Position_x, blue_car.Position_y, Grid, blue_car.Rotation) == true)
             {
                 //Speed.Text = "ON Road";

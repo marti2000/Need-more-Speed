@@ -19,7 +19,7 @@
         </Canvas>
         <MediaElement  Source="C:\Users\i00203467\source\repos\marti2000\Need-more-Speed\Loop_Version.mp3" Name="Backgroundsound" MediaEnded="Backgroundsound_MediaEnded"/>
 
-        <TextBlock Name="Speed"></TextBlock>
+        <TextBlock Name="Speed" FontSize="30"></TextBlock>
         
     </Grid>
 </Window>
