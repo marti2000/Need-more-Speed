@@ -19,6 +19,7 @@ namespace Need_more_Speed
         private double rotation;
         private double speed;
         private double round;
+        private double[] round_time = new double[99];
         private char type;
         private bool up;
         private bool down;
@@ -27,6 +28,7 @@ namespace Need_more_Speed
         private bool oN_ROAD;
         private bool on_finish;
         private bool on_checkpoint;
+        
 
         private Canvas racingtrack;
         private TextBlock Speed_tacho;
@@ -55,6 +57,7 @@ namespace Need_more_Speed
         public bool On_finish { get => on_finish; set => on_finish = value; }
         public double Round { get => round; set => round = value; }
         public bool On_checkpoint { get => on_checkpoint; set => on_checkpoint = value; }
+        public double[] Round_time { get => round_time; set => round_time = value; }
 
         int zaehler = 0;
 

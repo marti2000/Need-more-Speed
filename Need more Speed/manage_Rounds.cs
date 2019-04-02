@@ -15,19 +15,19 @@ namespace Need_more_Speed
         Canvas Raceingtrack;
         TextBlock Rounds;
         Starter Start;
+        Menue Menue;
         double Grid;
 
-        public manage_Rounds()
-        {
+        System.Diagnostics.Stopwatch round_timer;
 
-        }
-            public manage_Rounds( Vehicle car, Maps map, Canvas raceingtrack, Starter start ,double grid )
+        public manage_Rounds( Vehicle car, Maps map, Canvas raceingtrack, Starter start , Menue menue, double grid )
         {
             Car = car;
             Map = map;
             Raceingtrack = raceingtrack;
             Start = start;
             Grid = grid;
+            Menue = menue;
             
 
             System.Windows.Threading.DispatcherTimer refresh = new System.Windows.Threading.DispatcherTimer();
@@ -55,12 +55,12 @@ namespace Need_more_Speed
 
             Raceingtrack.Children.Add(Rounds);
 
-            Rounds.Text = "Spieler " + Car.Compare_to_player.ToString() + "\n" + Car.Round.ToString() + "/3";
+            Rounds.Text = "Spieler " + Car.Compare_to_player.ToString() + "\n" + (Car.Round + 1).ToString() + "/" + Menue.Anz_rounds.ToString();
             Rounds.FontSize = 40;
-            
-            
 
-            System.Diagnostics.Stopwatch round_timer = new System.Diagnostics.Stopwatch();
+
+
+            round_timer = new System.Diagnostics.Stopwatch();
 
             /*
              * 
@@ -77,9 +77,46 @@ namespace Need_more_Speed
 
         }
 
+        private async void wait_for_end_game()
+        {
+            await Task.Delay(2000);
+            Start.Ready = false;
+            Menue.Show();
+        }
+
         private void refresh_Tick(object sender, EventArgs e)
         {
-            Rounds.Text = "Spieler " + Car.Compare_to_player.ToString() + "\n" + Car.Round.ToString() + "/3";
+            if(Car.Round == Menue.Anz_rounds)
+            {
+                if (Car.Compare_to_player == 1)
+                {
+                    Menue.Times_player_1 = Car.Round_time;
+                }
+                else if (Car.Compare_to_player == 2)
+                {
+                    Menue.Times_player_2 = Car.Round_time;
+                }
+                round_timer.Stop();
+
+                Menue.time_list_after_game();
+                wait_for_end_game();
+
+                Car.Round++;
+            }
+            else if(Start.Ready)
+            {
+                round_timer.Start();
+            }
+
+            if (Car.Round < Menue.Anz_rounds)
+            {
+                Rounds.Text = "Spieler " + Car.Compare_to_player.ToString() + "\n" + (Car.Round + 1).ToString() + "/" + Menue.Anz_rounds.ToString();
+            }
+            else
+            {
+                Rounds.Text = "Spieler " + Car.Compare_to_player.ToString() + "\nim Ziel";
+            }
+            
 
             //Check if the car is on the Road
             if (Map.car_on_road(Car.Position_x, Car.Position_y, Grid, Car.Rotation) == true)
@@ -99,7 +136,7 @@ namespace Need_more_Speed
                 {
                     Car.checked_checkpoint(Car.Position_x, Car.Position_y, Grid);
                     Car.On_checkpoint = true;
-                }
+                } 
             }
             else
             {
@@ -110,6 +147,8 @@ namespace Need_more_Speed
             {
                 if ((Car.On_finish == false))
                 {
+                    Car.Round_time[Convert.ToInt16(Car.Round)] = round_timer.ElapsedMilliseconds;
+                    
                     Car.Round++;
                     Car.On_finish = true;
                     Car.clear_checkpoint();

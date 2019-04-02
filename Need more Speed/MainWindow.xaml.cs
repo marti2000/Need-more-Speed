@@ -67,8 +67,8 @@ namespace Need_more_Speed
             Start = new Starter(menue, car_player_1, car_player_2, Map, Backgroundsound, racingtrack, Grid);
 
             //Creating the Overwatch for the Stuff around the Rounds
-            rounds_player_1 = new manage_Rounds(car_player_1, Map, racingtrack, Start ,Grid);
-            rounds_player_2 = new manage_Rounds(car_player_2, Map, racingtrack, Start ,Grid);
+            rounds_player_1 = new manage_Rounds(car_player_1, Map, racingtrack, Start, menue ,Grid);
+            rounds_player_2 = new manage_Rounds(car_player_2, Map, racingtrack, Start, menue, Grid);
 
             
 
