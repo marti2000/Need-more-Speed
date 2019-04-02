@@ -22,6 +22,8 @@ namespace Need_more_Speed
 
         Dictionary<Point, string> road_planner = new Dictionary<Point, string>();
 
+        
+
         public double Screen_Width = System.Windows.SystemParameters.PrimaryScreenWidth;
         public double Screen_Height = System.Windows.SystemParameters.PrimaryScreenHeight;
 
@@ -40,6 +42,7 @@ namespace Need_more_Speed
         {
             this.myCanvas = myCanvas;
         }
+
 
         private void add_road(double x_position, double y_position, string type)
         {
@@ -123,7 +126,58 @@ namespace Need_more_Speed
                 return false;
             }
         }
-        
+
+        public bool car_over_finish(double x_position, double y_position, double grid, double rotation)
+        {
+
+            string road_type;
+            road_planner.TryGetValue(new Point(Math.Truncate(x_position / grid), Math.Truncate(y_position / grid)), out road_type);
+            if ((road_type == Straight_vertical_finish) && ((y_position % grid) < (grid / 2)))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public bool car_over_checkpoint(double x_position, double y_position, double grid, double rotation)
+        {
+
+            string road_type;
+            road_planner.TryGetValue(new Point(Math.Truncate(x_position / grid), Math.Truncate(y_position / grid)), out road_type);
+            if ((road_type == Straight_vertical_checkpoint) && ((y_position % grid) < (grid / 2)))
+            {
+                return true;
+            }
+            else if ((road_type == Straight_horizontal_checkpoint) && ((x_position % grid) < (grid / 2)))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public void set_checkpoints(Vehicle car, double grid)
+        {
+            for (double X = 0; X < Screen_Width / grid; X++)
+            {
+                for (double Y = 0; Y < Screen_Height / grid; Y++)
+                {
+                    //draw_road(X, Y, gird);
+                    string road_type;
+                    road_planner.TryGetValue(new Point(X , Y ), out road_type);
+                    if ((road_type == Straight_horizontal_checkpoint) || (road_type == Straight_vertical_checkpoint))
+                    {
+                        car.add_checkpoint(X, Y);
+                    }
+                }
+            }
+        }
+
         public void chose_Map(int number, double gird)
         {
             switch(number)
@@ -260,17 +314,17 @@ namespace Need_more_Speed
                         add_road(8, 1, Straight_horizontal);
                         add_road(9, 1, Straight_horizontal);
                         add_road(10, 1, Straight_horizontal);
-                        add_road(11, 1, Straight_horizontal);
+                        //add_road(11, 1, Straight_horizontal);
 
-                        add_road(12, 1, Curve_90Degree);
+                        add_road(11, 1, Curve_90Degree);
 
-                        add_road(12, 2, Straight_vertical);
-                        add_road(12, 3, Straight_vertical_checkpoint);
-                        add_road(12, 4, Straight_vertical);
+                        add_road(11, 2, Straight_vertical);
+                        add_road(11, 3, Straight_vertical_checkpoint);
+                        add_road(11, 4, Straight_vertical);
 
-                        add_road(12, 5, Curve_180Degree);
+                        add_road(11, 5, Curve_180Degree);
 
-                        add_road(11, 5, Straight_horizontal);
+                        //add_road(11, 5, Straight_horizontal);
                         add_road(10, 5, Straight_horizontal);
                         add_road(9, 5, Straight_horizontal);
                         add_road(8, 5, Straight_horizontal);

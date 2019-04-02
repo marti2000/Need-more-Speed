@@ -13,21 +13,28 @@ namespace Need_more_Speed
 {
     class Vehicle
     {
-        private byte compare_to_player;
+        private double compare_to_player;
         private double position_x;
         private double position_y;
         private double rotation;
         private double speed;
+        private double round;
+        private double[] round_time = new double[99];
         private char type;
         private bool up;
         private bool down;
         private bool left;
         private bool right;
         private bool oN_ROAD;
+        private bool on_finish;
+        private bool on_checkpoint;
+        
 
         private Canvas racingtrack;
         private TextBlock Speed_tacho;
         Canvas car = new Canvas();
+
+        Dictionary<Point, bool> checked_checkpoints = new Dictionary<Point, bool>();
 
         private const double acceleration_value = 20;//2;
         private const double breaking_value = 10;//9;
@@ -36,7 +43,7 @@ namespace Need_more_Speed
 
         private const double speed_to_turn = 1;
 
-        public byte Compare_to_player { get => compare_to_player; set => compare_to_player = value; }
+        public double Compare_to_player { get => compare_to_player; set => compare_to_player = value; }
         public double Position_x { get => position_x; set => position_x = value; }
         public double Position_y { get => position_y; set => position_y = value; }
         public double Rotation { get => rotation; set => rotation = value; }
@@ -47,15 +54,21 @@ namespace Need_more_Speed
         public bool Left { get => left; set => left = value; }
         public bool Right { get => right; set => right = value; }
         public bool ON_ROAD { get => oN_ROAD; set => oN_ROAD = value; }
+        public bool On_finish { get => on_finish; set => on_finish = value; }
+        public double Round { get => round; set => round = value; }
+        public bool On_checkpoint { get => on_checkpoint; set => on_checkpoint = value; }
+        public double[] Round_time { get => round_time; set => round_time = value; }
 
         int zaehler = 0;
 
         
 
-        public Vehicle(string type,byte compare_to_player, double start_position_x, double start_position_y ,Canvas myCanvas, TextBlock _Speed ,Brush color)
+        public Vehicle(string type, double compare_to_player, double start_position_x, double start_position_y ,Canvas myCanvas, TextBlock _Speed ,Brush color)
         {
             position_x = start_position_x;
             position_y = start_position_y;
+
+            this.compare_to_player = compare_to_player;
 
             Speed_tacho = _Speed;
 
@@ -294,6 +307,49 @@ namespace Need_more_Speed
             Canvas.SetLeft(car, position_x);
             Canvas.SetTop(car, position_y);
         }
-    }
+
+        public void add_checkpoint(double x_position, double y_position)
+        {
+            Point x_y_position = new Point();
+            x_y_position.X = x_position;
+            x_y_position.Y = y_position;
+            checked_checkpoints.Add(x_y_position, false);
+        }
+
+        public void checked_checkpoint(double x_position, double y_position, double grid)
+        {
+            checked_checkpoints[new Point(Math.Truncate(x_position / grid), Math.Truncate(y_position / grid))] = true;    
+        }
+
+        public void clear_checkpoint()
+        {
+            foreach (var point_in_dictionary in checked_checkpoints.Keys.ToArray())
+            {
+                checked_checkpoints[point_in_dictionary] = false;
+            }
+               
+        }
+
+        public bool all_checkpoints()
+        {
+            int unchecked_checkpoints_counter = 0;
+            foreach (var point_in_dictionary in checked_checkpoints)
+            {
+                if(checked_checkpoints[point_in_dictionary.Key] == false)
+                {
+                    unchecked_checkpoints_counter++;
+                }
+                
+            }
+            if (unchecked_checkpoints_counter == 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+    } 
 }
 

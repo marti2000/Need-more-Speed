@@ -5,11 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Need_more_Speed"
         mc:Ignorable="d"
-        Title="Menue" Height="450" Width="800"
+        Title="" Height="450" Width="800"
         WindowStartupLocation="CenterScreen"
         Name="Menue_screen"
         Topmost="True"
         Closing="Menue_screen_Closing">
+    <!--
+    <Window.Background>
+        <ImageBrush ="C:\Users\i00203467\Source\Repos\marti2000\Need-more-Speed\Rennstrecke.jpg"/>
+    </Window.Background>-->
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>
@@ -22,8 +26,9 @@
             <RowDefinition Height="2*"/>
             <RowDefinition Height="2*"/>
             <RowDefinition Height="2*"/>
-            <RowDefinition Height="3*"/>
             <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="4*"/>
@@ -36,17 +41,59 @@
             <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
 
-        <TextBlock Text="Need more Speed" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="28"/>
+        <TextBlock Text="Need more Speed" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="28" Foreground="Yellow"/>
         <Button Name="Play" Content="Spielen" Click="Play_Click" Grid.Column="1" Grid.Row="3" FontSize="20" Background="Cyan"/>
-        <Button Name="change_track" Click="Change_track_Click" Content="Strecke auswählen" Grid.Column="1" Grid.Row="5" FontSize="20" Background="LightGreen"/>
-        <Button Name="change_car" Click="Change_car_Click" Content="Auto auswählen" Grid.Column="1" Grid.Row="7" FontSize="20" Background="LightGreen"/>
-        <Button Name="settings" Click="Settings_Click" Content="Optionen" Grid.Column="1" Grid.Row="9" FontSize="20" Background="LightSalmon"/>
+        <Button Name="show_list_of_best" Content="Bestenliste" Click="Show_list_of_best_Click" Grid.Column="1" Grid.Row="5" FontSize="20" Background="Cyan"/>
+        <Button Name="change_track" Click="Change_track_Click" Content="Strecke auswählen" Grid.Column="1" Grid.Row="7" FontSize="20" Background="LightGreen"/>
+        <Button Name="change_car" Click="Change_car_Click" Content="Auto auswählen" Grid.Column="1" Grid.Row="9" FontSize="20" Background="LightGreen"/>
+        <Button Name="settings" Click="Settings_Click" Content="Optionen" Grid.Column="1" Grid.Row="11" FontSize="20" Background="LightSalmon"/>
+        
+        <!--Content for the Besttime-->
+        <Grid Name="list_of_best" Grid.Column="5" Grid.Row="2" Grid.RowSpan="9" Visibility="Visible">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="9*"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
 
+            <TextBlock Name="Label_left" Text="Spieler 1" FontSize="20" TextAlignment="Center" Background="AliceBlue" Grid.Column="0" Grid.Row="0"/>
+            <TextBlock Name="Label_right" Text="Spieler 2" FontSize="20" TextAlignment="Center" Background="AliceBlue" Grid.Column="2" Grid.Row="0"/>
+
+            <ListBox Name="time_list_player_1" Grid.Column="0" Grid.Row="1"/>
+            <ListBox Name="time_list_player_2" Grid.Column="1" Grid.Row="1"/>
+
+            <ListBox Name="time_list_Top_10" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="1" Visibility="Hidden"/>
+
+            <Button Name="actuell_race" Click="Actuell_race_Click" Content="aktuelles Rennen" Grid.Column="0" Grid.Row="2"/>
+            <Button Name="Top_10_ever" Click="Top_10_ever_Click" Content="Top 10 Runden" Grid.Column="1" Grid.Row="2"/>
+
+        </Grid>
+        
         <!--Content for the change_track-Button-->
         <Button Name="next_left" Click="Next_left_Click" Grid.Column="4" Grid.Row="5" FontSize="20" Visibility="Hidden" IsEnabled="False"/>
         <Button Name="next_right" Click="Next_right_Click"  Grid.Column="6" Grid.Row="5" FontSize="20" Visibility="Hidden" IsEnabled="False"/>
         <Button Name="map_generator" Click="Map_generator_Click" Content="Streckeneditor" FontSize="20" Grid.Column="5" Grid.Row="10" Background="Bisque" Visibility="Hidden" IsEnabled="False"/>
         <Canvas Name="racetrack_show" Grid.Column="5" Grid.Row="3" Grid.RowSpan="5" Background="Green" Visibility="Hidden"/>
+        <TextBlock Name="Label_Rounds" Text="Rundenanzahl" TextAlignment="Center" VerticalAlignment="Bottom" FontSize="20"  Grid.Column="5" Grid.Row="1" Foreground="Yellow" Visibility="Hidden"/>
+        <Grid Grid.Column="5" Grid.Row="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="10*"/>
+                <ColumnDefinition Width="5*"/>
+                <ColumnDefinition Width="20*"/>
+                <ColumnDefinition Width="5*"/>
+                <ColumnDefinition Width="10*"/>
+            </Grid.ColumnDefinitions>
+            <Button Name="remove_round" Click="Remove_round_Click" Grid.Column="0" Grid.Row="0" FontSize="20" Visibility="Hidden" IsEnabled="False"/>
+            <Button Name="add_round" Click="Add_round_Click"  Grid.Column="4" Grid.Row="0" FontSize="20" Visibility="Hidden" IsEnabled="False"/>
+            <TextBlock Name="anz_rounds" Grid.Column="2" Grid.Row="0" TextAlignment="Center" FontSize="20" Foreground="Yellow" Visibility="Hidden"/>
+        </Grid>
 
         <!--Content for the change_car-Button-->
         <Button Name="next_left_player_1" Click="Next_left_player_1_Click"  Grid.Column="4" Grid.Row="4" FontSize="20" Visibility="Hidden" IsEnabled="False"/>
@@ -55,8 +102,8 @@
         <Button Name="next_right_player_2" Click="Next_right_player_2_Click"  Grid.Column="6" Grid.Row="8" FontSize="20" Visibility="Hidden" IsEnabled="False"/>
         <Canvas Name="show_car_player_1" Grid.Column="5" Grid.Row="3" Grid.RowSpan="3" Background="Gray" Visibility="Hidden"/>
         <Canvas Name="show_car_player_2" Grid.Column="5" Grid.Row="7" Grid.RowSpan="3" Background="Gray" Visibility="Hidden"/>
-        <TextBlock Text="Spieler 1" Name="label_car_player_1" Grid.Column="5" Grid.Row="2" FontSize="20" HorizontalAlignment="Center" Visibility="Hidden"/>
-        <TextBlock Text="Spieler 2" Name="label_car_player_2" Grid.Column="5" Grid.Row="6" FontSize="20" HorizontalAlignment="Center" Visibility="Hidden"/>
+        <TextBlock Text="Spieler 1" Name="label_car_player_1" Grid.Column="5" Grid.Row="2" FontSize="20" HorizontalAlignment="Center" Foreground="Black" Background="AliceBlue" Visibility="Hidden"/>
+        <TextBlock Text="Spieler 2" Name="label_car_player_2" Grid.Column="5" Grid.Row="6" FontSize="20" HorizontalAlignment="Center" Foreground="Black" Background="AliceBlue" Visibility="Hidden"/>
 
     </Grid>
 </Window>
