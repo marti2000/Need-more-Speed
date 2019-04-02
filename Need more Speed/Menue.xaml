@@ -10,9 +10,10 @@
         Name="Menue_screen"
         Topmost="True"
         Closing="Menue_screen_Closing">
+    <!--
     <Window.Background>
-        <ImageBrush ImageSource="C:\Users\i00203467\Source\Repos\marti2000\Need-more-Speed\Rennstrecke.jpg"/>
-    </Window.Background>
+        <ImageBrush ="C:\Users\i00203467\Source\Repos\marti2000\Need-more-Speed\Rennstrecke.jpg"/>
+    </Window.Background>-->
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>
