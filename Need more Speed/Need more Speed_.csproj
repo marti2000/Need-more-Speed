@@ -91,6 +91,9 @@
     <Compile Include="Menue.xaml.cs">
       <DependentUpon>Menue.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Name_box.xaml.cs">
+      <DependentUpon>Name_box.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Starter.cs" />
     <Compile Include="Vehicle.cs" />
     <Page Include="MainWindow.xaml">
@@ -106,6 +109,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Menue.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Name_box.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -57,10 +57,10 @@ namespace Need_more_Speed
             Map.chose_Map(menue.Choseed_map, Grid);
 
             //Creating the different Cars for the Race
-            car_player_1 = new Vehicle("Car", 1, 145, 365, racingtrack, new TextBlock()/*Speed*/, Brushes.Red);
+            car_player_1 = new Vehicle("Car", 1, 145, 365, racingtrack, Brushes.Red, Grid);
             car_player_1.Rotation = 270;
 
-            car_player_2 = new Vehicle("Car", 2, 165, 365, racingtrack, new TextBlock(), Brushes.Blue);
+            car_player_2 = new Vehicle("Car", 2, 165, 365, racingtrack, Brushes.Blue, Grid);
             car_player_2.Rotation = 270;
 
             //Creating the Starter for the Game

@@ -149,6 +149,11 @@ namespace Need_more_Speed
             change_car_visible();
             change_track_hidden();
             list_of_best.Visibility = Visibility.Hidden;
+
+            Vehicle car_player_1 = new Vehicle("Car", 0, 80, 0, show_car_player_1, Brushes.Red, 500);
+            car_player_1.ON_ROAD = true;
+            Vehicle car_player_2 = new Vehicle("Car", 0, 80, 0, show_car_player_2, Brushes.Blue, 500);
+            car_player_2.ON_ROAD = true;
         }
 
         private void Settings_Click(object sender, RoutedEventArgs e)
@@ -156,8 +161,6 @@ namespace Need_more_Speed
             change_car_hidden();
             change_track_hidden();
             list_of_best.Visibility = Visibility.Hidden;
-
-            Write_app_storage("TOP1", "Test");
         }
 
         public void time_list_after_game()
@@ -190,6 +193,28 @@ namespace Need_more_Speed
                     time = new TimeSpan(0, 0, 0, 0, Convert.ToInt16(times_player_1[counter]));
                 }
                 time_list_player_1.Items.Add((counter + 1).ToString() + "  " + time.Minutes.ToString() + ":" + time.Seconds.ToString() + ":" + time.Milliseconds.ToString());
+
+                for (int counter_ = 1; counter_ < 10; counter_++)
+                {
+                    int result;
+                    int.TryParse(Read_app_data("Minutes_TOP_" + counter_.ToString() + "_" + choseed_map.ToString()), out result);
+                    if ((result > time.Minutes) || (result == 0))
+                    {
+                        int.TryParse(Read_app_data("Secondes_TOP_" + counter_.ToString() + "_" + choseed_map.ToString()), out result);
+                        if ((result > time.Seconds) || (result == 0))
+                        {
+                            int.TryParse(Read_app_data("Millisecondes_TOP_" + counter_.ToString() + "_" + choseed_map.ToString()), out result);
+                            if ((result > time.Seconds) || (result == 0))
+                            {
+                                Name_box name_box = new Name_box();
+                                name_box.Show();
+                            }
+                        }
+                    }
+                }
+                                    
+
+
             }
             for (int counter = 0; counter < Anz_Rounds; counter++)
             {
@@ -268,13 +293,19 @@ namespace Need_more_Speed
 
         private void Next_left_Click(object sender, RoutedEventArgs e)
         {
-            Choseed_map--;
+            if(Choseed_map > 0)
+            {
+                Choseed_map--;
+            }
             draw_tracks();
         }
 
         private void Next_right_Click(object sender, RoutedEventArgs e)
         {
-            Choseed_map++;
+            if (Choseed_map < 1)
+            {
+                Choseed_map++;
+            }
             draw_tracks();
         }
 
@@ -285,22 +316,22 @@ namespace Need_more_Speed
 
         private void Next_left_player_1_Click(object sender, RoutedEventArgs e)
         {
-
+            MessageBox.Show("Um dieses Feature zu nutzten, kaufen Sie bitte die Vollversion", "Lizenzproblem", MessageBoxButton.OK, MessageBoxImage.Warning);
         }
 
         private void Next_right_player_2_Click(object sender, RoutedEventArgs e)
         {
-
+            MessageBox.Show("Um dieses Feature zu nutzten, kaufen Sie bitte die Vollversion", "Lizenzproblem", MessageBoxButton.OK, MessageBoxImage.Warning);
         }
 
         private void Next_right_player_1_Click(object sender, RoutedEventArgs e)
         {
-
+            MessageBox.Show("Um dieses Feature zu nutzten, kaufen Sie bitte die Vollversion", "Lizenzproblem", MessageBoxButton.OK, MessageBoxImage.Warning);
         }
 
         private void Next_left_player_2_Click(object sender, RoutedEventArgs e)
         {
-
+            MessageBox.Show("Um dieses Feature zu nutzten, kaufen Sie bitte die Vollversion", "Lizenzproblem", MessageBoxButton.OK, MessageBoxImage.Warning);
         }
 
         private void Menue_screen_Closing(object sender, System.ComponentModel.CancelEventArgs e)
@@ -352,6 +383,7 @@ namespace Need_more_Speed
                     time = new TimeSpan(0, 0, 0, 0, Convert.ToInt16(times_player_1[counter]));
                 }
                 time_list_player_1.Items.Add((counter + 1).ToString() + "  " + time.Minutes.ToString() + ":" + time.Seconds.ToString() + ":" + time.Milliseconds.ToString());
+                //if(time.Minutes > Convert.ToUInt16(Read_app_data("")))
             }
             for (int counter = 0; counter < Anz_Rounds; counter++)
             {
@@ -376,12 +408,14 @@ namespace Need_more_Speed
 
             time_list_Top_10.Visibility = Visibility.Visible;
 
+            time_list_Top_10.Items.Clear();
+
             Label_left.Text = "TOP 10";
             Label_right.Text = "TOP 10";
 
-            for(int counter = 1; counter >= 10; counter++)
+            for(int counter = 1; counter <= 10; counter++)
             {
-                time_list_Top_10.Items.Add(counter.ToString() + " " + Read_app_data("Name_TOP_" + counter.ToString()) + " " + Read_app_data("Minutes_TOP_" + counter.ToString()) + ":" + Read_app_data("Seconds_TOP_" + counter.ToString()) + ":" + Read_app_data("Millisecondes_TOP_" + counter.ToString()));
+                time_list_Top_10.Items.Add(counter.ToString() + " " + Read_app_data("Name_TOP_" + counter.ToString() + "_" + choseed_map.ToString()) + " " + Read_app_data("Minutes_TOP_" + counter.ToString() + "_" + choseed_map.ToString()) + ":" + Read_app_data("Secondes_TOP_" + counter.ToString() + "_" + choseed_map.ToString()) + ":" + Read_app_data("Millisecondes_TOP_" + counter.ToString() + "_" + choseed_map.ToString()));
             }
             
         }

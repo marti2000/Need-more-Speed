@@ -31,7 +31,7 @@ namespace Need_more_Speed
         
 
         private Canvas racingtrack;
-        private TextBlock Speed_tacho;
+        //private TextBlock Speed_tacho;
         Canvas car = new Canvas();
 
         Dictionary<Point, bool> checked_checkpoints = new Dictionary<Point, bool>();
@@ -63,81 +63,89 @@ namespace Need_more_Speed
 
         
 
-        public Vehicle(string type, double compare_to_player, double start_position_x, double start_position_y ,Canvas myCanvas, TextBlock _Speed ,Brush color)
+        public Vehicle(string type, double compare_to_player, double start_position_x, double start_position_y ,Canvas myCanvas/*, TextBlock _Speed*/ ,Brush color, double grid)
         {
+            double size_faktor = 0.01 * grid;
+
             position_x = start_position_x;
             position_y = start_position_y;
 
             this.compare_to_player = compare_to_player;
 
-            Speed_tacho = _Speed;
+            //Speed_tacho = _Speed;
 
             racingtrack = myCanvas;
 
             //System.Drawing.Rectangl.Union
 
-            Rectangle Body = new Rectangle();
-            
 
-            Body.Height = 10;
-            Body.Width = 20;
+            Rectangle Body = new Rectangle();
+
+            Body.Height = 10 * size_faktor;
+            Body.Width = 20 * size_faktor;
             Body.Stroke = color;//Brushes.Red;
             Body.Fill = color;//Brushes.Red;
-            Canvas.SetTop(Body, 3);
-            Canvas.SetLeft(Body, 0);
+            Canvas.SetTop(Body, 3 * size_faktor);
+            Canvas.SetLeft(Body, 0 * size_faktor);
+
 
             Rectangle wheels_front = new Rectangle();
 
-            wheels_front.Height = 16;
-            wheels_front.Width = 4;
+            wheels_front.Height = 16 * size_faktor;
+            wheels_front.Width = 4 * size_faktor;
             wheels_front.Stroke = Brushes.Black;//Brushes.Red;
             wheels_front.Fill = Brushes.Black;//Brushes.Red;
-            Canvas.SetTop(wheels_front, 0);
-            Canvas.SetLeft(wheels_front, 3);
+            Canvas.SetTop(wheels_front, 0 * size_faktor);
+            Canvas.SetLeft(wheels_front,3 * size_faktor);
+
 
             Rectangle wheels_behinde = new Rectangle();
 
-            wheels_behinde.Height = 16;
-            wheels_behinde.Width = 4;
+            wheels_behinde.Height = 16 * size_faktor;
+            wheels_behinde.Width = 4 * size_faktor;
             wheels_behinde.Stroke = Brushes.Black;//Brushes.Red;
             wheels_behinde.Fill = Brushes.Black;//Brushes.Red;
-            Canvas.SetTop(wheels_behinde, 0);
-            Canvas.SetLeft(wheels_behinde, 13);
+            Canvas.SetTop(wheels_behinde, 0 * size_faktor);
+            Canvas.SetLeft(wheels_behinde, 13 * size_faktor);
+
 
             Rectangle spoiler = new Rectangle();
 
-            spoiler.Height = 16;
-            spoiler.Width = 3;
+            spoiler.Height = 16 * size_faktor;
+            spoiler.Width = 3 * size_faktor;
             spoiler.Stroke = color;//Brushes.Red;
             spoiler.Fill = color;//Brushes.Red;
-            Canvas.SetTop(spoiler, 0);
-            Canvas.SetLeft(spoiler, 22);
+            Canvas.SetTop(spoiler, 0 * size_faktor);
+            Canvas.SetLeft(spoiler, 22 * size_faktor);
+
 
             Rectangle spoiler_holder_right = new Rectangle();
 
-            spoiler_holder_right.Height = 3;
-            spoiler_holder_right.Width = 3;
+            spoiler_holder_right.Height = 3 * size_faktor;
+            spoiler_holder_right.Width = 3 * size_faktor;
             spoiler_holder_right.Stroke = color;//Brushes.Red;
             spoiler_holder_right.Fill = color;//Brushes.Red;
-            Canvas.SetTop(spoiler_holder_right, 4);
-            Canvas.SetLeft(spoiler_holder_right, 20);
+            Canvas.SetTop(spoiler_holder_right, 4 * size_faktor);
+            Canvas.SetLeft(spoiler_holder_right, 20 * size_faktor);
+
 
             Rectangle spoiler_holder_left = new Rectangle();
 
-            spoiler_holder_left.Height = 3;
-            spoiler_holder_left.Width = 3;
+            spoiler_holder_left.Height = 3 * size_faktor;
+            spoiler_holder_left.Width = 3 * size_faktor;
             spoiler_holder_left.Stroke = color;//Brushes.Red;
             spoiler_holder_left.Fill = color;//Brushes.Red;
-            Canvas.SetTop(spoiler_holder_left, 9);
-            Canvas.SetLeft(spoiler_holder_left, 20);
+            Canvas.SetTop(spoiler_holder_left, 9 * size_faktor);
+            Canvas.SetLeft(spoiler_holder_left, 20 * size_faktor);
+
 
             Ellipse Driver = new Ellipse();
-            Driver.Height = 8;
-            Driver.Width = 8;
+            Driver.Height = 8 * size_faktor;
+            Driver.Width = 8 * size_faktor;
             Driver.Stroke = Brushes.DimGray;
             Driver.Fill = Brushes.DimGray;
-            Canvas.SetTop(Driver, 4);
-            Canvas.SetLeft(Driver, 6);
+            Canvas.SetTop(Driver, 4 * size_faktor);
+            Canvas.SetLeft(Driver, 6 * size_faktor);
 
             car.Children.Add(wheels_front);
             car.Children.Add(wheels_behinde);
@@ -219,7 +227,7 @@ namespace Need_more_Speed
             }
 
 
-            Speed_tacho.Text = ((speed*-1)*2).ToString();
+            //Speed_tacho.Text = ((speed*-1)*2).ToString();
         }
 
 
