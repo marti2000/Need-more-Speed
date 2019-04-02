@@ -212,11 +212,29 @@ namespace Need_more_Speed
 
         private void rebound()
         {
-            if(position_x >= 1250)
+            if (position_y <= 0)
             {
-                speed = 0.5*speed;
-                position_x = position_x - 10;
+                Speed = Math.Truncate(Speed * 0.5);
+                position_y = position_y + 10;
+                // rotation = ;
+            }
+            else if (position_y >= 705)
+            {
+                Speed = Math.Truncate(Speed * 0.5);
+                position_y = position_y - 10;
                // rotation = ;
+            }
+            else if (position_x <= 0)
+            {
+                Speed = Math.Truncate(Speed * 0.5);
+                position_x = position_x + 10;
+                // rotation = ;
+            }
+            else if (position_x >= 1370)
+            {
+                Speed = Math.Truncate(Speed * 0.5);
+                position_x = position_x - 10;
+                // rotation = ;
             }
 
         }
@@ -225,7 +243,20 @@ namespace Need_more_Speed
         {
             if(oN_ROAD == false)
             {
-                Speed = Math.Truncate(Speed * 0.9999)+5;
+                Speed = Math.Truncate(Speed * 0.999);
+                if (speed >= -5)
+                {
+                    if (speed <= 5)
+                    {
+                        speed = 5;
+                    }
+                    else
+                    {
+                        speed = -5;
+                    }
+
+                }
+                
             }
             else
             {
