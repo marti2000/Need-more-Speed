@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,6 +25,8 @@ namespace Need_more_Speed
         private int choseed_map = 0;
 
         private double Anz_Rounds = 3;
+
+        private string path = "/Need more Speed/GameFiles/Top_10_times";
 
         private double[] times_player_1 = new double[99];
         private double[] times_player_2 = new double[99];
@@ -153,6 +156,8 @@ namespace Need_more_Speed
             change_car_hidden();
             change_track_hidden();
             list_of_best.Visibility = Visibility.Hidden;
+
+            Write_app_storage("TOP1", "Test");
         }
 
         public void time_list_after_game()
@@ -373,6 +378,47 @@ namespace Need_more_Speed
 
             Label_left.Text = "TOP 10";
             Label_right.Text = "TOP 10";
+
+            for(int counter = 1; counter >= 10; counter++)
+            {
+                time_list_Top_10.Items.Add(counter.ToString() + " " + Read_app_data("Name_TOP_" + counter.ToString()) + " " + Read_app_data("Minutes_TOP_" + counter.ToString()) + ":" + Read_app_data("Seconds_TOP_" + counter.ToString()) + ":" + Read_app_data("Millisecondes_TOP_" + counter.ToString()));
+            }
+            
+        }
+
+        private void Write_app_storage(string Key, string Data)
+        {
+            if (!Directory.Exists(path))
+            {
+                Directory.CreateDirectory(path);
+            }
+
+            StreamWriter writer = new StreamWriter(path + "/" + Key + ".nms");
+
+            writer.Write(Data);
+
+            writer.Close();
+        }
+
+        private string Read_app_data(string Key)
+        {
+            string saved_data;
+
+            if (File.Exists(path + "/" + Key + ".nms"))
+            {
+                StreamReader reader = new StreamReader(path + "/" + Key + ".nms");
+
+                saved_data = reader.ReadToEnd();
+
+                reader.Close();
+
+                return saved_data;
+
+            }
+            else
+            {
+                return "";
+            }
         }
     }
 }
