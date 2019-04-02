@@ -256,18 +256,22 @@ namespace Need_more_Speed
         {
             if(oN_ROAD == false)
             {
-                Speed = Math.Truncate(Speed * 0.999);
-                if (speed >= -5)
+                
+                if ((speed >= -5) && (speed <= 5))
                 {
-                    if (speed <= 5)
+                    if (speed > 0)
                     {
-                        speed = 5;
+                        speed = -5;
                     }
-                    else
+                    else if (speed < 0)
                     {
                         speed = -5;
                     }
 
+                }
+                else
+                {
+                    Speed = Math.Truncate(Speed * 0.999);
                 }
                 
             }
