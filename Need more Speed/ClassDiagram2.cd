@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Need_more_Speed.App" Collapsed="true">
+    <Position X="3" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>App.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Need_more_Speed.Draw_road" Collapsed="true">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BCAQAAAAAAAAAAIAIgAAAAAAAAAAAQAgAAAAIQAAAAA=</HashCode>
+      <FileName>Draw_road.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Need_more_Speed.instrument_panel" Collapsed="true">
+    <Position X="4.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>instrument_panel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Need_more_Speed.MainWindow" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="6.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAgAAADAEAAAAABAAAAAAAAAQAAAAAABAAAAACIA=</HashCode>
+      <FileName>MainWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Need_more_Speed.manage_Rounds" Collapsed="true">
+    <Position X="8.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAADQCAAAAAAAAAAAAAAAAAEAAAAACAAIAgAA=</HashCode>
+      <FileName>manage_Rounds.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Need_more_Speed.Maps" Collapsed="true">
+    <Position X="0.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BCAAAQwAAACCAQgBAAACAAAAAAAAAAANAAAAAEAAGCQ=</HashCode>
+      <FileName>Maps.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Need_more_Speed.Menue" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="3" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEBRCIAiQAggIAgEIAHLAgCIIAACgAEDBAAiIAAAAAA=</HashCode>
+      <FileName>Menue.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Need_more_Speed.Name_box" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="4.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAAAAAAAAAAAAEAAAAAAAAACAgAAAgAAAAAAGAA=</HashCode>
+      <FileName>Name_box.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Need_more_Speed.Starter" Collapsed="true">
+    <Position X="3" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAgACATAABAEAAAAQAQAAAAAAAEAAEACAAAAAiAI=</HashCode>
+      <FileName>Starter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Need_more_Speed.Vehicle" Collapsed="true">
+    <Position X="4.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAFABCIoQQBCKIMBRICAAAAhgExZAUBMCwSQAgIAmAI=</HashCode>
+      <FileName>Vehicle.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Need_more_Speed.Properties.Resources" Collapsed="true">
+    <Position X="6.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAABEAAAAQAAAAAAAAAAAAAAAIA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Need_more_Speed.Properties.Settings" Collapsed="true">
+    <Position X="8.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAIAAAAAABAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

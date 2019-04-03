@@ -8,7 +8,7 @@ using System.Windows.Controls;
 
 namespace Need_more_Speed
 {
-    class Starter
+    public class Starter
     {
         private bool first_time = false;
         private bool ready = false;

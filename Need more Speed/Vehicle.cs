@@ -11,7 +11,7 @@ using System.Windows;
 
 namespace Need_more_Speed
 {
-    class Vehicle
+    public class Vehicle
     {
         private double compare_to_player;
         private double position_x;
@@ -30,7 +30,7 @@ namespace Need_more_Speed
         private bool oN_ROAD;
         private bool on_finish;
         private bool on_checkpoint;
-        
+
 
         private Canvas racingtrack;
         Canvas car = new Canvas();
@@ -62,7 +62,7 @@ namespace Need_more_Speed
 
         int zaehler = 0;
 
-        
+
 
         public Vehicle(string type, double compare_to_player, double start_position_x, double start_position_y, Canvas myCanvas, Brush color, double grid)
         {
@@ -92,7 +92,7 @@ namespace Need_more_Speed
             Speed_higher_timer.Interval = new TimeSpan(0, 0, 0, 0, speed_timer_up_value);
             Speed_higher_timer.Start();
         }
-        
+
         public void redraw()
         {
             racingtrack.Children.Add(car);
@@ -124,7 +124,7 @@ namespace Need_more_Speed
 
         private void update_speed()
         {
-            
+
             if ((up == true) && (speed > -100))
             {
                 speed--;
@@ -134,11 +134,11 @@ namespace Need_more_Speed
                 }
             }
             else if ((down == true) && (speed < 20))
-            {   
+            {
                 speed++;
                 if (speed < 0)
                 {
-                    speed += acceleration_value *2 ;
+                    speed += acceleration_value * 2;
                 }
             }
             else if (zaehler >= 2)
@@ -185,9 +185,9 @@ namespace Need_more_Speed
 
         }
 
-        void OFF_ROAD_SLOW ()
+        void OFF_ROAD_SLOW()
         {
-            if(oN_ROAD == false)
+            if (oN_ROAD == false)
             {
                 if ((speed >= -5) && (speed <= 5))
                 {
@@ -212,7 +212,7 @@ namespace Need_more_Speed
             RotateTransform ro_rotation = new RotateTransform(0);
 
             if ((speed < -speed_to_turn) || (speed > speed_to_turn))
-            {   
+            {
                 // Steuerung
                 if (left == true)
                 {
@@ -250,7 +250,7 @@ namespace Need_more_Speed
 
         public void checked_checkpoint(double x_position, double y_position, double grid)
         {
-            checked_checkpoints[new Point(Math.Truncate(x_position / grid), Math.Truncate(y_position / grid))] = true;    
+            checked_checkpoints[new Point(Math.Truncate(x_position / grid), Math.Truncate(y_position / grid))] = true;
         }
 
         public void clear_checkpoint()
@@ -258,7 +258,7 @@ namespace Need_more_Speed
             foreach (var point_in_dictionary in checked_checkpoints.Keys.ToArray())
             {
                 checked_checkpoints[point_in_dictionary] = false;
-            } 
+            }
         }
 
         public bool all_checkpoints()
@@ -266,7 +266,7 @@ namespace Need_more_Speed
             int unchecked_checkpoints_counter = 0;
             foreach (var point_in_dictionary in checked_checkpoints)
             {
-                if(checked_checkpoints[point_in_dictionary.Key] == false)
+                if (checked_checkpoints[point_in_dictionary.Key] == false)
                 {
                     unchecked_checkpoints_counter++;
                 }
@@ -360,6 +360,6 @@ namespace Need_more_Speed
             car.Children.Add(spoiler_holder_left);
             car.Children.Add(Driver);
         }
-    } 
+    }
 }
 
