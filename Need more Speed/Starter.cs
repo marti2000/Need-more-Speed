@@ -11,7 +11,8 @@ namespace Need_more_Speed
     class Starter
     {
         private bool first_time = false;
-        private bool ready = false; 
+        private bool ready = false;
+        private bool in_start_sequenze = false;
 
         private double Grid;
 
@@ -26,7 +27,7 @@ namespace Need_more_Speed
         Canvas Racingtrack;
         TextBlock Countdown;
 
-        public Starter(Menue menue, Vehicle car_player_1, Vehicle car_player_2, Maps map, MediaElement backgroundsound, Canvas racingtrack/*, TextBlock countdown*/, double grid)
+        public Starter(Menue menue, Vehicle car_player_1, Vehicle car_player_2, Maps map, MediaElement backgroundsound, Canvas racingtrack, double grid)
         {
             Menue = menue;
             Car_player_1 = car_player_1;
@@ -35,7 +36,7 @@ namespace Need_more_Speed
             Backgroundsound = backgroundsound;
             Racingtrack = racingtrack;
             Grid = grid;
-            //Countdown = countdown;
+
             Countdown = new TextBlock();
 
             Rounds_player_1 = new TextBlock();
@@ -50,9 +51,17 @@ namespace Need_more_Speed
         public bool Ready { get => ready; set => ready = value; }
         public TextBlock Rounds_player_1 { get => rounds_player_1; set => rounds_player_1 = value; }
         public TextBlock Rounds_player_2 { get => rounds_player_2; set => rounds_player_2 = value; }
+        public bool In_start_sequenze { get => in_start_sequenze; set => in_start_sequenze = value; }
 
         public async void Start()
         {
+            ready = false;
+
+            in_start_sequenze = true;
+
+            Car_player_1.reset_position();
+            Car_player_2.reset_position();
+
             Countdown.Visibility = System.Windows.Visibility.Visible;
             Canvas.SetLeft(Countdown, Grid * 5);
             Canvas.SetTop(Countdown, Grid * 3);
@@ -83,6 +92,8 @@ namespace Need_more_Speed
                 await Task.Delay(30);
                 Countdown.FontSize = counter;
             }
+
+            in_start_sequenze = false;
 
             Ready = true;
 

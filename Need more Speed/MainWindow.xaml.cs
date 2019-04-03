@@ -89,12 +89,6 @@ namespace Need_more_Speed
 
         }
 
-        /*
-         * 
-         * TODO Move the Key events (KeyDown and KeyUp) in a other Class
-         * 
-         */
-
         private void Window_KeyDown(object sender, KeyEventArgs e)
         {
             if(Start.Ready)
@@ -187,11 +181,6 @@ namespace Need_more_Speed
             //endless loop of backgroundmusic
             Backgroundsound.Position = new TimeSpan(0);
             Backgroundsound.Play();
-        }
-
-        private void save_time(double time)
-        {
-            
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)

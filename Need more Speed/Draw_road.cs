@@ -158,14 +158,6 @@ namespace Need_more_Speed
                 Canvas.SetLeft(finish_line_black[Convert.ToInt16(zaehler)], x_offset + (zaehler * (grid / 10)));
                 Canvas.SetLeft(finish_line_white[Convert.ToInt16(zaehler)], x_offset + (zaehler * (grid / 10)));
 
-                /*
-                finish_line_black[Convert.ToInt16(zaehler)].X1 = x_offset + grid - Convert.ToInt16(x_curve);
-                finish_line_black[Convert.ToInt16(zaehler)].X2 = x_offset + grid - Convert.ToInt16(x_curve);
-                finish_line_black[Convert.ToInt16(zaehler)].Y1 = y_offset;
-                finish_line_black[Convert.ToInt16(zaehler)].Y2 = y_offset - Convert.ToInt16(y_curve); ;
-                */
-
-                //finish_line_black[Convert.ToInt16(x_curve)].StrokeThickness = 2;
                 myCanvas.Children.Add(finish_line_black[Convert.ToInt16(zaehler)]);
                 myCanvas.Children.Add(finish_line_white[Convert.ToInt16(zaehler)]);
             }

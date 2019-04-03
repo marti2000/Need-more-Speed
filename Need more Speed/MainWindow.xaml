@@ -13,17 +13,7 @@
         Closing="Window_Closing"
         >
     <Grid>
-        <Canvas Name="racingtrack" Background="Green">
-            <!--<Rectangle Name="road_up"  Height="400" Width="50" Fill="Gray" Canvas.Left="25" Canvas.Top="25" />
-            <Rectangle Name="road"     Width="400" Height="50" Fill="Gray" Canvas.Left="10" Canvas.Top="100"/>-->
-            <!--
-            <TextBlock Name="Countdown" FontSize="100" Foreground="Red" />-->
-        </Canvas>
-        <MediaElement  Source="C:\Users\Marcel Vögeli\source\repos\marti2000\Need-more-Speed\Loop_Version.mp3" Name="Backgroundsound" MediaEnded="Backgroundsound_MediaEnded"/>
-
-        <TextBlock Name="Speed" FontSize="30"></TextBlock>
-
-        
-
+        <Canvas Name="racingtrack" Background="Green"/>
+        <MediaElement  Source="C:\Users\i00203467\Source\Repos\marti2000\Need-more-Speed\Loop_Version.mp3" Name="Backgroundsound" MediaEnded="Backgroundsound_MediaEnded"/>
     </Grid>
 </Window>

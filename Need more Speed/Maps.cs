@@ -167,7 +167,6 @@ namespace Need_more_Speed
             {
                 for (double Y = 0; Y < Screen_Height / grid; Y++)
                 {
-                    //draw_road(X, Y, gird);
                     string road_type;
                     road_planner.TryGetValue(new Point(X , Y ), out road_type);
                     if ((road_type == Straight_horizontal_checkpoint) || (road_type == Straight_vertical_checkpoint))
@@ -186,23 +185,17 @@ namespace Need_more_Speed
                     {
                         road_planner.Clear();
 
-                        //Draw_road Road = new Draw_road(racingtrack);
-
                         add_road(2, 1, Straight_horizontal);
                         add_road(3, 1, Straight_horizontal);
-                        //add_road(5, 2, Straight_horizontal);
                         add_road(7, 1, Straight_horizontal);
                         add_road(8, 1, Straight_horizontal);
                         add_road(9, 1, Straight_horizontal);
                         add_road(10, 1, Straight_horizontal);
                         add_road(10, 5, Straight_horizontal);
-                        //add_road(8, 3, Straight_horizontal);
                         add_road(6, 5, Straight_horizontal);
-                        //add_road(4, 4, Straight_horizontal);
                         add_road(2, 5, Straight_horizontal);
 
                         add_road(11, 3, Straight_vertical);
-                        //add_road(11, 3, Straight_vertical);
                         add_road(11, 4, Straight_vertical);
                         add_road(9, 4, Straight_vertical);
                         add_road(7, 4, Straight_vertical);
@@ -244,55 +237,6 @@ namespace Need_more_Speed
                                 draw_road(X, Y, gird);
                             }
                         }
-
-                       
-
-
-                        /*
-                        straight_horizontal(2, 1, gird);
-                        straight_horizontal(3, 1, gird);
-                        straight_horizontal(5, 2, gird);
-                        straight_horizontal(7, 1, gird);
-                        straight_horizontal(8, 1, gird);
-                        straight_horizontal(9, 1, gird);
-                        straight_horizontal(10, 1, gird);
-                        straight_horizontal(10, 5, gird);
-                        straight_horizontal(8, 3, gird);
-                        straight_horizontal(6, 5, gird);
-                        straight_horizontal(4, 4, gird);
-                        straight_horizontal(2, 5, gird);
-
-                        straight_vertical(11, 2, gird);
-                        straight_vertical(11, 3, gird);
-                        straight_vertical(11, 4, gird);
-                        straight_vertical(9, 4, gird);
-                        straight_vertical(7, 4, gird);
-                        straight_vertical(1, 4, gird);
-                        //straight_vertical(1, 3, gird);
-                        straight_vertical_finish(1, 3, gird);
-                        straight_vertical(1, 2, gird);
-
-                        curve_0Degree(1, 1, gird);
-                        curve_0Degree(6, 1, gird);
-                        curve_0Degree(7, 3, gird);
-                        curve_0Degree(3, 4, gird);
-
-                        curve_90Degree(4, 1, gird);
-                        curve_90Degree(11, 1, gird);
-                        curve_90Degree(9, 3, gird);
-                        curve_90Degree(5, 4, gird);
-
-                        curve_180Degree(6, 2, gird);
-                        curve_180Degree(11, 5, gird);
-                        curve_180Degree(7, 5, gird);
-                        curve_180Degree(3, 5, gird);
-
-                        curve_270Degree(4, 2, gird);
-                        curve_270Degree(9, 5, gird);
-                        curve_270Degree(5, 5, gird);
-                        curve_270Degree(1, 5, gird);
-                        */
-
                         break;
                     }
                 case 1:
@@ -314,7 +258,6 @@ namespace Need_more_Speed
                         add_road(8, 1, Straight_horizontal);
                         add_road(9, 1, Straight_horizontal);
                         add_road(10, 1, Straight_horizontal);
-                        //add_road(11, 1, Straight_horizontal);
 
                         add_road(11, 1, Curve_90Degree);
 
@@ -324,7 +267,6 @@ namespace Need_more_Speed
 
                         add_road(11, 5, Curve_180Degree);
 
-                        //add_road(11, 5, Straight_horizontal);
                         add_road(10, 5, Straight_horizontal);
                         add_road(9, 5, Straight_horizontal);
                         add_road(8, 5, Straight_horizontal);

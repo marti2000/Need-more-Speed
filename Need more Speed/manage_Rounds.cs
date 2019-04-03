@@ -58,29 +58,22 @@ namespace Need_more_Speed
             Rounds.Text = "Spieler " + Car.Compare_to_player.ToString() + "\n" + (Car.Round + 1).ToString() + "/" + Menue.Anz_rounds.ToString();
             Rounds.FontSize = 40;
 
-
-
             round_timer = new System.Diagnostics.Stopwatch();
-
-            /*
-             * 
-             * 
-             *  round_timer.Start(); // Start Zeitlauf
-             *  // Algorithmus
-             *  round_timer.Stop(); // Ende Zeitlauf
-             *  TimeSpan timeSpan = round_timer.Elapsed;
-             *  Console.WriteLine("Time: {0}h {1}m {2}s {3}ms", timeSpan.Hours, timeSpan.Minutes, timeSpan.Seconds, timeSpan.Milliseconds);
-             * 
-             * 
-             */
-
-
         }
 
         private async void wait_for_end_game()
         {
-            await Task.Delay(2000);
+
+            await Task.Delay(5000);
             Start.Ready = false;
+            round_timer.Stop();
+            Car.Speed = 0;
+            Car.Up = false;
+            Car.Down = false;
+            Car.Right = false;
+            Car.Left = false;
+            Car.Round = 0;
+            
             Menue.Show();
         }
 
@@ -121,12 +114,10 @@ namespace Need_more_Speed
             //Check if the car is on the Road
             if (Map.car_on_road(Car.Position_x, Car.Position_y, Grid, Car.Rotation) == true)
             {
-                //Speed.Text = "ON Road";
                 Car.ON_ROAD = true;
             }
             else
             {
-                //Speed.Text = "OFF Road";
                 Car.ON_ROAD = false;
             }
 
@@ -158,6 +149,11 @@ namespace Need_more_Speed
             else
             {
                 Car.On_finish = false;
+            }
+
+            if(Start.In_start_sequenze)
+            {
+                round_timer.Reset();
             }
         }
     }

@@ -24,10 +24,10 @@
             <ColumnDefinition Width="2*"/>
         </Grid.ColumnDefinitions>
 
-        <TextBlock Text="Bitte Namen eingeben:" Grid.Column="1" Grid.Row="1" TextAlignment="Center" VerticalAlignment="Bottom"/>
+        <TextBlock Name="Label" Grid.Column="1" Grid.Row="1" TextAlignment="Center" VerticalAlignment="Bottom"/>
 
         <TextBox Name="Name" Grid.Column="1" Grid.Row="3" VerticalAlignment="Top"/>
 
-        <Button Name="OK" Content="OK" Grid.Row="3" Grid.Column="3" />
+        <Button Name="OK" Click="OK_Click" Content="OK" Grid.Row="3" Grid.Column="3" />
     </Grid>
 </Window>
