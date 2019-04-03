@@ -11,7 +11,7 @@ using System.Windows;
 
 namespace Need_more_Speed
 {
-    public class Vehicle
+    internal class Vehicle
     {
         private double compare_to_player;
         private double position_x;
