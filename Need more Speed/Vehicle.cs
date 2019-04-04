@@ -167,7 +167,7 @@ namespace Need_more_Speed
                 Speed = Math.Truncate(Speed * 0.5);
                 position_y = position_y + 10;
             }
-            else if (position_y >= 705)
+            else if (position_y >= System.Windows.SystemParameters.PrimaryScreenHeight)
             {
                 Speed = Math.Truncate(Speed * 0.5);
                 position_y = position_y - 10;
@@ -177,7 +177,7 @@ namespace Need_more_Speed
                 Speed = Math.Truncate(Speed * 0.5);
                 position_x = position_x + 10;
             }
-            else if (position_x >= 1370)
+            else if (position_x >= System.Windows.SystemParameters.PrimaryScreenWidth)
             {
                 Speed = Math.Truncate(Speed * 0.5);
                 position_x = position_x - 10;
