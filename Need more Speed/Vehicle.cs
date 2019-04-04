@@ -42,7 +42,7 @@ namespace Need_more_Speed
 
         private const int speed_timer_up_value = 100;
 
-        private const double speed_to_turn = 5;
+        private const double speed_to_turn = 4;
 
         public double Compare_to_player { get => compare_to_player; set => compare_to_player = value; }
         public double Position_x { get => position_x; set => position_x = value; }
@@ -193,7 +193,7 @@ namespace Need_more_Speed
                 {
                     if (speed > 0)
                     {
-                        speed = -5;
+                        speed = 5;
                     }
                     else if (speed < 0)
                     {

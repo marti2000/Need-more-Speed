@@ -64,7 +64,7 @@ namespace Need_more_Speed
         private async void wait_for_end_game()
         {
 
-            await Task.Delay(5000);
+            await Task.Delay(20000);
             Start.Ready = false;
             round_timer.Stop();
             Car.Speed = 0;
@@ -143,6 +143,15 @@ namespace Need_more_Speed
                     Car.Round++;
                     Car.On_finish = true;
                     Car.clear_checkpoint();
+
+                    if (Car.Compare_to_player == 1)
+                    {
+                        Menue.Times_player_1[Convert.ToInt16(Car.Round)] = Car.Round_time[Convert.ToInt16(Car.Round)];
+                    }
+                    else if (Car.Compare_to_player == 2)
+                    {
+                        Menue.Times_player_2[Convert.ToInt16(Car.Round)] = Car.Round_time[Convert.ToInt16(Car.Round)];
+                    }
                 }
 
             }

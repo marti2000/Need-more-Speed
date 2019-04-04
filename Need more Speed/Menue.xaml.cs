@@ -221,7 +221,7 @@ namespace Need_more_Speed
                 {
                     int result;
                     int.TryParse(Read_app_data("Minutes_TOP_" + counter_.ToString() + "_" + choseed_map.ToString()), out result);
-                    if (((result > time.Minutes) || (result == 0)) && (end_race_player_1))
+                    if (((result > time.Minutes)) && (end_race_player_1))
                     {
                         int.TryParse(Read_app_data("Secondes_TOP_" + counter_.ToString() + "_" + choseed_map.ToString()), out result);
                         if (((result > time.Seconds) || (result == 0)) && (end_race_player_1))
@@ -291,7 +291,7 @@ namespace Need_more_Speed
                 {
                     int result;
                     int.TryParse(Read_app_data("Minutes_TOP_" + counter_.ToString() + "_" + choseed_map.ToString()), out result);
-                    if (((result > time.Minutes) || (result == 0)) && (end_race_player_2))
+                    if (((result > time.Minutes) || (result == 0) ) && (end_race_player_2))
                     {
                         int.TryParse(Read_app_data("Secondes_TOP_" + counter_.ToString() + "_" + choseed_map.ToString()), out result);
                         if (((result > time.Seconds) || (result == 0)) && (end_race_player_2))
@@ -424,7 +424,7 @@ namespace Need_more_Speed
 
         private void Next_right_Click(object sender, RoutedEventArgs e)
         {
-            if (Choseed_map < 1)
+            if (Choseed_map < 2)
             {
                 Choseed_map++;
             }
@@ -498,11 +498,11 @@ namespace Need_more_Speed
 
                 if (counter > 0)
                 {
-                    time = new TimeSpan(0, 0, 0, 0, Convert.ToInt16(times_player_1[counter] - times_player_1[counter - 1]));
+                    time = new TimeSpan(0, 0, 0, 0, Convert.ToInt32(times_player_1[counter] - times_player_1[counter - 1]));
                 }
                 else
                 {
-                    time = new TimeSpan(0, 0, 0, 0, Convert.ToInt16(times_player_1[counter]));
+                    time = new TimeSpan(0, 0, 0, 0, Convert.ToInt32(times_player_1[counter]));
                 }
                 time_list_player_1.Items.Add((counter + 1).ToString() + "  " + time.Minutes.ToString() + ":" + time.Seconds.ToString() + ":" + time.Milliseconds.ToString());
             }

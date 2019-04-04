@@ -290,6 +290,76 @@ namespace Need_more_Speed
 
                         break;
                     }
+                case 2:
+                    {
+                        road_planner.Clear();
+
+                        add_road(1, 3, Straight_vertical_finish);
+
+                        add_road(1, 2, Straight_vertical);
+                        add_road(1, 1, Straight_vertical);
+                        add_road(1, 0, Curve_0Degree);
+                        add_road(2, 0, Straight_horizontal);
+                        add_road(3, 0, Straight_horizontal);
+                        add_road(4, 0, Straight_horizontal);
+                        add_road(5, 0, Straight_horizontal);
+                        add_road(6, 0, Straight_horizontal);
+                        add_road(7, 0, Straight_horizontal);
+                        add_road(8, 0, Straight_horizontal);
+                        add_road(9, 0, Straight_horizontal);
+                        add_road(10, 0, Straight_horizontal);
+                        add_road(11, 0, Straight_horizontal);
+                        add_road(12, 0, Curve_90Degree);
+                        add_road(12, 1, Straight_vertical_checkpoint);
+                        add_road(12, 2, Curve_180Degree);
+                        add_road(11, 2, Straight_horizontal);
+                        add_road(10, 2, Straight_horizontal);
+                        add_road(9, 2, Straight_horizontal);
+                        add_road(8, 2, Straight_horizontal);
+                        add_road(7, 2, Straight_horizontal);
+                        add_road(6, 2, Straight_horizontal);
+                        add_road(5, 2, Straight_horizontal);
+                        add_road(4, 2, Straight_horizontal);
+                        add_road(3, 2, Straight_horizontal);
+                        add_road(2, 2, Curve_0Degree);
+                        add_road(2, 3, Straight_vertical_checkpoint);
+                        add_road(2, 4, Curve_270Degree);
+                        add_road(3, 4, Straight_horizontal);
+                        add_road(4, 4, Straight_horizontal);
+                        add_road(5, 4, Straight_horizontal);
+                        add_road(6, 4, Straight_horizontal);
+                        add_road(7, 4, Straight_horizontal);
+                        add_road(8, 4, Straight_horizontal);
+                        add_road(9, 4, Straight_horizontal);
+                        add_road(10, 4, Straight_horizontal);
+                        add_road(11, 4, Straight_horizontal);
+                        add_road(12, 4, Curve_90Degree);
+                        add_road(12, 5, Straight_vertical_checkpoint);
+                        add_road(12, 6, Curve_180Degree);
+                        add_road(11, 6, Straight_horizontal);
+                        add_road(10, 6, Straight_horizontal);
+                        add_road(9, 6, Straight_horizontal);
+                        add_road(8, 6, Straight_horizontal);
+                        add_road(7, 6, Straight_horizontal);
+                        add_road(6, 6, Straight_horizontal);
+                        add_road(5, 6, Straight_horizontal);
+                        add_road(4, 6, Straight_horizontal);
+                        add_road(3, 6, Straight_horizontal);
+                        add_road(2, 6, Straight_horizontal);
+                        add_road(1, 6, Curve_270Degree);
+                        add_road(1, 5, Straight_vertical);
+                        add_road(1, 4, Straight_vertical);
+
+                        for (double X = 0; X < Screen_Width / gird; X++)
+                        {
+                            for (double Y = 0; Y < Screen_Height / gird; Y++)
+                            {
+                                draw_road(X, Y, gird);
+                            }
+                        }
+
+                        break;
+                    }
             }
         }
     }
