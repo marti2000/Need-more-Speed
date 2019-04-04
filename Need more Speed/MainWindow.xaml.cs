@@ -69,24 +69,8 @@ namespace Need_more_Speed
             //Creating the Overwatch for the Stuff around the Rounds
             rounds_player_1 = new manage_Rounds(car_player_1, Map, racingtrack, Start, menue ,Grid);
             rounds_player_2 = new manage_Rounds(car_player_2, Map, racingtrack, Start, menue, Grid);
-
-            
-
             
             menue.Starter = Start;
-
-
-
-            //Testline for develop the rebounce
-            Line line = new Line();
-            line.Stroke = Brushes.Gray;
-            line.StrokeThickness = 10;
-            line.X1 = 1250;
-            line.X2 = 1250;
-            line.Y1 = 0;
-            line.Y2 = 760;
-            racingtrack.Children.Add(line);
-
         }
 
         private void Window_KeyDown(object sender, KeyEventArgs e)
