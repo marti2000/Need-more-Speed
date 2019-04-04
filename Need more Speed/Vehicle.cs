@@ -38,11 +38,11 @@ namespace Need_more_Speed
         Dictionary<Point, bool> checked_checkpoints = new Dictionary<Point, bool>();
 
         private const double acceleration_value = 20;
-        private const double breaking_value = 10;
+        private const double breaking_value = 5;
 
         private const int speed_timer_up_value = 100;
 
-        private const double speed_to_turn = 1;
+        private const double speed_to_turn = 5;
 
         public double Compare_to_player { get => compare_to_player; set => compare_to_player = value; }
         public double Position_x { get => position_x; set => position_x = value; }
@@ -138,7 +138,7 @@ namespace Need_more_Speed
                 speed++;
                 if (speed < 0)
                 {
-                    speed += acceleration_value * 2;
+                    speed += breaking_value;
                 }
             }
             else if (zaehler >= 2)
