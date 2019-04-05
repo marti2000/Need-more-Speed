@@ -26,7 +26,7 @@
 
         <TextBlock Name="Label" Grid.Column="1" Grid.Row="1" TextAlignment="Center" VerticalAlignment="Bottom"/>
 
-        <TextBox Name="Name" Grid.Column="1" Grid.Row="3" VerticalAlignment="Top"/>
+        <TextBox Name="Name" Grid.Column="1" Grid.Row="3" VerticalAlignment="Top" KeyDown="Name_KeyDown"/>
 
         <Button Name="OK" Click="OK_Click" Content="OK" Grid.Row="3" Grid.Column="3" />
     </Grid>

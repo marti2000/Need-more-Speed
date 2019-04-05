@@ -23,6 +23,8 @@ namespace Need_more_Speed
         public Name_box()
         {
             InitializeComponent();
+
+            Name.Focus();
         }
 
         public bool value_ready { get => Value_ready; set => Value_ready = value; }
@@ -39,6 +41,16 @@ namespace Need_more_Speed
             Name_of_player = Name.Text;
 
             Value_ready = true;
+        }
+
+        private void Name_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.Key == Key.Enter)
+            {
+                Name_of_player = Name.Text;
+
+                Value_ready = true;
+            }
         }
     }
 

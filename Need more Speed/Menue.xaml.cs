@@ -206,29 +206,42 @@ namespace Need_more_Speed
                     time = new TimeSpan(0, 0, 0, 0, Convert.ToInt32(times_player_1[counter]));
                 }
 
-                if (time.Ticks == 0)
+                if (time.Ticks <= 0)
                 {
                     end_race_player_1 = false;
                 }
                 else
                 {
                     total_time_player_1 += time.Ticks;
+                    
                 }
 
-                time_list_player_1.Items.Add((counter + 1).ToString() + "  " + time.Minutes.ToString() + ":" + time.Seconds.ToString() + ":" + time.Milliseconds.ToString());
+                if(time.Ticks > 0)
+                {
+                    time_list_player_1.Items.Add((counter + 1).ToString() + "  " + time.Minutes.ToString() + ":" + time.Seconds.ToString() + ":" + time.Milliseconds.ToString());
+                }
 
                 for (int counter_ = 1; counter_ <= 10; counter_++)
                 {
                     int result;
-                    int.TryParse(Read_app_data("Minutes_TOP_" + counter_.ToString() + "_" + choseed_map.ToString()), out result);
-                    if (((result > time.Minutes)) && (end_race_player_1))
-                    {
-                        int.TryParse(Read_app_data("Secondes_TOP_" + counter_.ToString() + "_" + choseed_map.ToString()), out result);
-                        if (((result > time.Seconds) || (result == 0)) && (end_race_player_1))
-                        {
-                            int.TryParse(Read_app_data("Millisecondes_TOP_" + counter_.ToString() + "_" + choseed_map.ToString()), out result);
-                            if (((result > time.Seconds) || (result == 0)) && (end_race_player_1))
-                            {
+                    int result1;
+                    int result2;
+                    //int result3;
+                    int.TryParse(Read_app_data("Millisecondes_TOP_" + counter_.ToString() + "_" + choseed_map.ToString()), out result);
+                    int.TryParse(Read_app_data("Secondes_TOP_" + counter_.ToString() + "_" + choseed_map.ToString()), out result1);
+                    int.TryParse(Read_app_data("Minutes_TOP_" + counter_.ToString() + "_" + choseed_map.ToString()), out result2);
+
+                    /*
+                    result1 = result1 * 1000;
+                    result2 = result2 * 60 * 1000;
+                    result3 = result + result1 + result2;
+                    */
+
+                    TimeSpan old_best = new TimeSpan(0, 0, result2, result1, result);
+
+                    if(((time.Ticks < old_best.Ticks) || (old_best.Ticks == 0)) && (time.Ticks > 0))
+                    { 
+                    
                                 name_box = new Name_box();
                                 name_box.Show();
                                 name_box.set_player_and_place(1, counter_);
@@ -258,8 +271,8 @@ namespace Need_more_Speed
                                 name_box.Close();
                                 this.Show();
                                 counter_ = 11;
-                            }
-                        }
+                            /*}
+                        }*/
                     }
                 }
             }
@@ -276,30 +289,42 @@ namespace Need_more_Speed
                     time = new TimeSpan(0, 0, 0, 0, Convert.ToInt32(times_player_2[counter]));
                 }
 
-                if(time.Ticks == 0)
+                if(time.Ticks <= 0)
                 {
                     end_race_player_2 = false;
                 }
                 else
                 {
                     total_time_player_2 += time.Ticks;
+                    
                 }
 
-                time_list_player_2.Items.Add((counter + 1).ToString() + "  " + time.Minutes.ToString() + ":" + time.Seconds.ToString() + ":" + time.Milliseconds.ToString());
+                if(time.Ticks > 0)
+                {
+                    time_list_player_2.Items.Add((counter + 1).ToString() + "  " + time.Minutes.ToString() + ":" + time.Seconds.ToString() + ":" + time.Milliseconds.ToString());
+                }
 
                 for (int counter_ = 1; counter_ <= 10; counter_++)
                 {
                     int result;
-                    int.TryParse(Read_app_data("Minutes_TOP_" + counter_.ToString() + "_" + choseed_map.ToString()), out result);
-                    if (((result > time.Minutes) || (result == 0) ) && (end_race_player_2))
+                    int result1;
+                    int result2;
+                    //int result3;
+                    int.TryParse(Read_app_data("Millisecondes_TOP_" + counter_.ToString() + "_" + choseed_map.ToString()), out result);
+                    int.TryParse(Read_app_data("Secondes_TOP_" + counter_.ToString() + "_" + choseed_map.ToString()), out result1);
+                    int.TryParse(Read_app_data("Minutes_TOP_" + counter_.ToString() + "_" + choseed_map.ToString()), out result2);
+
+                    /*
+                    result1 = result1 * 1000;
+                    result2 = result2 * 60 * 1000;
+                    result3 = result + result1 + result2;
+                    */
+
+                    TimeSpan old_best = new TimeSpan(0, 0, result2, result1, result);
+
+                    if (((time.Ticks < old_best.Ticks) || (old_best.Ticks == 0)) && (time.Ticks > 0))
                     {
-                        int.TryParse(Read_app_data("Secondes_TOP_" + counter_.ToString() + "_" + choseed_map.ToString()), out result);
-                        if (((result > time.Seconds) || (result == 0)) && (end_race_player_2))
-                        {
-                            int.TryParse(Read_app_data("Millisecondes_TOP_" + counter_.ToString() + "_" + choseed_map.ToString()), out result);
-                            if (((result > time.Seconds) || (result == 0)) && (end_race_player_2))
-                            {
-                                name_box = new Name_box();
+                        name_box = new Name_box();
                                 name_box.Show();
                                 name_box.set_player_and_place(2, counter_);
 
@@ -328,17 +353,17 @@ namespace Need_more_Speed
                                 name_box.Close();
                                 this.Show();
                                 counter_ = 11;
-                            }
-                        }
+                            /*}
+                        }*/
                     }
                 }
             }
 
-            if(((total_time_player_1 < total_time_player_2) && (end_race_player_1)) || (!end_race_player_2))
+            if(((total_time_player_1 < total_time_player_2) && (end_race_player_1)) || ((!end_race_player_2) && (end_race_player_1)))
             {
                 Gewinner.Text = "Der Gewinner ist Spieler 1";
             }
-            else if (((total_time_player_2 < total_time_player_1) && (end_race_player_2)) || (!end_race_player_1))
+            else if (((total_time_player_2 < total_time_player_1) && (end_race_player_2)) || ((!end_race_player_1) && (end_race_player_2)))
             {
                 Gewinner.Text = "Der Gewinner ist Spieler 2";
             }
@@ -348,6 +373,8 @@ namespace Need_more_Speed
             }
 
         }
+
+
 
         private void Show_list_of_best_Click(object sender, RoutedEventArgs e)
         {
@@ -504,7 +531,12 @@ namespace Need_more_Speed
                 {
                     time = new TimeSpan(0, 0, 0, 0, Convert.ToInt32(times_player_1[counter]));
                 }
-                time_list_player_1.Items.Add((counter + 1).ToString() + "  " + time.Minutes.ToString() + ":" + time.Seconds.ToString() + ":" + time.Milliseconds.ToString());
+
+                if(time.Ticks > 0)
+                {
+                    time_list_player_1.Items.Add((counter + 1).ToString() + "  " + time.Minutes.ToString() + ":" + time.Seconds.ToString() + ":" + time.Milliseconds.ToString());
+                }
+                
             }
             for (int counter = 0; counter < Anz_Rounds; counter++)
             {
@@ -518,7 +550,11 @@ namespace Need_more_Speed
                 {
                     time = new TimeSpan(0, 0, 0, 0, Convert.ToInt32(times_player_2[counter]));
                 }
-                time_list_player_2.Items.Add((counter + 1).ToString() + "  " + time.Minutes.ToString() + ":" + time.Seconds.ToString() + ":" + time.Milliseconds.ToString());
+
+                if (time.Ticks > 0)
+                {
+                    time_list_player_2.Items.Add((counter + 1).ToString() + "  " + time.Minutes.ToString() + ":" + time.Seconds.ToString() + ":" + time.Milliseconds.ToString());
+                }
             }
         }
 

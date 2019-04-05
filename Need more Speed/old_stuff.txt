@@ -96,3 +96,23 @@
 
             street.StrokeThickness = 2;
             racingtrack.Children.Add(street);*/
+
+			/*
+                    int.TryParse(Read_app_data("Millisecondes_TOP_" + counter_.ToString() + "_" + choseed_map.ToString()), out result);
+                    if (((result > time.Seconds) || (result == 0)) && (end_race_player_1))
+                    {
+                        int.TryParse(Read_app_data("Secondes_TOP_" + counter_.ToString() + "_" + choseed_map.ToString()), out result);
+                        if (((result >= time.Seconds) || (result == 0)) && (end_race_player_1))
+                        {
+                            int.TryParse(Read_app_data("Minutes_TOP_" + counter_.ToString() + "_" + choseed_map.ToString()), out result);
+                            if (((result >= time.Minutes)) && (end_race_player_1))
+                            {
+                                /*int.TryParse(Read_app_data("Minutes_TOP_" + counter_.ToString() + "_" + choseed_map.ToString()), out result);
+                                if (((result >= time.Minutes)) && (end_race_player_1))
+                                {
+                                    int.TryParse(Read_app_data("Secondes_TOP_" + counter_.ToString() + "_" + choseed_map.ToString()), out result);
+                                    if (((result >= time.Seconds) || (result == 0)) && (end_race_player_1))
+                                    {
+                                        int.TryParse(Read_app_data("Millisecondes_TOP_" + counter_.ToString() + "_" + choseed_map.ToString()), out result);
+                                        if (((result > time.Seconds) || (result == 0)) && (end_race_player_1))
+                                        {*/
