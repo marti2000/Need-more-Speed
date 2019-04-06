@@ -226,16 +226,9 @@ namespace Need_more_Speed
                     int result;
                     int result1;
                     int result2;
-                    //int result3;
                     int.TryParse(Read_app_data("Millisecondes_TOP_" + counter_.ToString() + "_" + choseed_map.ToString()), out result);
                     int.TryParse(Read_app_data("Secondes_TOP_" + counter_.ToString() + "_" + choseed_map.ToString()), out result1);
                     int.TryParse(Read_app_data("Minutes_TOP_" + counter_.ToString() + "_" + choseed_map.ToString()), out result2);
-
-                    /*
-                    result1 = result1 * 1000;
-                    result2 = result2 * 60 * 1000;
-                    result3 = result + result1 + result2;
-                    */
 
                     TimeSpan old_best = new TimeSpan(0, 0, result2, result1, result);
 
@@ -271,8 +264,6 @@ namespace Need_more_Speed
                                 name_box.Close();
                                 this.Show();
                                 counter_ = 11;
-                            /*}
-                        }*/
                     }
                 }
             }
@@ -309,16 +300,9 @@ namespace Need_more_Speed
                     int result;
                     int result1;
                     int result2;
-                    //int result3;
                     int.TryParse(Read_app_data("Millisecondes_TOP_" + counter_.ToString() + "_" + choseed_map.ToString()), out result);
                     int.TryParse(Read_app_data("Secondes_TOP_" + counter_.ToString() + "_" + choseed_map.ToString()), out result1);
                     int.TryParse(Read_app_data("Minutes_TOP_" + counter_.ToString() + "_" + choseed_map.ToString()), out result2);
-
-                    /*
-                    result1 = result1 * 1000;
-                    result2 = result2 * 60 * 1000;
-                    result3 = result + result1 + result2;
-                    */
 
                     TimeSpan old_best = new TimeSpan(0, 0, result2, result1, result);
 
@@ -353,8 +337,6 @@ namespace Need_more_Speed
                                 name_box.Close();
                                 this.Show();
                                 counter_ = 11;
-                            /*}
-                        }*/
                     }
                 }
             }
@@ -451,7 +433,7 @@ namespace Need_more_Speed
 
         private void Next_right_Click(object sender, RoutedEventArgs e)
         {
-            if (Choseed_map < 2)
+            if (Choseed_map < 3)
             {
                 Choseed_map++;
             }
