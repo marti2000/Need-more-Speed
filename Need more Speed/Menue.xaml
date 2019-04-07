@@ -12,7 +12,7 @@
         Closing="Menue_screen_Closing">
     
     <Window.Background>
-        <ImageBrush ImageSource="C:\Users\i00203467\Source\Repos\marti2000\Need-more-Speed\Rennstrecke1.jpg"/>
+        <ImageBrush ImageSource="C:\Users\Marcel Vögeli\Source\Repos\marti2000\Need-more-Speed\Rennstrecke1.jpg"/>
     </Window.Background>
 
     <!--Bild von <a href="https://pixabay.com/de/users/FuzzyMannerz-1291525/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=885187">Fuzzy Mannerz</a> auf <a href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=885187">Pixabay</a>-->

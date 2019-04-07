@@ -178,6 +178,8 @@ namespace Need_more_Speed
                 await Task.Delay(10);
             }
 
+            start_the_game = false;
+
             change_car_hidden();
             change_track_hidden();
             list_of_best.Visibility = Visibility.Visible;
