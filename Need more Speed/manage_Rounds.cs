@@ -91,7 +91,7 @@ namespace Need_more_Speed
                 }
                 round_timer.Stop();
 
-                Menue.time_list_after_game();
+                Menue.Time_list_after_game();
                 wait_for_end_game();
 
                 Car.Round++;

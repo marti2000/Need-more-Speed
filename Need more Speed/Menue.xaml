@@ -10,11 +10,11 @@
         Name="Menue_screen"
         Topmost="True"
         Closing="Menue_screen_Closing">
-    
+    <!--
     <Window.Background>
         <ImageBrush ImageSource="C:\Users\Marcel Vögeli\Source\Repos\marti2000\Need-more-Speed\Rennstrecke1.jpg"/>
     </Window.Background>
-
+    -->
     <!--Bild von <a href="https://pixabay.com/de/users/FuzzyMannerz-1291525/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=885187">Fuzzy Mannerz</a> auf <a href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=885187">Pixabay</a>-->
     
     <Grid>
@@ -110,6 +110,9 @@
         <Canvas Name="show_car_player_2" Grid.Column="5" Grid.Row="7" Grid.RowSpan="3" Background="Gray" Visibility="Hidden"/>
         <TextBlock Text="Spieler 1" Name="label_car_player_1" Grid.Column="5" Grid.Row="2" FontSize="20" HorizontalAlignment="Center" Foreground="Black" Background="AliceBlue" Visibility="Hidden"/>
         <TextBlock Text="Spieler 2" Name="label_car_player_2" Grid.Column="5" Grid.Row="6" FontSize="20" HorizontalAlignment="Center" Foreground="Black" Background="AliceBlue" Visibility="Hidden"/>
+
+        <!--Content for the Options-->
+        <Button Name="Credits" Click="Credits_Click" Content="Credits" Grid.Column="5" Grid.Row="11" FontSize="20" Background="Bisque" Visibility="Hidden" IsEnabled="False"/>
 
     </Grid>
 </Window>

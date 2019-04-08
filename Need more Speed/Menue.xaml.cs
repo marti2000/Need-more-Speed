@@ -32,6 +32,8 @@ namespace Need_more_Speed
 
         Name_box name_box;
 
+        Credits credits;
+
         public bool Start_the_game { get => start_the_game; set => start_the_game = value; }
         public int Choseed_map { get => choseed_map; set => choseed_map = value; }
         internal Starter Starter { get => starter; set => starter = value; }
@@ -58,14 +60,14 @@ namespace Need_more_Speed
             anz_rounds.Text = Anz_Rounds.ToString();
         }
 
-        private void draw_tracks()
+        private void Draw_tracks()
         {
             racetrack_show.Children.Clear();
             Maps draw_map = new Maps(racetrack_show);
             draw_map.chose_Map(Choseed_map, 20);
         }
 
-        private void change_track_visible()
+        private void Change_track_visible()
         {
             next_left.Visibility = Visibility.Visible;
             next_right.Visibility = Visibility.Visible;
@@ -83,7 +85,7 @@ namespace Need_more_Speed
             remove_round.IsEnabled = true;
         }
 
-        private void change_track_hidden()
+        private void Change_track_hidden()
         {
             next_left.Visibility = Visibility.Hidden;
             next_right.Visibility = Visibility.Hidden;
@@ -101,7 +103,7 @@ namespace Need_more_Speed
             remove_round.IsEnabled = false;
         }
 
-        private void change_car_visible()
+        private void Change_car_visible()
         {
             next_left_player_1.Visibility = Visibility.Visible;
             next_right_player_1.Visibility = Visibility.Visible;
@@ -118,7 +120,7 @@ namespace Need_more_Speed
             next_right_player_2.IsEnabled = true;
         }
 
-        private void change_car_hidden()
+        private void Change_car_hidden()
         {
             next_left_player_1.Visibility = Visibility.Hidden;
             next_right_player_1.Visibility = Visibility.Hidden;
@@ -135,18 +137,34 @@ namespace Need_more_Speed
             next_right_player_2.IsEnabled = false;
         }
 
+        private void Settings_hidden()
+        {
+            Credits.Visibility = Visibility.Hidden;
+
+            Credits.IsEnabled = false;
+        }
+
+        private void Settings_visible()
+        {
+            Credits.Visibility = Visibility.Visible;
+
+            Credits.IsEnabled = true;
+        } 
+
         private void Change_track_Click(object sender, RoutedEventArgs e)
         {
-            change_track_visible();
-            change_car_hidden();
+            Change_track_visible();
+            Change_car_hidden();
+            Settings_hidden();
             list_of_best.Visibility = Visibility.Hidden;
-            draw_tracks();
+            Draw_tracks();
         }
 
         private void Change_car_Click(object sender, RoutedEventArgs e)
         {
-            change_car_visible();
-            change_track_hidden();
+            Change_car_visible();
+            Change_track_hidden();
+            Settings_hidden();
             list_of_best.Visibility = Visibility.Hidden;
 
             Vehicle car_player_1 = new Vehicle("Car", 0, 80, 0, show_car_player_1, Brushes.Red, 500);
@@ -157,14 +175,15 @@ namespace Need_more_Speed
 
         private void Settings_Click(object sender, RoutedEventArgs e)
         {
-            change_car_hidden();
-            change_track_hidden();
+            Change_car_hidden();
+            Settings_visible();
+            Change_track_hidden();
             list_of_best.Visibility = Visibility.Hidden;
 
-            MessageBox.Show("Um dieses Feature zu nutzten, kaufen Sie bitte die Vollversion", "Lizenzproblem", MessageBoxButton.OK, MessageBoxImage.Warning);
+            //MessageBox.Show("Um dieses Feature zu nutzten, kaufen Sie bitte die Vollversion", "Lizenzproblem", MessageBoxButton.OK, MessageBoxImage.Warning);
         }
 
-        public async void time_list_after_game()
+        public async void Time_list_after_game()
         {
 
             double total_time_player_1 = 0;
@@ -180,8 +199,9 @@ namespace Need_more_Speed
 
             start_the_game = false;
 
-            change_car_hidden();
-            change_track_hidden();
+            Change_car_hidden();
+            Settings_hidden();
+            Change_track_hidden();
             list_of_best.Visibility = Visibility.Visible;
 
             Label_left.Text = "Spieler 1";
@@ -358,12 +378,11 @@ namespace Need_more_Speed
 
         }
 
-
-
         private void Show_list_of_best_Click(object sender, RoutedEventArgs e)
         {
-            change_car_hidden();
-            change_track_hidden();
+            Change_car_hidden();
+            Settings_hidden();
+            Change_track_hidden();
             list_of_best.Visibility = Visibility.Visible;
 
             Label_left.Text = "Spieler 1";
@@ -430,7 +449,7 @@ namespace Need_more_Speed
             {
                 Choseed_map--;
             }
-            draw_tracks();
+            Draw_tracks();
         }
 
         private void Next_right_Click(object sender, RoutedEventArgs e)
@@ -439,37 +458,48 @@ namespace Need_more_Speed
             {
                 Choseed_map++;
             }
-            draw_tracks();
+            Draw_tracks();
         }
 
         private void Map_generator_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Um dieses Feature zu nutzten, kaufen Sie bitte die Vollversion", "Lizenzproblem", MessageBoxButton.OK, MessageBoxImage.Warning);
+            //MessageBox.Show("Um dieses Feature zu nutzten, kaufen Sie bitte die Vollversion", "Lizenzproblem", MessageBoxButton.OK, MessageBoxImage.Warning);
+            MessageBox.Show("Diese Funktion wird bei einer späteren Version hinzugefügt", "Coming soon", MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
         private void Next_left_player_1_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Um dieses Feature zu nutzten, kaufen Sie bitte die Vollversion", "Lizenzproblem", MessageBoxButton.OK, MessageBoxImage.Warning);
+            //MessageBox.Show("Um dieses Feature zu nutzten, kaufen Sie bitte die Vollversion", "Lizenzproblem", MessageBoxButton.OK, MessageBoxImage.Warning);
+            MessageBox.Show("Diese Funktion wird bei einer späteren Version hinzugefügt", "Coming soon", MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
         private void Next_right_player_2_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Um dieses Feature zu nutzten, kaufen Sie bitte die Vollversion", "Lizenzproblem", MessageBoxButton.OK, MessageBoxImage.Warning);
+            //MessageBox.Show("Um dieses Feature zu nutzten, kaufen Sie bitte die Vollversion", "Lizenzproblem", MessageBoxButton.OK, MessageBoxImage.Warning);
+            MessageBox.Show("Diese Funktion wird bei einer späteren Version hinzugefügt", "Coming soon", MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
         private void Next_right_player_1_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Um dieses Feature zu nutzten, kaufen Sie bitte die Vollversion", "Lizenzproblem", MessageBoxButton.OK, MessageBoxImage.Warning);
+            //MessageBox.Show("Um dieses Feature zu nutzten, kaufen Sie bitte die Vollversion", "Lizenzproblem", MessageBoxButton.OK, MessageBoxImage.Warning);
+            MessageBox.Show("Diese Funktion wird bei einer späteren Version hinzugefügt", "Coming soon", MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
         private void Next_left_player_2_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Um dieses Feature zu nutzten, kaufen Sie bitte die Vollversion", "Lizenzproblem", MessageBoxButton.OK, MessageBoxImage.Warning);
+            //MessageBox.Show("Um dieses Feature zu nutzten, kaufen Sie bitte die Vollversion", "Lizenzproblem", MessageBoxButton.OK, MessageBoxImage.Warning);
+            MessageBox.Show("Diese Funktion wird bei einer späteren Version hinzugefügt", "Coming soon", MessageBoxButton.OK, MessageBoxImage.Information);
+        }
+
+        private void Credits_Click(object sender, RoutedEventArgs e)
+        {
+            credits = new Credits();
+            credits.Show();
         }
 
         private void Menue_screen_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            
+            credits.Close();
         }
 
         private void Remove_round_Click(object sender, RoutedEventArgs e)
@@ -595,5 +625,6 @@ namespace Need_more_Speed
                 return "";
             }
         }
+
     }
 }
