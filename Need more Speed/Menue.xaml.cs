@@ -412,7 +412,7 @@ namespace Need_more_Speed
                     while (name_box.value_ready == false)
                     {
                         this.Hide();
-                        await Task.Delay(300);
+                        await Task.Delay(300); 
                     }
 
                     if (counter_ < 10)
