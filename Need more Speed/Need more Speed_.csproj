@@ -87,6 +87,11 @@
     <Compile Include="Credits.xaml.cs">
       <DependentUpon>Credits.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Curve.cs" />
+    <Compile Include="Curve0degree.cs" />
+    <Compile Include="Curve180degree.cs" />
+    <Compile Include="Curve270degree.cs" />
+    <Compile Include="Curve90degree.cs" />
     <Compile Include="Draw_road.cs" />
     <Compile Include="instrument_panel.cs" />
     <Compile Include="manage_Rounds.cs" />
@@ -98,6 +103,13 @@
       <DependentUpon>Name_box.xaml</DependentUpon>
     </Compile>
     <Compile Include="Starter.cs" />
+    <Compile Include="Straight.cs" />
+    <Compile Include="Straight_hotizontal.cs" />
+    <Compile Include="Straight_hotizontal_checkpoint.cs" />
+    <Compile Include="Straight_hotizontal_finish.cs" />
+    <Compile Include="Straight_vertical.cs" />
+    <Compile Include="Straight_vertical_checkpoint.cs" />
+    <Compile Include="Straight_vertical_finish.cs" />
     <Compile Include="Vehicle.cs" />
     <Page Include="Credits.xaml">
       <SubType>Designer</SubType>
