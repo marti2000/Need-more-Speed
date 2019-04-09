@@ -56,6 +56,10 @@ namespace Need_more_Speed
             Map = new Maps(racingtrack);
             Map.chose_Map(menue.Choseed_map, Grid);
 
+            //Test
+            Curve90degree Curve90degree = new Curve90degree(racingtrack);
+            Curve90degree.draw(0,0,100);
+
             //Creating the different Cars for the Race
             car_player_1 = new Vehicle("Car", 1, 145, 365, racingtrack, Brushes.Red, Grid);
             car_player_1.Rotation = 270;

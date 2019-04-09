@@ -18,7 +18,7 @@ namespace Need_more_Speed
 {
     class Draw_road
     {
-        private Canvas myCanvas;
+        public Canvas myCanvas;
 
         public Draw_road(Canvas myCanvas)
         {

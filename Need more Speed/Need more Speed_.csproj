@@ -87,6 +87,11 @@
     <Compile Include="Credits.xaml.cs">
       <DependentUpon>Credits.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Curve.cs" />
+    <Compile Include="Curve0degree.cs" />
+    <Compile Include="Curve180degree.cs" />
+    <Compile Include="Curve270degree.cs" />
+    <Compile Include="Curve90degree.cs" />
     <Compile Include="Draw_road.cs" />
     <Compile Include="instrument_panel.cs" />
     <Compile Include="manage_Rounds.cs" />
