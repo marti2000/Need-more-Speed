@@ -103,6 +103,13 @@
       <DependentUpon>Name_box.xaml</DependentUpon>
     </Compile>
     <Compile Include="Starter.cs" />
+    <Compile Include="Straight.cs" />
+    <Compile Include="Straight_hotizontal.cs" />
+    <Compile Include="Straight_hotizontal_checkpoint.cs" />
+    <Compile Include="Straight_hotizontal_finish.cs" />
+    <Compile Include="Straight_vertical.cs" />
+    <Compile Include="Straight_vertical_checkpoint.cs" />
+    <Compile Include="Straight_vertical_finish.cs" />
     <Compile Include="Vehicle.cs" />
     <Page Include="Credits.xaml">
       <SubType>Designer</SubType>

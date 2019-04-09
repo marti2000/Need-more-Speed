@@ -39,7 +39,6 @@ namespace Need_more_Speed
             Canvas.SetLeft(street, x_offset);
             myCanvas.Children.Add(street);
         }
-
         public void straight_horizontal_checkpoint(double x_offset, double y_offset, double grid)
         {
             x_offset = x_offset * grid;
@@ -80,7 +79,6 @@ namespace Need_more_Speed
             Canvas.SetLeft(street, x_offset);
             myCanvas.Children.Add(street);
         }
-
         public void straight_vertical_checkpoint(double x_offset, double y_offset, double grid)
         {
             x_offset = x_offset * grid;
@@ -106,7 +104,6 @@ namespace Need_more_Speed
             
 
         }
-
         public void straight_vertical_finish(double x_offset, double y_offset, double grid)
         {
             x_offset = x_offset * grid;
@@ -163,6 +160,7 @@ namespace Need_more_Speed
             }
             
         }
+
         public void curve_0Degree(double x_offset, double y_offset, double grid)
         {
             double x_curve = 0;
