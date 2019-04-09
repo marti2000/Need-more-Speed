@@ -57,6 +57,8 @@ namespace Need_more_Speed
         {
             ready = false;
 
+            Menue.End_the_game = false;
+
             in_start_sequenze = true;
 
             Car_player_1.reset_position();

@@ -74,7 +74,11 @@ namespace Need_more_Speed
             Car.Left = false;
             Car.Round = 0;
             
-            Menue.Show();
+            if(Menue.End_the_game == false)
+            {
+                Menue.End_the_game = true;
+                Menue.Show();
+            }
         }
 
         private void refresh_Tick(object sender, EventArgs e)
@@ -91,7 +95,11 @@ namespace Need_more_Speed
                 }
                 round_timer.Stop();
 
-                Menue.Time_list_after_game();
+                if (Menue.End_the_game == false)
+                {
+                    Menue.End_the_game = true;
+                    Menue.Time_list_after_game();
+                }
                 wait_for_end_game();
 
                 Car.Round++;

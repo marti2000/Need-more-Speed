@@ -19,6 +19,7 @@ namespace Need_more_Speed
     public partial class Menue : Window
     {
         private bool start_the_game = false;
+        private bool end_the_game = false;
 
         private int choseed_map = 0;
 
@@ -41,6 +42,7 @@ namespace Need_more_Speed
         public double Anz_rounds { get => Anz_Rounds; set => Anz_Rounds = value; }
         public double[] Times_player_1 { get => times_player_1; set => times_player_1 = value; }
         public double[] Times_player_2 { get => times_player_2; set => times_player_2 = value; }
+        public bool End_the_game { get => end_the_game; set => end_the_game = value; }
 
         public Menue()
         {
