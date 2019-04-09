@@ -58,6 +58,11 @@ namespace Need_more_Speed
             next_left_player_2.Content = "<";
 
             anz_rounds.Text = Anz_Rounds.ToString();
+
+            Write_app_storage("1_test", "10", "Marcel");
+
+            string[] test_string_array = new string[2];
+            test_string_array = Read_app_data("1_test");
         }
 
         private void Draw_tracks()
@@ -245,12 +250,18 @@ namespace Need_more_Speed
 
                 for (int counter_ = 1; counter_ <= 10; counter_++)
                 {
+
+                    
+
+                    /*
                     int result;
                     int result1;
                     int result2;
+                    
                     int.TryParse(Read_app_data("Millisecondes_TOP_" + counter_.ToString() + "_" + choseed_map.ToString()), out result);
                     int.TryParse(Read_app_data("Secondes_TOP_" + counter_.ToString() + "_" + choseed_map.ToString()), out result1);
                     int.TryParse(Read_app_data("Minutes_TOP_" + counter_.ToString() + "_" + choseed_map.ToString()), out result2);
+                    
 
                     TimeSpan old_best = new TimeSpan(0, 0, result2, result1, result);
 
@@ -271,22 +282,25 @@ namespace Need_more_Speed
                                 {
                                     for(int _counter_ = 9; _counter_ >= counter_; _counter_--)
                                     {
+                                
                                         Write_app_storage("Name_TOP_" + (_counter_ + 1).ToString() + "_" + choseed_map.ToString(), Read_app_data("Name_TOP_" + _counter_.ToString() + "_" + choseed_map.ToString()));
                                         Write_app_storage("Minutes_TOP_" + (_counter_ + 1).ToString() + "_" + choseed_map.ToString(), Read_app_data("Minutes_TOP_" + _counter_.ToString() + "_" + choseed_map.ToString()));
                                         Write_app_storage("Secondes_TOP_" + (_counter_ + 1).ToString() + "_" + choseed_map.ToString(), Read_app_data("Secondes_TOP_" + _counter_.ToString() + "_" + choseed_map.ToString()));
                                         Write_app_storage("Millisecondes_TOP_" + (_counter_ + 1).ToString() + "_" + choseed_map.ToString(), Read_app_data("Millisecondes_TOP_" + _counter_.ToString() + "_" + choseed_map.ToString()));
+                                        
                                     }
                                 }
-
+                                
                                 Write_app_storage("Name_TOP_" + counter_.ToString() + "_" + choseed_map.ToString(), name_box.name_of_player);
                                 Write_app_storage("Minutes_TOP_" + counter_.ToString() + "_" + choseed_map.ToString(), time.Minutes.ToString());
                                 Write_app_storage("Secondes_TOP_" + counter_.ToString() + "_" + choseed_map.ToString(), time.Seconds.ToString());
                                 Write_app_storage("Millisecondes_TOP_" + counter_.ToString() + "_" + choseed_map.ToString(), time.Milliseconds.ToString());
                                 
+
                                 name_box.Close();
                                 this.Show();
                                 counter_ = 11;
-                    }
+                    }*/
                 }
             }
             for (int counter = 0; counter < Anz_Rounds; counter++)
@@ -322,6 +336,7 @@ namespace Need_more_Speed
                     int result;
                     int result1;
                     int result2;
+                    /*
                     int.TryParse(Read_app_data("Millisecondes_TOP_" + counter_.ToString() + "_" + choseed_map.ToString()), out result);
                     int.TryParse(Read_app_data("Secondes_TOP_" + counter_.ToString() + "_" + choseed_map.ToString()), out result1);
                     int.TryParse(Read_app_data("Minutes_TOP_" + counter_.ToString() + "_" + choseed_map.ToString()), out result2);
@@ -344,22 +359,26 @@ namespace Need_more_Speed
                                 {
                                     for (int _counter_ = 9; _counter_ >= counter_; _counter_--)
                                     {
+                                
                                         Write_app_storage("Name_TOP_" + (_counter_ + 1).ToString() + "_" + choseed_map.ToString(), Read_app_data("Name_TOP_" + _counter_.ToString() + "_" + choseed_map.ToString()));
                                         Write_app_storage("Minutes_TOP_" + (_counter_ + 1).ToString() + "_" + choseed_map.ToString(), Read_app_data("Minutes_TOP_" + _counter_.ToString() + "_" + choseed_map.ToString()));
                                         Write_app_storage("Secondes_TOP_" + (_counter_ + 1).ToString() + "_" + choseed_map.ToString(), Read_app_data("Secondes_TOP_" + _counter_.ToString() + "_" + choseed_map.ToString()));
                                         Write_app_storage("Millisecondes_TOP_" + (_counter_ + 1).ToString() + "_" + choseed_map.ToString(), Read_app_data("Millisecondes_TOP_" + _counter_.ToString() + "_" + choseed_map.ToString()));
+                                        
                                     }
                                 }
 
+                                
                                 Write_app_storage("Name_TOP_" + counter_.ToString() + "_" + choseed_map.ToString(), name_box.name_of_player);
                                 Write_app_storage("Minutes_TOP_" + counter_.ToString() + "_" + choseed_map.ToString(), time.Minutes.ToString());
                                 Write_app_storage("Secondes_TOP_" + counter_.ToString() + "_" + choseed_map.ToString(), time.Seconds.ToString());
                                 Write_app_storage("Millisecondes_TOP_" + counter_.ToString() + "_" + choseed_map.ToString(), time.Milliseconds.ToString());
+                                
 
                                 name_box.Close();
                                 this.Show();
                                 counter_ = 11;
-                    }
+                    }*/
                 }
             }
 
@@ -376,6 +395,36 @@ namespace Need_more_Speed
                 Gewinner.Text = "Es war unentschieden";
             }
 
+        }
+
+        private async void compare_with_best_time(TimeSpan actuell_time, double player)
+        {
+            for (int counter_ = 1; counter_ <= 10; counter_++)
+            {
+                string[] filedata = Read_app_data("TOP_" + counter_ + "_" + choseed_map);
+                TimeSpan old_time = new TimeSpan(Convert.ToInt64(filedata[0]));
+                if (((actuell_time.Ticks < old_time.Ticks) || (old_time.Ticks == 0)) && (actuell_time.Ticks > 0))
+                {
+                    name_box = new Name_box();
+                    name_box.Show();
+                    name_box.set_player_and_place(player, counter_);
+
+                    while (name_box.value_ready == false)
+                    {
+                        this.Hide();
+                        await Task.Delay(300);
+                    }
+
+                    if (counter_ < 10)
+                    {
+                        for (int _counter_ = 9; _counter_ >= counter_; _counter_--)
+                        {
+                            Write_app_storage("TOP_" + counter_ + "_" + choseed_map, actuell_time.Ticks.ToString(), name_box.name_of_player);
+                            //Write_app_storage("Name_TOP_" + (_counter_ + 1).ToString() + "_" + choseed_map.ToString(), Read_app_data("Name_TOP_" + _counter_.ToString() + "_" + choseed_map.ToString()));
+                        }
+                    }
+                }
+            }
         }
 
         private void Show_list_of_best_Click(object sender, RoutedEventArgs e)
@@ -499,7 +548,12 @@ namespace Need_more_Speed
 
         private void Menue_screen_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            credits.Close();
+            try
+            {
+                credits.Close();
+            }
+            catch
+            { }
         }
 
         private void Remove_round_Click(object sender, RoutedEventArgs e)
@@ -591,7 +645,7 @@ namespace Need_more_Speed
             
         }
 
-        private void Write_app_storage(string Key, string Data)
+        private void Write_app_storage(string Key, string time, string name)
         {
             if (!Directory.Exists(path))
             {
@@ -600,21 +654,22 @@ namespace Need_more_Speed
 
             StreamWriter writer = new StreamWriter(path + "/" + Key + ".nms");
 
-            writer.Write(Data);
+            writer.WriteLine(time);
+            writer.WriteLine(name);
 
             writer.Close();
         }
 
-        private string Read_app_data(string Key)
+        private string[] Read_app_data(string Key)
         {
-            string saved_data;
+            string[] saved_data = new string[2];
 
             if (File.Exists(path + "/" + Key + ".nms"))
             {
                 StreamReader reader = new StreamReader(path + "/" + Key + ".nms");
 
-                saved_data = reader.ReadToEnd();
-
+                saved_data[0] = reader.ReadLine();
+                saved_data[1] = reader.ReadLine();
                 reader.Close();
 
                 return saved_data;
@@ -622,7 +677,9 @@ namespace Need_more_Speed
             }
             else
             {
-                return "";
+                saved_data[0] = "";
+                saved_data[1] = "";
+                return saved_data;
             }
         }
 
