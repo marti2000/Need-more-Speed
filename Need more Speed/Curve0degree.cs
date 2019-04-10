@@ -23,7 +23,12 @@ namespace Need_more_Speed
 
         }
 
-        public void draw(double x_offset, double y_offset, double grid)
+        public override string get_type()
+        {
+            return "curve_0Degree";
+        }
+
+        public override void draw(double x_offset, double y_offset, double grid)
         {
             double x_curve = 0;
             double y_curve = 0;

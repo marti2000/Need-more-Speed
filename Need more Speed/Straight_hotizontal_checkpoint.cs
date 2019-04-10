@@ -23,7 +23,12 @@ namespace Need_more_Speed
 
         }
 
-        public void draw(double x_offset, double y_offset, double grid)
+        public override string get_type()
+        {
+            return "straight_horizontal_checkpoint";
+        }
+
+        public override void draw(double x_offset, double y_offset, double grid)
         {
             x_offset = x_offset * grid;
             y_offset = y_offset * grid;

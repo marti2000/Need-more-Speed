@@ -14,6 +14,6 @@
         >
     <Grid>
         <Canvas Name="racingtrack" Background="Green"/>
-        <MediaElement  Source="C:\Users\Marcel Vögeli\Source\Repos\marti2000\Need-more-Speed\Loop_Version.mp3" Name="Backgroundsound" MediaEnded="Backgroundsound_MediaEnded"/>
+        <MediaElement  Source="C:\DUsers\Marcel Vögeli\Source\Repos\marti2000\Need-more-Speed\Loop_Version.mp3" Name="Backgroundsound" MediaEnded="Backgroundsound_MediaEnded"/>
     </Grid>
 </Window>

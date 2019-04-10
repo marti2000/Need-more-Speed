@@ -32,7 +32,7 @@ namespace Need_more_Speed
 
             System.Windows.Threading.DispatcherTimer refresh = new System.Windows.Threading.DispatcherTimer();
             refresh.Tick += refresh_Tick;
-            refresh.Interval = new TimeSpan(0, 0, 0, 0, 1);
+            refresh.Interval = new TimeSpan(0, 0, 0, 0, 100);
             refresh.Start();
 
             Rounds = new TextBlock();
