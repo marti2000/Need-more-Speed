@@ -32,8 +32,6 @@ namespace Need_more_Speed
 
         Starter starter;
 
-        //Name_box name_box;
-
         Credits credits;
 
         public bool Start_the_game { get => start_the_game; set => start_the_game = value; }
@@ -369,47 +367,6 @@ namespace Need_more_Speed
 
         }
 
-        private void compare_with_best_time(TimeSpan actuell_time, double player)
-        {
-            for (int counter_ = 1; counter_ <= 10; counter_++)
-            {
-                string[] filedata = Read_app_data("TOP_" + counter_ + "_" + choseed_map);
-                long time_ticks;
-                long.TryParse(filedata[0], out time_ticks);
-                TimeSpan old_time = new TimeSpan(time_ticks);
-                if (((actuell_time.Ticks < old_time.Ticks) || (old_time.Ticks == 0)) && (actuell_time.Ticks > 0))
-                {
-                    Name_box name_box = new Name_box();
-                    name_box.Show();
-                    name_box.set_player_and_place(player, counter_);
-
-                    /*while (name_box.value_ready == false)
-                    {
-                        this.Hide();
-                        Thread.Sleep(3000);
-                        //Task.Delay(300); 
-                    }*/
-
-                    if (counter_ < 10)
-                    {
-                        for (int _counter_ = 9; _counter_ >= counter_; _counter_--)
-                        {
-                            string[] storage;
-                            storage = Read_app_data("TOP_" + _counter_.ToString() + "_" + choseed_map.ToString());
-                            Write_app_storage("TOP_" + (_counter_ + 1).ToString() + "_" + choseed_map.ToString(), storage[0], storage[1]);
-                            //Write_app_storage("Name_TOP_" + (_counter_ + 1).ToString() + "_" + choseed_map.ToString(), Read_app_data("Name_TOP_" + _counter_.ToString() + "_" + choseed_map.ToString()));
-                        }
-
-                        Write_app_storage("TOP_" + counter_.ToString() + "_" + choseed_map.ToString(),actuell_time.Ticks.ToString(),name_box.name_of_player);
-
-                        name_box.Close();
-                        this.Show();
-                        counter_ = 11;
-                    }
-                }
-            }
-        }
-
         private void Show_list_of_best_Click(object sender, RoutedEventArgs e)
         {
             Change_car_hidden();
@@ -629,7 +586,6 @@ namespace Need_more_Speed
                 long.TryParse(storage[0], out time_ticks);
                 TimeSpan best_time = new TimeSpan(time_ticks);
                 time_list_Top_10.Items.Add(counter.ToString() + " " + storage[1] + " " + best_time.Minutes.ToString() + ":" + best_time.Seconds.ToString() + ":" + best_time.Milliseconds.ToString());
-                //time_list_Top_10.Items.Add(counter.ToString() + " " + Read_app_data("Name_TOP_" + counter.ToString() + "_" + choseed_map.ToString()) + " " + Read_app_data("Minutes_TOP_" + counter.ToString() + "_" + choseed_map.ToString()) + ":" + Read_app_data("Secondes_TOP_" + counter.ToString() + "_" + choseed_map.ToString()) + ":" + Read_app_data("Millisecondes_TOP_" + counter.ToString() + "_" + choseed_map.ToString()));
             }
             
         }
@@ -674,3 +630,4 @@ namespace Need_more_Speed
 
     }
 }
+//build by Marcel

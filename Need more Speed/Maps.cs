@@ -20,15 +20,7 @@ namespace Need_more_Speed
     {
         private Canvas myCanvas;
 
-        //Dictionary<Point, string> road_planner = new Dictionary<Point, string>();
-
-        //Dictionary<double, > testing = new Dictionary<double, Dictionary>
         Dictionary<Point, Draw_road> road_planner = new Dictionary<Point, Draw_road>();
-
-
-
-        public double Screen_Width = System.Windows.SystemParameters.PrimaryScreenWidth;
-        public double Screen_Height = System.Windows.SystemParameters.PrimaryScreenHeight;
 
         public const string Straight_horizontal = "straight_horizontal";
         public const string Straight_vertical = "straight_vertical";
@@ -71,7 +63,7 @@ namespace Need_more_Speed
                 {
                     return true;
                 }
-                else if ((road_type == Curve_270Degree) && ((y_position % grid) < Math.Sqrt(Math.Pow(grid, 2) - Math.Pow((grid - (x_position % grid)), 2)))) // ((road_type == Curve_0Degree) && ((x_position % 100) > Math.Sqrt((grid * grid)-((y_position % 100)*(y_position % 100)))))
+                else if ((road_type == Curve_270Degree) && ((y_position % grid) < Math.Sqrt(Math.Pow(grid, 2) - Math.Pow((grid - (x_position % grid)), 2))))
                 {
                     double Out_value = Math.Sqrt((grid * grid) - ((grid - (y_position % grid)) * (grid - (y_position % grid))));
                     return true;
@@ -123,23 +115,6 @@ namespace Need_more_Speed
             {
                 return false;
             }
-            /*
-            Draw_road road_segment;
-            string road_type = "";
-            road_planner.TryGetValue(new Point(Math.Truncate(x_position / grid), Math.Truncate(y_position / grid)), out road_segment);
-            road_type = road_segment.get_type();
-            if ((road_type == Straight_vertical_checkpoint) && ((y_position % grid) < (grid / 2)))
-            {
-                return true;
-            }
-            else if ((road_type == Straight_horizontal_checkpoint) && ((x_position % grid) < (grid / 2)))
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }*/
         }
 
         public void set_checkpoints(Vehicle car, double grid)
@@ -153,20 +128,6 @@ namespace Need_more_Speed
                     car.add_checkpoint(point_in_dictionary.X, point_in_dictionary.Y);
                 }
             }
-            /*for (double X = 0; X < Screen_Width / grid; X++)
-            {
-                for (double Y = 0; Y < Screen_Height / grid; Y++)
-                {
-                    Draw_road road_segment;
-                    //string road_type = "";
-                    road_planner.TryGetValue(new Point(X , Y ), out road_segment);
-                    road_type = road_segment.get_type();
-                    if ((road_type == Straight_horizontal_checkpoint) || (road_type == Straight_vertical_checkpoint))
-                    {
-                        car.add_checkpoint(X, Y);
-                    }
-                }
-            }*/
         }
 
         public void chose_Map(int number, double gird)
@@ -379,3 +340,4 @@ namespace Need_more_Speed
         }
     }
 }
+//85% build by Marcel & 15% build by Timo

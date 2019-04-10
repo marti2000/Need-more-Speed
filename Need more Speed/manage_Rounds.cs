@@ -46,7 +46,7 @@ namespace Need_more_Speed
             }
             else if(Car.Compare_to_player == 2)
             {
-                Canvas.SetLeft(Rounds, System.Windows.SystemParameters.MaximizedPrimaryScreenWidth-200/*10* Grid*/);
+                Canvas.SetLeft(Rounds, System.Windows.SystemParameters.MaximizedPrimaryScreenWidth-200);
                 Canvas.SetTop(Rounds, 0);
                 Rounds.TextAlignment = System.Windows.TextAlignment.Right;
 
@@ -175,3 +175,4 @@ namespace Need_more_Speed
         }
     }
 }
+//build by Marcel
