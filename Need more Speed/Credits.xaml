@@ -45,9 +45,9 @@
         </TextBlock>
         <TextBlock Text="Hintergrundmusik" TextAlignment="Center" FontSize="25" Grid.Column="1" Grid.Row="7"/>
         <TextBlock TextAlignment="Center" FontSize="15" Grid.Column="1" Grid.Row="8">
-            "Ready to fight"
+            "Ready to fight" von Vincent Lee
             <LineBreak />
-            von Vincent Lee
+            von www.soundcloud.com
         </TextBlock>
         <TextBlock Text="Entwicklungsumgebung" TextAlignment="Center" FontSize="25" Grid.Column="1" Grid.Row="10"/>
         <TextBlock TextAlignment="Center" FontSize="15" Grid.Column="1" Grid.Row="11">

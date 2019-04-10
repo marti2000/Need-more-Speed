@@ -20,9 +20,12 @@ namespace Need_more_Speed
     {
         private Canvas myCanvas;
 
-        Dictionary<Point, string> road_planner = new Dictionary<Point, string>();
+        //Dictionary<Point, string> road_planner = new Dictionary<Point, string>();
 
-        
+        //Dictionary<double, > testing = new Dictionary<double, Dictionary>
+        Dictionary<Point, Draw_road> road_planner = new Dictionary<Point, Draw_road>();
+
+
 
         public double Screen_Width = System.Windows.SystemParameters.PrimaryScreenWidth;
         public double Screen_Height = System.Windows.SystemParameters.PrimaryScreenHeight;
@@ -41,6 +44,8 @@ namespace Need_more_Speed
         public Maps(Canvas myCanvas) : base (myCanvas)
         {
             this.myCanvas = myCanvas;
+
+
         }
 
 
@@ -54,7 +59,7 @@ namespace Need_more_Speed
 
         private void draw_road(double x_position, double y_position, double grid)
         {
-            string type;
+            string type = "";
             road_planner.TryGetValue(new Point(x_position, y_position), out type);
             
             if(type == Straight_horizontal)
@@ -98,7 +103,7 @@ namespace Need_more_Speed
         public bool car_on_road(double x_position, double y_position, double grid, double rotation)
         {
 
-            string road_type;
+            string road_type = "";
             road_planner.TryGetValue(new Point(Math.Truncate(x_position / grid), Math.Truncate(y_position / grid)), out road_type);
             if((road_type == Straight_horizontal) || (road_type == Straight_vertical) || (road_type == Straight_vertical_finish) || (road_type == Straight_horizontal_checkpoint) || (road_type == Straight_vertical_checkpoint))
             {
@@ -130,7 +135,7 @@ namespace Need_more_Speed
         public bool car_over_finish(double x_position, double y_position, double grid, double rotation)
         {
 
-            string road_type;
+            string road_type = "";
             road_planner.TryGetValue(new Point(Math.Truncate(x_position / grid), Math.Truncate(y_position / grid)), out road_type);
             if ((road_type == Straight_vertical_finish) && ((y_position % grid) < (grid / 2)))
             {
@@ -145,7 +150,7 @@ namespace Need_more_Speed
         public bool car_over_checkpoint(double x_position, double y_position, double grid, double rotation)
         {
 
-            string road_type;
+            string road_type = "";
             road_planner.TryGetValue(new Point(Math.Truncate(x_position / grid), Math.Truncate(y_position / grid)), out road_type);
             if ((road_type == Straight_vertical_checkpoint) && ((y_position % grid) < (grid / 2)))
             {
@@ -167,7 +172,7 @@ namespace Need_more_Speed
             {
                 for (double Y = 0; Y < Screen_Height / grid; Y++)
                 {
-                    string road_type;
+                    string road_type = "";
                     road_planner.TryGetValue(new Point(X , Y ), out road_type);
                     if ((road_type == Straight_horizontal_checkpoint) || (road_type == Straight_vertical_checkpoint))
                     {
@@ -185,50 +190,52 @@ namespace Need_more_Speed
                     {
                         road_planner.Clear();
 
-                        add_road(2, 1, Straight_horizontal);
-                        add_road(3, 1, Straight_horizontal);
-                        add_road(7, 1, Straight_horizontal);
-                        add_road(8, 1, Straight_horizontal);
-                        add_road(9, 1, Straight_horizontal);
-                        add_road(10, 1, Straight_horizontal);
-                        add_road(10, 5, Straight_horizontal);
-                        add_road(6, 5, Straight_horizontal);
-                        add_road(2, 5, Straight_horizontal);
+                        road_planner.Add(new Point(2, 1), new Straight_hotizontal(myCanvas));
+                        road_planner.Add(new Point(3, 1), new Straight_hotizontal(myCanvas));
+                        road_planner.Add(new Point(7, 1), new Straight_hotizontal(myCanvas));
+                        road_planner.Add(new Point(8, 1), new Straight_hotizontal(myCanvas));
+                        road_planner.Add(new Point(9, 1), new Straight_hotizontal(myCanvas));
+                        road_planner.Add(new Point(10, 1), new Straight_hotizontal(myCanvas));
+                        road_planner.Add(new Point(10, 5), new Straight_hotizontal(myCanvas));
+                        road_planner.Add(new Point(6, 5), new Straight_hotizontal(myCanvas));
+                        road_planner.Add(new Point(2, 5), new Straight_hotizontal(myCanvas));
 
-                        add_road(11, 3, Straight_vertical);
-                        add_road(11, 4, Straight_vertical);
-                        add_road(9, 4, Straight_vertical);
-                        add_road(7, 4, Straight_vertical);
-                        add_road(1, 4, Straight_vertical);
-                        add_road(1, 2, Straight_vertical);
+                        road_planner.Add(new Point(11, 3), new Straight_vertical(myCanvas));
+                        road_planner.Add(new Point(11, 4), new Straight_vertical(myCanvas));
+                        road_planner.Add(new Point(9, 4), new Straight_vertical(myCanvas));
+                        road_planner.Add(new Point(7, 4), new Straight_vertical(myCanvas));
+                        road_planner.Add(new Point(1, 4), new Straight_vertical(myCanvas));
+                        road_planner.Add(new Point(1, 2), new Straight_vertical(myCanvas));
 
-                        add_road(1, 3, Straight_vertical_finish);
+                        road_planner.Add(new Point(3, 1), new Straight_vertical_finish(myCanvas));
 
-                        add_road(11, 2, Straight_vertical_checkpoint);
+                        road_planner.Add(new Point(11, 2), new Straight_vertical_checkpoint(myCanvas));
 
-                        add_road(8, 3, Straight_horizontal_checkpoint);
-                        add_road(5, 2, Straight_horizontal_checkpoint);
-                        add_road(4, 4, Straight_horizontal_checkpoint);
+                        road_planner.Add(new Point(8, 3), new Straight_hotizontal_checkpoint(myCanvas));
+                        road_planner.Add(new Point(5, 2), new Straight_hotizontal_checkpoint(myCanvas));
+                        road_planner.Add(new Point(4, 4), new Straight_hotizontal_checkpoint(myCanvas));
 
-                        add_road(1, 1, Curve_0Degree);
-                        add_road(6, 1, Curve_0Degree);
-                        add_road(7, 3, Curve_0Degree);
-                        add_road(3, 4, Curve_0Degree);
+                        road_planner.Add(new Point(1, 1), new Curve0degree(myCanvas));
+                        road_planner.Add(new Point(6, 1), new Curve0degree(myCanvas));
+                        road_planner.Add(new Point(7, 3), new Curve0degree(myCanvas));
+                        road_planner.Add(new Point(3, 4), new Curve0degree(myCanvas));
 
-                        add_road(4, 1, Curve_90Degree);
-                        add_road(11, 1, Curve_90Degree);
-                        add_road(9, 3, Curve_90Degree);
-                        add_road(5, 4, Curve_90Degree);
+                        road_planner.Add(new Point(4, 1), new Curve90degree(myCanvas));
+                        road_planner.Add(new Point(11, 1), new Curve90degree(myCanvas));
+                        road_planner.Add(new Point(9, 3), new Curve90degree(myCanvas));
+                        road_planner.Add(new Point(5, 4), new Curve90degree(myCanvas));
 
-                        add_road(6, 2, Curve_180Degree);
-                        add_road(11, 5, Curve_180Degree);
-                        add_road(7, 5, Curve_180Degree);
-                        add_road(3, 5, Curve_180Degree);
+                        road_planner.Add(new Point(6, 2), new Curve180degree(myCanvas));
+                        road_planner.Add(new Point(11, 5), new Curve180degree(myCanvas));
+                        road_planner.Add(new Point(7, 5), new Curve180degree(myCanvas));
+                        road_planner.Add(new Point(3, 5), new Curve180degree(myCanvas));
 
-                        add_road(4, 2, Curve_270Degree);
-                        add_road(9, 5, Curve_270Degree);
-                        add_road(5, 5, Curve_270Degree);
-                        add_road(1, 5, Curve_270Degree);
+                        road_planner.Add(new Point(4, 2), new Curve270degree(myCanvas));
+                        road_planner.Add(new Point(9, 5), new Curve270degree(myCanvas));
+                        road_planner.Add(new Point(5, 5), new Curve270degree(myCanvas));
+                        road_planner.Add(new Point(1, 5), new Curve270degree(myCanvas));
+
+                        
 
                         for(double X = 0; X<Screen_Width/gird;X++)
                         {
@@ -237,12 +244,59 @@ namespace Need_more_Speed
                                 draw_road(X, Y, gird);
                             }
                         }
+
+                        /*
+                        testerere.Add(new Point(), new Straight_hotizontal(myCanvas));
+
+                        Curve90degree Curve90degree = new Curve90degree(myCanvas);
+                        Curve90degree.draw(0, 0, 100);
+                        Straight_hotizontal eins = new Straight_hotizontal(myCanvas);
+                        eins.draw(1, 1, 100);*/
                         break;
                     }
                 case 1:
-                    {
+                    { 
                         road_planner.Clear();
 
+                        road_planner.Add(new Point(1, 2), new Straight_vertical(myCanvas));
+
+                        road_planner.Add(new Point(1, 3), new Straight_vertical_finish(myCanvas));
+
+                        road_planner.Add(new Point(1, 1), new Curve0degree(myCanvas));
+
+                        road_planner.Add(new Point(2, 1), new Straight_hotizontal(myCanvas));
+                        road_planner.Add(new Point(3, 1), new Straight_hotizontal(myCanvas));
+                        road_planner.Add(new Point(4, 1), new Straight_hotizontal(myCanvas));
+                        road_planner.Add(new Point(5, 1), new Straight_hotizontal(myCanvas));
+                        road_planner.Add(new Point(6, 1), new Straight_hotizontal(myCanvas));
+                        road_planner.Add(new Point(7, 1), new Straight_hotizontal(myCanvas));
+                        road_planner.Add(new Point(8, 1), new Straight_hotizontal(myCanvas));
+                        road_planner.Add(new Point(9, 1), new Straight_hotizontal(myCanvas));
+                        road_planner.Add(new Point(10, 1), new Straight_hotizontal(myCanvas));
+
+                        road_planner.Add(new Point(11, 1), new Curve0degree(myCanvas));
+
+                        road_planner.Add(new Point(11, 2), new Straight_vertical(myCanvas));
+                        road_planner.Add(new Point(11, 3), new Straight_vertical_checkpoint(myCanvas));
+                        road_planner.Add(new Point(11, 4), new Straight_vertical(myCanvas));
+
+                        road_planner.Add(new Point(11, 5), new Curve180degree(myCanvas));
+
+                        road_planner.Add(new Point(10, 5), new Straight_hotizontal(myCanvas));
+                        road_planner.Add(new Point(9, 5), new Straight_hotizontal(myCanvas));
+                        road_planner.Add(new Point(8, 5), new Straight_hotizontal(myCanvas));
+                        road_planner.Add(new Point(7, 5), new Straight_hotizontal(myCanvas));
+                        road_planner.Add(new Point(6, 5), new Straight_hotizontal(myCanvas));
+                        road_planner.Add(new Point(5, 5), new Straight_hotizontal(myCanvas));
+                        road_planner.Add(new Point(4, 5), new Straight_hotizontal(myCanvas));
+                        road_planner.Add(new Point(3, 5), new Straight_hotizontal(myCanvas));
+                        road_planner.Add(new Point(2, 5), new Straight_hotizontal(myCanvas));
+
+                        road_planner.Add(new Point(1, 5), new Curve270degree(myCanvas));
+                        road_planner.Add(new Point(1, 4), new Straight_vertical(myCanvas));
+
+
+                        /*
                         add_road(1, 2, Straight_vertical);
 
                         add_road(1, 3, Straight_vertical_finish);
@@ -278,7 +332,7 @@ namespace Need_more_Speed
                         add_road(2, 5, Straight_horizontal);
 
                         add_road(1, 5, Curve_270Degree);
-                        add_road(1, 4, Straight_vertical);
+                        add_road(1, 4, Straight_vertical);*/
 
                         for (double X = 0; X < Screen_Width / gird; X++)
                         {
@@ -296,59 +350,59 @@ namespace Need_more_Speed
 
                         add_road(1, 3, Straight_vertical_finish);
 
-                        add_road(1, 2, Straight_vertical);
-                        add_road(1, 1, Straight_vertical);
-                        add_road(1, 0, Curve_0Degree);
-                        add_road(2, 0, Straight_horizontal);
-                        add_road(3, 0, Straight_horizontal);
-                        add_road(4, 0, Straight_horizontal);
-                        add_road(5, 0, Straight_horizontal);
-                        add_road(6, 0, Straight_horizontal);
-                        add_road(7, 0, Straight_horizontal);
-                        add_road(8, 0, Straight_horizontal);
-                        add_road(9, 0, Straight_horizontal);
-                        add_road(10, 0, Straight_horizontal);
-                        add_road(11, 0, Straight_horizontal);
-                        add_road(12, 0, Curve_90Degree);
-                        add_road(12, 1, Straight_vertical_checkpoint);
-                        add_road(12, 2, Curve_180Degree);
-                        add_road(11, 2, Straight_horizontal);
-                        add_road(10, 2, Straight_horizontal);
-                        add_road(9, 2, Straight_horizontal);
-                        add_road(8, 2, Straight_horizontal);
-                        add_road(7, 2, Straight_horizontal);
-                        add_road(6, 2, Straight_horizontal);
-                        add_road(5, 2, Straight_horizontal);
-                        add_road(4, 2, Straight_horizontal);
-                        add_road(3, 2, Straight_horizontal);
-                        add_road(2, 2, Curve_0Degree);
-                        add_road(2, 3, Straight_vertical_checkpoint);
-                        add_road(2, 4, Curve_270Degree);
-                        add_road(3, 4, Straight_horizontal);
-                        add_road(4, 4, Straight_horizontal);
-                        add_road(5, 4, Straight_horizontal);
-                        add_road(6, 4, Straight_horizontal);
-                        add_road(7, 4, Straight_horizontal);
-                        add_road(8, 4, Straight_horizontal);
-                        add_road(9, 4, Straight_horizontal);
-                        add_road(10, 4, Straight_horizontal);
-                        add_road(11, 4, Straight_horizontal);
-                        add_road(12, 4, Curve_90Degree);
-                        add_road(12, 5, Straight_vertical_checkpoint);
-                        add_road(12, 6, Curve_180Degree);
-                        add_road(11, 6, Straight_horizontal);
-                        add_road(10, 6, Straight_horizontal);
-                        add_road(9, 6, Straight_horizontal);
-                        add_road(8, 6, Straight_horizontal);
-                        add_road(7, 6, Straight_horizontal);
-                        add_road(6, 6, Straight_horizontal);
-                        add_road(5, 6, Straight_horizontal);
-                        add_road(4, 6, Straight_horizontal);
-                        add_road(3, 6, Straight_horizontal);
-                        add_road(2, 6, Straight_horizontal);
-                        add_road(1, 6, Curve_270Degree);
-                        add_road(1, 5, Straight_vertical);
-                        add_road(1, 4, Straight_vertical);
+                        add_road(1, 2, new Straight_vertical(myCanvas));
+                        add_road(1, 1, new Straight_vertical(myCanvas));
+                        add_road(1, 0, new Curve0degree(myCanvas));
+                        add_road(2, 0, new Straight_hotizontal(myCanvas));
+                        add_road(3, 0, new Straight_hotizontal(myCanvas));
+                        add_road(4, 0, new Straight_hotizontal(myCanvas));
+                        add_road(5, 0, new Straight_hotizontal(myCanvas));
+                        add_road(6, 0, new Straight_hotizontal(myCanvas));
+                        add_road(7, 0, new Straight_hotizontal(myCanvas));
+                        add_road(8, 0, new Straight_hotizontal(myCanvas));
+                        add_road(9, 0, new Straight_hotizontal(myCanvas));
+                        add_road(10, 0, new Straight_hotizontal(myCanvas));
+                        add_road(11, 0, new Straight_hotizontal(myCanvas));
+                        add_road(12, 0, new Curve90degree(myCanvas));
+                        add_road(12, 1, new Straight_vertical_checkpoint(myCanvas));
+                        add_road(12, 2, new Curve180degree(myCanvas));
+                        add_road(11, 2, new Straight_hotizontal(myCanvas));
+                        add_road(10, 2, new Straight_hotizontal(myCanvas));
+                        add_road(9, 2, new Straight_hotizontal(myCanvas));
+                        add_road(8, 2, new Straight_hotizontal(myCanvas));
+                        add_road(7, 2, new Straight_hotizontal(myCanvas));
+                        add_road(6, 2, new Straight_hotizontal(myCanvas));
+                        add_road(5, 2, new Straight_hotizontal(myCanvas));
+                        add_road(4, 2, new Straight_hotizontal(myCanvas));
+                        add_road(3, 2, new Straight_hotizontal(myCanvas));
+                        add_road(2, 2, new Curve0degree(myCanvas));
+                        add_road(2, 3, new Straight_vertical_checkpoint(myCanvas));
+                        add_road(2, 4, new Curve270degree(myCanvas));
+                        add_road(3, 4, new Straight_hotizontal(myCanvas));
+                        add_road(4, 4, new Straight_hotizontal(myCanvas));
+                        add_road(5, 4, new Straight_hotizontal(myCanvas));
+                        add_road(6, 4, new Straight_hotizontal(myCanvas));
+                        add_road(7, 4, new Straight_hotizontal(myCanvas));
+                        add_road(8, 4, new Straight_hotizontal(myCanvas));
+                        add_road(9, 4, new Straight_hotizontal(myCanvas));
+                        add_road(10, 4, new Straight_hotizontal(myCanvas));
+                        add_road(11, 4, new Straight_hotizontal(myCanvas));
+                        add_road(12, 4, new Curve90degree(myCanvas));
+                        add_road(12, 5, new Straight_vertical_checkpoint(myCanvas));
+                        add_road(12, 6, new Curve180degree(myCanvas));
+                        add_road(11, 6, new Straight_hotizontal(myCanvas));
+                        add_road(10, 6, new Straight_hotizontal(myCanvas));
+                        add_road(9, 6, new Straight_hotizontal(myCanvas));
+                        add_road(8, 6, new Straight_hotizontal(myCanvas));
+                        add_road(7, 6, new Straight_hotizontal(myCanvas));
+                        add_road(6, 6, new Straight_hotizontal(myCanvas));
+                        add_road(5, 6, new Straight_hotizontal(myCanvas));
+                        add_road(4, 6, new Straight_hotizontal(myCanvas));
+                        add_road(3, 6, new Straight_hotizontal(myCanvas));
+                        add_road(2, 6, new Straight_hotizontal(myCanvas));
+                        add_road(1, 6, new Curve270degree(myCanvas));
+                        add_road(1, 5, new Straight_vertical(myCanvas));
+                        add_road(1, 4, new Straight_vertical(myCanvas));
 
                         for (double X = 0; X < Screen_Width / gird; X++)
                         {
@@ -366,37 +420,37 @@ namespace Need_more_Speed
 
                         add_road(1, 3, Straight_vertical_finish);
 
-                        add_road(1, 2, Curve_0Degree);
-                        add_road(2, 2, Straight_horizontal);
-                        add_road(3, 2, Curve_90Degree);
-                        add_road(3, 3, Straight_vertical);
-                        add_road(3, 4, Curve_270Degree);
-                        add_road(4, 4, Straight_horizontal_checkpoint);
-                        add_road(5, 4, Straight_horizontal);
-                        add_road(6, 4, Curve_180Degree);
-                        add_road(6, 3, Straight_vertical);
-                        add_road(6, 2, Curve_90Degree);
-                        add_road(5, 2, Curve_270Degree);
-                        add_road(5, 1, Straight_vertical);
-                        add_road(5, 0, Curve_0Degree);
-                        add_road(6, 0, Straight_horizontal);
-                        add_road(7, 0, Straight_horizontal_checkpoint);
-                        add_road(8, 0, Curve_90Degree);
-                        add_road(8, 1, Straight_vertical);
-                        add_road(8, 2, Straight_vertical);
-                        add_road(8, 3, Straight_vertical);
-                        add_road(8, 4, Straight_vertical_checkpoint);
-                        add_road(8, 5, Straight_vertical);
-                        add_road(8, 6, Curve_180Degree);
-                        add_road(7, 6, Straight_horizontal);
-                        add_road(6, 6, Straight_horizontal_checkpoint);
-                        add_road(5, 6, Straight_horizontal);
-                        add_road(4, 6, Straight_horizontal);
-                        add_road(3, 6, Straight_horizontal);
-                        add_road(2, 6, Straight_horizontal_checkpoint);
-                        add_road(1, 6, Curve_270Degree);
-                        add_road(1, 5, Straight_vertical);
-                        add_road(1, 4, Straight_vertical);
+                        add_road(1, 2, new Curve0degree(myCanvas));
+                        add_road(2, 2, new Straight_hotizontal(myCanvas));
+                        add_road(3, 2, new Curve90degree(myCanvas));
+                        add_road(3, 3, new Straight_vertical(myCanvas));
+                        add_road(3, 4, new Curve270degree(myCanvas));
+                        add_road(4, 4, new Straight_hotizontal_checkpoint(myCanvas));
+                        add_road(5, 4, new Straight_hotizontal(myCanvas));
+                        add_road(6, 4, new Curve180degree(myCanvas));
+                        add_road(6, 3, new Straight_vertical(myCanvas));
+                        add_road(6, 2, new Curve90degree(myCanvas));
+                        add_road(5, 2, new Curve270degree(myCanvas));
+                        add_road(5, 1, new Straight_vertical(myCanvas));
+                        add_road(5, 0, new Curve0degree(myCanvas));
+                        add_road(6, 0, new Straight_hotizontal(myCanvas));
+                        add_road(7, 0, new Straight_hotizontal_checkpoint(myCanvas));
+                        add_road(8, 0, new Curve90degree(myCanvas));
+                        add_road(8, 1, new Straight_vertical(myCanvas));
+                        add_road(8, 2, new Straight_vertical(myCanvas));
+                        add_road(8, 3, new Straight_vertical(myCanvas));
+                        add_road(8, 4, new Straight_vertical_checkpoint(myCanvas));
+                        add_road(8, 5, new Straight_vertical(myCanvas));
+                        add_road(8, 6, new Curve180degree(myCanvas));
+                        add_road(7, 6, new Straight_hotizontal(myCanvas));
+                        add_road(6, 6, new Straight_hotizontal_checkpoint(myCanvas));
+                        add_road(5, 6, new Straight_hotizontal(myCanvas));
+                        add_road(4, 6, new Straight_hotizontal(myCanvas));
+                        add_road(3, 6, new Straight_hotizontal(myCanvas));
+                        add_road(2, 6, new Straight_hotizontal_checkpoint(myCanvas));
+                        add_road(1, 6, new Curve270degree(myCanvas));
+                        add_road(1, 5, new Straight_vertical(myCanvas));
+                        add_road(1, 4, new Straight_vertical(myCanvas));
 
                         for (double X = 0; X < Screen_Width / gird; X++)
                         {

@@ -18,6 +18,10 @@ namespace Need_more_Speed
 {
     class Straight_hotizontal : Straight 
     {
+        /*public Straight_hotizontal()
+        {
+        }*/
+
         public Straight_hotizontal(Canvas myCanvas) : base(myCanvas)
         {
 
