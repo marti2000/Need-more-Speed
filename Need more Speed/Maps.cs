@@ -398,6 +398,7 @@ namespace Need_more_Speed
                         add_road(1, 5, Straight_vertical);
                         add_road(1, 4, Straight_vertical);
 
+
                         for (double X = 0; X < Screen_Width / gird; X++)
                         {
                             for (double Y = 0; Y < Screen_Height / gird; Y++)
@@ -408,6 +409,7 @@ namespace Need_more_Speed
 
                         break;
                     }
+
             }
         }
     }
