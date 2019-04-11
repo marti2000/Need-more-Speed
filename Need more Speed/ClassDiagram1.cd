@@ -1,0 +1,171 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Need_more_Speed.Credits" BaseTypeListCollapsed="true">
+    <Position X="13.5" Y="16" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Credits.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Need_more_Speed.Curve">
+    <Position X="15.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Curve.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Need_more_Speed.Curve0degree">
+    <Position X="16.25" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAIAQAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Curve0degree.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Need_more_Speed.Curve180degree">
+    <Position X="18.5" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAIAQAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Curve180degree.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Need_more_Speed.Curve270degree">
+    <Position X="11.75" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAIAQAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Curve270degree.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Need_more_Speed.Curve90degree">
+    <Position X="14" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAIAQAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Curve90degree.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Need_more_Speed.Draw_road">
+    <Position X="9.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAAAAAAAAAAAAAAAAIAQAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Draw_road.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Need_more_Speed.MainWindow" BaseTypeListCollapsed="true">
+    <Position X="13.5" Y="11.75" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAgAAADAEAAAAABAAAAAAAAAQAAAAAABAAAAACIA=</HashCode>
+      <FileName>MainWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Need_more_Speed.manage_Rounds">
+    <Position X="5.5" Y="11.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAADQCAAAAAAAAAAAAAAAAAEAAAAACAAIAgAA=</HashCode>
+      <FileName>manage_Rounds.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Need_more_Speed.Maps">
+    <Position X="9" Y="3.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>BCAAAQwAAACCAQABAAACAAAAAAAAAAAJAAAAAEAAGCQ=</HashCode>
+      <FileName>Maps.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Need_more_Speed.Menue" BaseTypeListCollapsed="true">
+    <Position X="10.75" Y="11.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AEBRCoAiQAAgKAgcJADKEACIoAACgANDAAEwIIQAAAA=</HashCode>
+      <FileName>Menue.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Need_more_Speed.Name_box" BaseTypeListCollapsed="true">
+    <Position X="13.5" Y="17.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAAAAAAAAAAAAGAAAAAAAAACAgAAAgAAAAAAGAA=</HashCode>
+      <FileName>Name_box.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Need_more_Speed.Starter">
+    <Position X="5.5" Y="15.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAIAgACATAABAEAAAAQAQAAAAAAAEAAEACAAAAAiAI=</HashCode>
+      <FileName>Starter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Need_more_Speed.Straight">
+    <Position X="4" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Straight.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Need_more_Speed.Straight_hotizontal">
+    <Position X="1.75" Y="5.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAIAQAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Straight_hotizontal.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Need_more_Speed.Straight_hotizontal_checkpoint">
+    <Position X="0.5" Y="8.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAIAQAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Straight_hotizontal_checkpoint.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Need_more_Speed.Straight_hotizontal_finish">
+    <Position X="3" Y="8.5" Width="2" />
+    <InheritanceLine Type="Need_more_Speed.Straight_hotizontal" ManuallyRouted="true">
+      <Path>
+        <Point X="2.625" Y="7.117" />
+        <Point X="2.625" Y="7.45" />
+        <Point X="4" Y="7.45" />
+        <Point X="4" Y="8.5" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAIAQAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Straight_hotizontal_finish.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Need_more_Speed.Straight_vertical">
+    <Position X="6.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAIAQAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Straight_vertical.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Need_more_Speed.Straight_vertical_checkpoint">
+    <Position X="5" Y="8.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAIAQAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Straight_vertical_checkpoint.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Need_more_Speed.Straight_vertical_finish">
+    <Position X="7.25" Y="8.5" Width="2" />
+    <InheritanceLine Type="Need_more_Speed.Straight_vertical" ManuallyRouted="true">
+      <Path>
+        <Point X="7" Y="7.117" />
+        <Point X="7" Y="7.45" />
+        <Point X="8.25" Y="7.45" />
+        <Point X="8.25" Y="8.5" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAIAQAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Straight_vertical_finish.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Need_more_Speed.Vehicle">
+    <Position X="8" Y="11.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>gAFABCIoQQBCKIMBRICAAAAhgExZAUBMCwSQAgIAmAI=</HashCode>
+      <FileName>Vehicle.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

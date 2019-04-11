@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Need_more_Speed"
         mc:Ignorable="d"
-        Title="Credits" Height="500" Width="400"
+        Title="Credits" Height="600" Width="400"
         Topmost="True"
         WindowStartupLocation="CenterScreen">
     <Grid>
@@ -25,28 +25,37 @@
             <RowDefinition Height="2*"/>
             <RowDefinition Height="2*"/>
             <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
 
         <TextBlock Text="Credits" TextAlignment="Center" FontSize="30" Grid.Column="1" Grid.Row="0"/>
-        <TextBlock Text="Menü Hintergrundbild" TextAlignment="Center" FontSize="25" Grid.Column="1" Grid.Row="2"/>
-        <TextBlock TextAlignment="Center" FontSize="15" Grid.Column="1" Grid.Row="3">
+        <TextBlock Text="Entwickler" TextAlignment="Center" FontSize="25" Grid.Column="1" Grid.Row="1"/>
+        <TextBlock TextAlignment="Center" FontSize="15" Grid.Column="1" Grid.Row="2">
+            Timo Jäger
+            <LineBreak />
+            Marcel Vögeli
+        </TextBlock>
+        <TextBlock Text="Menü Hintergrundbild" TextAlignment="Center" FontSize="25" Grid.Column="1" Grid.Row="4"/>
+        <TextBlock TextAlignment="Center" FontSize="15" Grid.Column="1" Grid.Row="5">
             von FuzzyMannerz
             <LineBreak />
             auf www.pixabay.com
         </TextBlock>
-        <TextBlock Text="Hintergrundmusik" TextAlignment="Center" FontSize="25" Grid.Column="1" Grid.Row="5"/>
-        <TextBlock TextAlignment="Center" FontSize="15" Grid.Column="1" Grid.Row="6">
-            "Ready to fight"
+        <TextBlock Text="Hintergrundmusik" TextAlignment="Center" FontSize="25" Grid.Column="1" Grid.Row="7"/>
+        <TextBlock TextAlignment="Center" FontSize="15" Grid.Column="1" Grid.Row="8">
+            "Ready to fight" von Vincent Lee
             <LineBreak />
-            von Vincent Lee
+            von www.soundcloud.com
         </TextBlock>
-        <TextBlock Text="Entwicklungsumgebung" TextAlignment="Center" FontSize="25" Grid.Column="1" Grid.Row="8"/>
-        <TextBlock TextAlignment="Center" FontSize="15" Grid.Column="1" Grid.Row="9">
+        <TextBlock Text="Entwicklungsumgebung" TextAlignment="Center" FontSize="25" Grid.Column="1" Grid.Row="10"/>
+        <TextBlock TextAlignment="Center" FontSize="15" Grid.Column="1" Grid.Row="11">
             Visual Studio 2017
             <LineBreak />
             von Microsoft
         </TextBlock>
-        <TextBlock Text="All Rights Reserved 2019" TextAlignment="Center" VerticalAlignment="Bottom" FontSize="10" Grid.Column="1" Grid.Row="10"/>
+        <TextBlock Text="All Rights Reserved 2019" TextAlignment="Center" VerticalAlignment="Bottom" FontSize="10" Grid.Column="1" Grid.Row="12"/>
     </Grid>
 </Window>
+<!--build by Marcel-->

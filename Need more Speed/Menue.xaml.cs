@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -18,6 +19,7 @@ namespace Need_more_Speed
     public partial class Menue : Window
     {
         private bool start_the_game = false;
+        private bool end_the_game = false;
 
         private int choseed_map = 0;
 
@@ -30,8 +32,6 @@ namespace Need_more_Speed
 
         Starter starter;
 
-        Name_box name_box;
-
         Credits credits;
 
         public bool Start_the_game { get => start_the_game; set => start_the_game = value; }
@@ -40,6 +40,7 @@ namespace Need_more_Speed
         public double Anz_rounds { get => Anz_Rounds; set => Anz_Rounds = value; }
         public double[] Times_player_1 { get => times_player_1; set => times_player_1 = value; }
         public double[] Times_player_2 { get => times_player_2; set => times_player_2 = value; }
+        public bool End_the_game { get => end_the_game; set => end_the_game = value; }
 
         public Menue()
         {
@@ -58,6 +59,11 @@ namespace Need_more_Speed
             next_left_player_2.Content = "<";
 
             anz_rounds.Text = Anz_Rounds.ToString();
+
+            Write_app_storage("1_test", "10", "Marcel");
+
+            string[] test_string_array = new string[2];
+            test_string_array = Read_app_data("1_test");
         }
 
         private void Draw_tracks()
@@ -245,50 +251,42 @@ namespace Need_more_Speed
 
                 for (int counter_ = 1; counter_ <= 10; counter_++)
                 {
-                    int result;
-                    int result1;
-                    int result2;
-                    int.TryParse(Read_app_data("Millisecondes_TOP_" + counter_.ToString() + "_" + choseed_map.ToString()), out result);
-                    int.TryParse(Read_app_data("Secondes_TOP_" + counter_.ToString() + "_" + choseed_map.ToString()), out result1);
-                    int.TryParse(Read_app_data("Minutes_TOP_" + counter_.ToString() + "_" + choseed_map.ToString()), out result2);
+                    string[] filedata = Read_app_data("TOP_" + counter_ + "_" + choseed_map);
+                    long time_ticks;
+                    long.TryParse(filedata[0], out time_ticks);
+                    TimeSpan old_time = new TimeSpan(time_ticks);
+                    if (((time.Ticks < old_time.Ticks) || (old_time.Ticks == 0)) && (time.Ticks > 0))
+                    {
+                        Name_box name_box = new Name_box();
+                        name_box.Show();
+                        name_box.set_player_and_place(1, counter_);
 
-                    TimeSpan old_best = new TimeSpan(0, 0, result2, result1, result);
+                        while (name_box.value_ready == false)
+                        {
+                            this.Hide();
+                            await Task.Delay(300); 
+                        }
 
-                    if(((time.Ticks < old_best.Ticks) || (old_best.Ticks == 0)) && (time.Ticks > 0))
-                    { 
-                    
-                                name_box = new Name_box();
-                                name_box.Show();
-                                name_box.set_player_and_place(1, counter_);
-                                
-                                while(name_box.value_ready == false)
-                                {
-                                    this.Hide();
-                                    await Task.Delay(300);
-                                }
-                                //sort by the best time
-                                if(counter_ < 10)
-                                {
-                                    for(int _counter_ = 9; _counter_ >= counter_; _counter_--)
-                                    {
-                                        Write_app_storage("Name_TOP_" + (_counter_ + 1).ToString() + "_" + choseed_map.ToString(), Read_app_data("Name_TOP_" + _counter_.ToString() + "_" + choseed_map.ToString()));
-                                        Write_app_storage("Minutes_TOP_" + (_counter_ + 1).ToString() + "_" + choseed_map.ToString(), Read_app_data("Minutes_TOP_" + _counter_.ToString() + "_" + choseed_map.ToString()));
-                                        Write_app_storage("Secondes_TOP_" + (_counter_ + 1).ToString() + "_" + choseed_map.ToString(), Read_app_data("Secondes_TOP_" + _counter_.ToString() + "_" + choseed_map.ToString()));
-                                        Write_app_storage("Millisecondes_TOP_" + (_counter_ + 1).ToString() + "_" + choseed_map.ToString(), Read_app_data("Millisecondes_TOP_" + _counter_.ToString() + "_" + choseed_map.ToString()));
-                                    }
-                                }
+                        if (counter_ < 10)
+                        {
+                            for (int _counter_ = 9; _counter_ >= counter_; _counter_--)
+                            {
+                                string[] storage;
+                                storage = Read_app_data("TOP_" + _counter_.ToString() + "_" + choseed_map.ToString());
+                                Write_app_storage("TOP_" + (_counter_ + 1).ToString() + "_" + choseed_map.ToString(), storage[0], storage[1]);
+                            }
 
-                                Write_app_storage("Name_TOP_" + counter_.ToString() + "_" + choseed_map.ToString(), name_box.name_of_player);
-                                Write_app_storage("Minutes_TOP_" + counter_.ToString() + "_" + choseed_map.ToString(), time.Minutes.ToString());
-                                Write_app_storage("Secondes_TOP_" + counter_.ToString() + "_" + choseed_map.ToString(), time.Seconds.ToString());
-                                Write_app_storage("Millisecondes_TOP_" + counter_.ToString() + "_" + choseed_map.ToString(), time.Milliseconds.ToString());
-                                
-                                name_box.Close();
-                                this.Show();
-                                counter_ = 11;
+                            Write_app_storage("TOP_" + counter_.ToString() + "_" + choseed_map.ToString(), time.Ticks.ToString(), name_box.name_of_player);
+
+                            name_box.Close();
+                            this.Show();
+                            counter_ = 11;
+                        }
                     }
                 }
             }
+
+
             for (int counter = 0; counter < Anz_Rounds; counter++)
             {
                 TimeSpan time;
@@ -319,46 +317,37 @@ namespace Need_more_Speed
 
                 for (int counter_ = 1; counter_ <= 10; counter_++)
                 {
-                    int result;
-                    int result1;
-                    int result2;
-                    int.TryParse(Read_app_data("Millisecondes_TOP_" + counter_.ToString() + "_" + choseed_map.ToString()), out result);
-                    int.TryParse(Read_app_data("Secondes_TOP_" + counter_.ToString() + "_" + choseed_map.ToString()), out result1);
-                    int.TryParse(Read_app_data("Minutes_TOP_" + counter_.ToString() + "_" + choseed_map.ToString()), out result2);
-
-                    TimeSpan old_best = new TimeSpan(0, 0, result2, result1, result);
-
-                    if (((time.Ticks < old_best.Ticks) || (old_best.Ticks == 0)) && (time.Ticks > 0))
+                    string[] filedata = Read_app_data("TOP_" + counter_ + "_" + choseed_map);
+                    long time_ticks;
+                    long.TryParse(filedata[0], out time_ticks);
+                    TimeSpan old_time = new TimeSpan(time_ticks);
+                    if (((time.Ticks < old_time.Ticks) || (old_time.Ticks == 0)) && (time.Ticks > 0))
                     {
-                        name_box = new Name_box();
-                                name_box.Show();
-                                name_box.set_player_and_place(2, counter_);
+                        Name_box name_box = new Name_box();
+                        name_box.Show();
+                        name_box.set_player_and_place(2, counter_);
 
-                                while (name_box.value_ready == false)
-                                {
-                                    this.Hide();
-                                    await Task.Delay(300);
-                                }
-                                //sort by the best time
-                                if (counter_ < 10)
-                                {
-                                    for (int _counter_ = 9; _counter_ >= counter_; _counter_--)
-                                    {
-                                        Write_app_storage("Name_TOP_" + (_counter_ + 1).ToString() + "_" + choseed_map.ToString(), Read_app_data("Name_TOP_" + _counter_.ToString() + "_" + choseed_map.ToString()));
-                                        Write_app_storage("Minutes_TOP_" + (_counter_ + 1).ToString() + "_" + choseed_map.ToString(), Read_app_data("Minutes_TOP_" + _counter_.ToString() + "_" + choseed_map.ToString()));
-                                        Write_app_storage("Secondes_TOP_" + (_counter_ + 1).ToString() + "_" + choseed_map.ToString(), Read_app_data("Secondes_TOP_" + _counter_.ToString() + "_" + choseed_map.ToString()));
-                                        Write_app_storage("Millisecondes_TOP_" + (_counter_ + 1).ToString() + "_" + choseed_map.ToString(), Read_app_data("Millisecondes_TOP_" + _counter_.ToString() + "_" + choseed_map.ToString()));
-                                    }
-                                }
+                        while (name_box.value_ready == false)
+                        {
+                            this.Hide();
+                            await Task.Delay(300);
+                        }
 
-                                Write_app_storage("Name_TOP_" + counter_.ToString() + "_" + choseed_map.ToString(), name_box.name_of_player);
-                                Write_app_storage("Minutes_TOP_" + counter_.ToString() + "_" + choseed_map.ToString(), time.Minutes.ToString());
-                                Write_app_storage("Secondes_TOP_" + counter_.ToString() + "_" + choseed_map.ToString(), time.Seconds.ToString());
-                                Write_app_storage("Millisecondes_TOP_" + counter_.ToString() + "_" + choseed_map.ToString(), time.Milliseconds.ToString());
+                        if (counter_ < 10)
+                        {
+                            for (int _counter_ = 9; _counter_ >= counter_; _counter_--)
+                            {
+                                string[] storage;
+                                storage = Read_app_data("TOP_" + _counter_.ToString() + "_" + choseed_map.ToString());
+                                Write_app_storage("TOP_" + (_counter_ + 1).ToString() + "_" + choseed_map.ToString(), storage[0], storage[1]);
+                            }
 
-                                name_box.Close();
-                                this.Show();
-                                counter_ = 11;
+                            Write_app_storage("TOP_" + counter_.ToString() + "_" + choseed_map.ToString(), time.Ticks.ToString(), name_box.name_of_player);
+
+                            name_box.Close();
+                            this.Show();
+                            counter_ = 11;
+                        }
                     }
                 }
             }
@@ -499,7 +488,12 @@ namespace Need_more_Speed
 
         private void Menue_screen_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            credits.Close();
+            try
+            {
+                credits.Close();
+            }
+            catch
+            { }
         }
 
         private void Remove_round_Click(object sender, RoutedEventArgs e)
@@ -586,12 +580,17 @@ namespace Need_more_Speed
 
             for(int counter = 1; counter <= 10; counter++)
             {
-                time_list_Top_10.Items.Add(counter.ToString() + " " + Read_app_data("Name_TOP_" + counter.ToString() + "_" + choseed_map.ToString()) + " " + Read_app_data("Minutes_TOP_" + counter.ToString() + "_" + choseed_map.ToString()) + ":" + Read_app_data("Secondes_TOP_" + counter.ToString() + "_" + choseed_map.ToString()) + ":" + Read_app_data("Millisecondes_TOP_" + counter.ToString() + "_" + choseed_map.ToString()));
+                string[] storage;
+                storage = Read_app_data("TOP_" + counter.ToString() + "_" + choseed_map.ToString());
+                long time_ticks;
+                long.TryParse(storage[0], out time_ticks);
+                TimeSpan best_time = new TimeSpan(time_ticks);
+                time_list_Top_10.Items.Add(counter.ToString() + " " + storage[1] + " " + best_time.Minutes.ToString() + ":" + best_time.Seconds.ToString() + ":" + best_time.Milliseconds.ToString());
             }
             
         }
 
-        private void Write_app_storage(string Key, string Data)
+        private void Write_app_storage(string Key, string time, string name)
         {
             if (!Directory.Exists(path))
             {
@@ -600,21 +599,22 @@ namespace Need_more_Speed
 
             StreamWriter writer = new StreamWriter(path + "/" + Key + ".nms");
 
-            writer.Write(Data);
+            writer.WriteLine(time);
+            writer.WriteLine(name);
 
             writer.Close();
         }
 
-        private string Read_app_data(string Key)
+        private string[] Read_app_data(string Key)
         {
-            string saved_data;
+            string[] saved_data = new string[2];
 
             if (File.Exists(path + "/" + Key + ".nms"))
             {
                 StreamReader reader = new StreamReader(path + "/" + Key + ".nms");
 
-                saved_data = reader.ReadToEnd();
-
+                saved_data[0] = reader.ReadLine();
+                saved_data[1] = reader.ReadLine();
                 reader.Close();
 
                 return saved_data;
@@ -622,9 +622,12 @@ namespace Need_more_Speed
             }
             else
             {
-                return "";
+                saved_data[0] = "";
+                saved_data[1] = "";
+                return saved_data;
             }
         }
 
     }
 }
+//build by Marcel

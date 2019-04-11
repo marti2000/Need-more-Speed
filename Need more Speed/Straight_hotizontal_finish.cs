@@ -23,9 +23,15 @@ namespace Need_more_Speed
 
         }
 
-        public void draw(double x_offset, double y_offset, double grid)
+        public override string get_type()
+        {
+            return "straight_horizontal_finish";
+        }
+
+        public override void draw(double x_offset, double y_offset, double grid)
         {
             //comming soon
         }
     }
 }
+//build by Timo

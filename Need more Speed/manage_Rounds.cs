@@ -32,7 +32,7 @@ namespace Need_more_Speed
 
             System.Windows.Threading.DispatcherTimer refresh = new System.Windows.Threading.DispatcherTimer();
             refresh.Tick += refresh_Tick;
-            refresh.Interval = new TimeSpan(0, 0, 0, 0, 1);
+            refresh.Interval = new TimeSpan(0, 0, 0, 0, 100);
             refresh.Start();
 
             Rounds = new TextBlock();
@@ -46,7 +46,7 @@ namespace Need_more_Speed
             }
             else if(Car.Compare_to_player == 2)
             {
-                Canvas.SetLeft(Rounds, System.Windows.SystemParameters.MaximizedPrimaryScreenWidth-200/*10* Grid*/);
+                Canvas.SetLeft(Rounds, System.Windows.SystemParameters.MaximizedPrimaryScreenWidth-200);
                 Canvas.SetTop(Rounds, 0);
                 Rounds.TextAlignment = System.Windows.TextAlignment.Right;
 
@@ -74,7 +74,11 @@ namespace Need_more_Speed
             Car.Left = false;
             Car.Round = 0;
             
-            Menue.Show();
+            if(Menue.End_the_game == false)
+            {
+                Menue.End_the_game = true;
+                Menue.Show();
+            }
         }
 
         private void refresh_Tick(object sender, EventArgs e)
@@ -91,7 +95,11 @@ namespace Need_more_Speed
                 }
                 round_timer.Stop();
 
-                Menue.Time_list_after_game();
+                if (Menue.End_the_game == false)
+                {
+                    Menue.End_the_game = true;
+                    Menue.Time_list_after_game();
+                }
                 wait_for_end_game();
 
                 Car.Round++;
@@ -167,3 +175,4 @@ namespace Need_more_Speed
         }
     }
 }
+//build by Marcel
